@@ -1,0 +1,1840 @@
+{
+  "source": {
+    "instrument": "IPIP-NEO-120",
+    "locale": "zh-Hant-TW",
+    "items": "International Personality Item Pool (ipip.ori.org) — public domain, no permission required",
+    "development": "Johnson, J. A. (2014). Measuring thirty facets of the Five Factor Model with a 120-item public domain inventory: Development of the IPIP-NEO-120. Journal of Research in Personality, 51, 78-89.",
+    "norms": "Johnson's age/sex normative tables (means and SDs for 5 domains and 30 facets), verified against NeuroQuestAi/five-factor-e (MIT).",
+    "scoring": "facet raw = sum of 4 items (reverse-keyed items scored 6-x); T = 50 + 10*(raw-mean)/SD; percentile = cubic approximation, clamped to 1 below T=32 and 99 above T=73",
+    "translation": "Traditional Chinese (Taiwan), translated from the English source items; free to use, modify and redistribute",
+    "answer_scale": {
+      "1": "非常不符合",
+      "2": "有點不符合",
+      "3": "不確定",
+      "4": "有點符合",
+      "5": "非常符合"
+    },
+    "norm_array_layout": "ns[0] unused; ns[1..5] domain means (N,E,O,A,C); ns[6..10] domain SDs; ns[11..16] N facet means; ns[17..22] N facet SDs; then E (23-34), O (35-46), A (47-58), C (59-70)"
+  },
+  "items": [
+    {
+      "num": 1,
+      "text": "我常為各種事情擔心",
+      "en": "Worry about things",
+      "domain": "N",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 2,
+      "text": "我很容易交到朋友",
+      "en": "Make friends easily",
+      "domain": "E",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 3,
+      "text": "我的想像力很豐富",
+      "en": "Have a vivid imagination",
+      "domain": "O",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 4,
+      "text": "我信任別人",
+      "en": "Trust others",
+      "domain": "A",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 5,
+      "text": "我能順利完成交付的任務",
+      "en": "Complete tasks successfully",
+      "domain": "C",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 6,
+      "text": "我很容易生氣",
+      "en": "Get angry easily",
+      "domain": "N",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 7,
+      "text": "我喜歡人多的聚會",
+      "en": "Love large parties",
+      "domain": "E",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 8,
+      "text": "我認為藝術很重要",
+      "en": "Believe in the importance of art",
+      "domain": "O",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 9,
+      "text": "我會利用別人來達成自己的目的",
+      "en": "Use others for my own ends",
+      "domain": "A",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 10,
+      "text": "我喜歡把東西整理乾淨",
+      "en": "Like to tidy up",
+      "domain": "C",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 11,
+      "text": "我常覺得心情低落",
+      "en": "Often feel blue",
+      "domain": "N",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 12,
+      "text": "我會主動跳出來主導事情",
+      "en": "Take charge",
+      "domain": "E",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 13,
+      "text": "我的情緒感受很強烈",
+      "en": "Experience my emotions intensely",
+      "domain": "O",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 14,
+      "text": "我很樂意幫助別人",
+      "en": "Love to help others",
+      "domain": "A",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 15,
+      "text": "我會信守承諾",
+      "en": "Keep my promises",
+      "domain": "C",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 16,
+      "text": "我覺得主動接近別人很困難",
+      "en": "Find it difficult to approach others",
+      "domain": "N",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 17,
+      "text": "我總是很忙碌",
+      "en": "Am always busy",
+      "domain": "E",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 18,
+      "text": "比起一成不變，我更喜歡有變化",
+      "en": "Prefer variety to routine",
+      "domain": "O",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 19,
+      "text": "我喜歡跟人爭辯到底",
+      "en": "Love a good fight",
+      "domain": "A",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 20,
+      "text": "我做事很努力",
+      "en": "Work hard",
+      "domain": "C",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 21,
+      "text": "我會毫無節制地大吃大喝或放縱自己",
+      "en": "Go on binges",
+      "domain": "N",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 22,
+      "text": "我熱愛刺激的感覺",
+      "en": "Love excitement",
+      "domain": "E",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 23,
+      "text": "我喜歡閱讀有難度的內容",
+      "en": "Love to read challenging material",
+      "domain": "O",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 24,
+      "text": "我認為自己比別人優秀",
+      "en": "Believe that I am better than others",
+      "domain": "A",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 25,
+      "text": "我總是事先做好準備",
+      "en": "Am always prepared",
+      "domain": "C",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 26,
+      "text": "我很容易慌張",
+      "en": "Panic easily",
+      "domain": "N",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 27,
+      "text": "我身上散發著愉快的氣息",
+      "en": "Radiate joy",
+      "domain": "E",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 28,
+      "text": "我傾向支持自由派的政治人物",
+      "en": "Tend to vote for liberal political candidates",
+      "domain": "O",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 29,
+      "text": "我同情無家可歸的人",
+      "en": "Sympathize with the homeless",
+      "domain": "A",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 30,
+      "text": "我常常沒想清楚就一頭栽進去",
+      "en": "Jump into things without thinking",
+      "domain": "C",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 31,
+      "text": "我會擔心最壞的情況發生",
+      "en": "Fear for the worst",
+      "domain": "N",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 32,
+      "text": "我和人相處時感到自在",
+      "en": "Feel comfortable around people",
+      "domain": "E",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 33,
+      "text": "我享受天馬行空的幻想",
+      "en": "Enjoy wild flights of fantasy",
+      "domain": "O",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 34,
+      "text": "我相信別人的出發點是好的",
+      "en": "Believe that others have good intentions",
+      "domain": "A",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 35,
+      "text": "我在自己做的事情上表現出色",
+      "en": "Excel in what I do",
+      "domain": "C",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 36,
+      "text": "我很容易被惹毛",
+      "en": "Get irritated easily",
+      "domain": "N",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 37,
+      "text": "在聚會上我會和很多不同的人聊天",
+      "en": "Talk to a lot of different people at parties",
+      "domain": "E",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 38,
+      "text": "我能在別人不會注意的地方看見美",
+      "en": "See beauty in things that others might not notice",
+      "domain": "O",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 39,
+      "text": "為了佔上風，我會用不正當的手段",
+      "en": "Cheat to get ahead",
+      "domain": "A",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 40,
+      "text": "我常忘記把東西歸回原位",
+      "en": "Often forget to put things back in their proper place",
+      "domain": "C",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 41,
+      "text": "我不喜歡自己",
+      "en": "Dislike myself",
+      "domain": "N",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 42,
+      "text": "我會試著帶領別人",
+      "en": "Try to lead others",
+      "domain": "E",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 43,
+      "text": "我能感受到別人的情緒",
+      "en": "Feel others' emotions",
+      "domain": "O",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 44,
+      "text": "我很關心別人",
+      "en": "Am concerned about others",
+      "domain": "A",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 45,
+      "text": "我說實話",
+      "en": "Tell the truth",
+      "domain": "C",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 46,
+      "text": "我害怕引起別人注意",
+      "en": "Am afraid to draw attention to myself",
+      "domain": "N",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 47,
+      "text": "我總是動個不停",
+      "en": "Am always on the go",
+      "domain": "E",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 48,
+      "text": "我偏好維持自己熟悉的方式",
+      "en": "Prefer to stick with things that I know",
+      "domain": "O",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 49,
+      "text": "我會對別人大吼",
+      "en": "Yell at people",
+      "domain": "A",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 50,
+      "text": "我做的比別人期待的更多",
+      "en": "Do more than what's expected of me",
+      "domain": "C",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 51,
+      "text": "我很少放縱自己",
+      "en": "Rarely overindulge",
+      "domain": "N",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 52,
+      "text": "我會主動尋求冒險",
+      "en": "Seek adventure",
+      "domain": "E",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 53,
+      "text": "我會避開哲學性的討論",
+      "en": "Avoid philosophical discussions",
+      "domain": "O",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 54,
+      "text": "我對自己的評價很高",
+      "en": "Think highly of myself",
+      "domain": "A",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 55,
+      "text": "我會把計畫確實執行完",
+      "en": "Carry out my plans",
+      "domain": "C",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 56,
+      "text": "事情一多我就招架不住",
+      "en": "Become overwhelmed by events",
+      "domain": "N",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 57,
+      "text": "我玩得很開心",
+      "en": "Have a lot of fun",
+      "domain": "E",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 58,
+      "text": "我認為對錯沒有絕對的標準",
+      "en": "Believe that there is no absolute right and wrong",
+      "domain": "O",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 59,
+      "text": "我同情處境比我差的人",
+      "en": "Feel sympathy for those who are worse off than myself",
+      "domain": "A",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 60,
+      "text": "我會做出草率的決定",
+      "en": "Make rash decisions",
+      "domain": "C",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 61,
+      "text": "我害怕很多事情",
+      "en": "Am afraid of many things",
+      "domain": "N",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 62,
+      "text": "我會避免與人接觸",
+      "en": "Avoid contacts with others",
+      "domain": "E",
+      "facet": 1,
+      "keyed": -1
+    },
+    {
+      "num": 63,
+      "text": "我喜歡做白日夢",
+      "en": "Love to daydream",
+      "domain": "O",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 64,
+      "text": "我相信別人說的話",
+      "en": "Trust what people say",
+      "domain": "A",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 65,
+      "text": "我能把事情處理得很順",
+      "en": "Handle tasks smoothly",
+      "domain": "C",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 66,
+      "text": "我會發脾氣",
+      "en": "Lose my temper",
+      "domain": "N",
+      "facet": 2,
+      "keyed": 1
+    },
+    {
+      "num": 67,
+      "text": "我偏好獨處",
+      "en": "Prefer to be alone",
+      "domain": "E",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 68,
+      "text": "我不喜歡詩",
+      "en": "Do not like poetry",
+      "domain": "O",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 69,
+      "text": "我會佔別人便宜",
+      "en": "Take advantage of others",
+      "domain": "A",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 70,
+      "text": "我的房間總是亂七八糟",
+      "en": "Leave a mess in my room",
+      "domain": "C",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 71,
+      "text": "我常常提不起勁、意志消沉",
+      "en": "Am often down in the dumps",
+      "domain": "N",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 72,
+      "text": "我會把事情掌握在自己手上",
+      "en": "Take control of things",
+      "domain": "E",
+      "facet": 3,
+      "keyed": 1
+    },
+    {
+      "num": 73,
+      "text": "我很少察覺自己的情緒反應",
+      "en": "Rarely notice my emotional reactions",
+      "domain": "O",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 74,
+      "text": "我對別人的感受無動於衷",
+      "en": "Am indifferent to the feelings of others",
+      "domain": "A",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 75,
+      "text": "我會違反規定",
+      "en": "Break rules",
+      "domain": "C",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 76,
+      "text": "只有和朋友在一起時我才自在",
+      "en": "Only feel comfortable with friends",
+      "domain": "N",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 77,
+      "text": "我在空閒時間也安排很多事",
+      "en": "Do a lot in my spare time",
+      "domain": "E",
+      "facet": 4,
+      "keyed": 1
+    },
+    {
+      "num": 78,
+      "text": "我不喜歡改變",
+      "en": "Dislike changes",
+      "domain": "O",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 79,
+      "text": "我會出言羞辱別人",
+      "en": "Insult people",
+      "domain": "A",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 80,
+      "text": "我做事只求過得去",
+      "en": "Do just enough work to get by",
+      "domain": "C",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 81,
+      "text": "我很容易抵抗誘惑",
+      "en": "Easily resist temptations",
+      "domain": "N",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 82,
+      "text": "我享受不顧後果的感覺",
+      "en": "Enjoy being reckless",
+      "domain": "E",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 83,
+      "text": "我很難理解抽象的概念",
+      "en": "Have difficulty understanding abstract ideas",
+      "domain": "O",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 84,
+      "text": "我覺得自己很了不起",
+      "en": "Have a high opinion of myself",
+      "domain": "A",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 85,
+      "text": "我會浪費時間",
+      "en": "Waste my time",
+      "domain": "C",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 86,
+      "text": "我覺得自己應付不來",
+      "en": "Feel that I'm unable to deal with things",
+      "domain": "N",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 87,
+      "text": "我熱愛生活",
+      "en": "Love life",
+      "domain": "E",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 88,
+      "text": "我傾向支持保守派的政治人物",
+      "en": "Tend to vote for conservative political candidates",
+      "domain": "O",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 89,
+      "text": "我對別人的問題不感興趣",
+      "en": "Am not interested in other people's problems",
+      "domain": "A",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 90,
+      "text": "我做事很衝",
+      "en": "Rush into things",
+      "domain": "C",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 91,
+      "text": "我很容易感到壓力大",
+      "en": "Get stressed out easily",
+      "domain": "N",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 92,
+      "text": "我和別人保持距離",
+      "en": "Keep others at a distance",
+      "domain": "E",
+      "facet": 1,
+      "keyed": -1
+    },
+    {
+      "num": 93,
+      "text": "我喜歡沉浸在自己的思緒裡",
+      "en": "Like to get lost in thought",
+      "domain": "O",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 94,
+      "text": "我不太相信別人",
+      "en": "Distrust people",
+      "domain": "A",
+      "facet": 1,
+      "keyed": -1
+    },
+    {
+      "num": 95,
+      "text": "我知道怎麼把事情搞定",
+      "en": "Know how to get things done",
+      "domain": "C",
+      "facet": 1,
+      "keyed": 1
+    },
+    {
+      "num": 96,
+      "text": "我不容易被激怒",
+      "en": "Am not easily annoyed",
+      "domain": "N",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 97,
+      "text": "我會避開人多的場合",
+      "en": "Avoid crowds",
+      "domain": "E",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 98,
+      "text": "我不喜歡逛美術館",
+      "en": "Do not enjoy going to art museums",
+      "domain": "O",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 99,
+      "text": "我會從中阻撓別人的計畫",
+      "en": "Obstruct others' plans",
+      "domain": "A",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 100,
+      "text": "我會隨手把東西亂放",
+      "en": "Leave my belongings around",
+      "domain": "C",
+      "facet": 2,
+      "keyed": -1
+    },
+    {
+      "num": 101,
+      "text": "我對自己感到自在",
+      "en": "Feel comfortable with myself",
+      "domain": "N",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 102,
+      "text": "我會等別人先帶頭",
+      "en": "Wait for others to lead the way",
+      "domain": "E",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 103,
+      "text": "我不理解情緒化的人",
+      "en": "Don't understand people who get emotional",
+      "domain": "O",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 104,
+      "text": "我不會為別人花時間",
+      "en": "Take no time for others",
+      "domain": "A",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 105,
+      "text": "我會違背自己的承諾",
+      "en": "Break my promises",
+      "domain": "C",
+      "facet": 3,
+      "keyed": -1
+    },
+    {
+      "num": 106,
+      "text": "尷尬的社交場合不會困擾我",
+      "en": "Am not bothered by difficult social situations",
+      "domain": "N",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 107,
+      "text": "我喜歡放慢步調",
+      "en": "Like to take it easy",
+      "domain": "E",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 108,
+      "text": "我習慣依循傳統的做法",
+      "en": "Am attached to conventional ways",
+      "domain": "O",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 109,
+      "text": "我會報復別人",
+      "en": "Get back at others",
+      "domain": "A",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 110,
+      "text": "我在工作上不太投入時間和心力",
+      "en": "Put little time and effort into my work",
+      "domain": "C",
+      "facet": 4,
+      "keyed": -1
+    },
+    {
+      "num": 111,
+      "text": "我能控制自己的慾望",
+      "en": "Am able to control my cravings",
+      "domain": "N",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 112,
+      "text": "我會瘋狂、放得很開",
+      "en": "Act wild and crazy",
+      "domain": "E",
+      "facet": 5,
+      "keyed": 1
+    },
+    {
+      "num": 113,
+      "text": "我對理論性的討論不感興趣",
+      "en": "Am not interested in theoretical discussions",
+      "domain": "O",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 114,
+      "text": "我會誇耀自己的優點",
+      "en": "Boast about my virtues",
+      "domain": "A",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 115,
+      "text": "我很難開始動手做事",
+      "en": "Have difficulty starting tasks",
+      "domain": "C",
+      "facet": 5,
+      "keyed": -1
+    },
+    {
+      "num": 116,
+      "text": "在壓力下我仍能保持冷靜",
+      "en": "Remain calm under pressure",
+      "domain": "N",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 117,
+      "text": "我凡事往好處想",
+      "en": "Look at the bright side of life",
+      "domain": "E",
+      "facet": 6,
+      "keyed": 1
+    },
+    {
+      "num": 118,
+      "text": "我認為對犯罪應該從重處罰",
+      "en": "Believe that we should be tough on crime",
+      "domain": "O",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 119,
+      "text": "我盡量不去想那些需要幫助的人",
+      "en": "Try not to think about the needy",
+      "domain": "A",
+      "facet": 6,
+      "keyed": -1
+    },
+    {
+      "num": 120,
+      "text": "我做事不經思考",
+      "en": "Act without thinking",
+      "domain": "C",
+      "facet": 6,
+      "keyed": -1
+    }
+  ],
+  "norms": {
+    "1": {
+      "category": "men under 21 years old",
+      "ns": [
+        0.0,
+        67.84,
+        80.7,
+        85.98,
+        81.98,
+        79.66,
+        15.83,
+        15.37,
+        12.37,
+        14.66,
+        14.49,
+        11.72,
+        11.93,
+        10.58,
+        12.38,
+        11.67,
+        9.63,
+        3.76,
+        4.41,
+        4.25,
+        3.83,
+        3.25,
+        3.38,
+        13.76,
+        12.23,
+        14.06,
+        11.54,
+        14.67,
+        14.41,
+        3.78,
+        4.17,
+        3.66,
+        3.15,
+        3.38,
+        3.68,
+        16.68,
+        14.51,
+        14.52,
+        12.84,
+        15.47,
+        11.86,
+        2.96,
+        3.87,
+        3.31,
+        3.16,
+        3.5,
+        3.17,
+        13.18,
+        14.85,
+        15.37,
+        12.73,
+        12.01,
+        13.96,
+        3.69,
+        3.44,
+        3.1,
+        4.05,
+        3.94,
+        3.35,
+        15.31,
+        10.97,
+        15.22,
+        13.61,
+        12.35,
+        12.08,
+        2.55,
+        3.93,
+        2.92,
+        3.65,
+        3.24,
+        4.02
+      ]
+    },
+    "2": {
+      "category": "men between 21 and 40 years old",
+      "ns": [
+        0.0,
+        66.97,
+        78.9,
+        86.51,
+        84.22,
+        85.5,
+        16.48,
+        15.21,
+        12.65,
+        13.1,
+        14.27,
+        11.44,
+        11.75,
+        10.37,
+        12.11,
+        12.18,
+        9.13,
+        3.76,
+        4.3,
+        4.12,
+        3.81,
+        3.52,
+        3.48,
+        13.31,
+        11.34,
+        14.58,
+        12.07,
+        13.34,
+        14.3,
+        3.8,
+        3.99,
+        3.58,
+        3.23,
+        3.43,
+        3.53,
+        15.94,
+        14.94,
+        14.6,
+        13.14,
+        16.11,
+        11.66,
+        3.18,
+        3.63,
+        3.19,
+        3.39,
+        3.25,
+        3.72,
+        12.81,
+        15.93,
+        15.37,
+        14.58,
+        11.43,
+        13.77,
+        3.69,
+        3.18,
+        2.92,
+        3.7,
+        3.57,
+        3.29,
+        15.8,
+        12.05,
+        15.68,
+        15.36,
+        13.27,
+        13.31,
+        2.44,
+        4.26,
+        2.76,
+        3.39,
+        3.31,
+        4.03
+      ]
+    },
+    "3": {
+      "category": "men between 41 and 60 years of age",
+      "ns": [
+        0.0,
+        64.11,
+        77.06,
+        83.04,
+        88.33,
+        91.27,
+        16.04,
+        14.31,
+        13.05,
+        11.76,
+        13.35,
+        10.79,
+        11.6,
+        9.78,
+        11.85,
+        11.24,
+        8.81,
+        3.56,
+        4.16,
+        3.94,
+        3.62,
+        3.55,
+        3.35,
+        13.22,
+        10.45,
+        14.95,
+        12.27,
+        11.82,
+        14.32,
+        3.71,
+        3.68,
+        3.44,
+        3.3,
+        3.23,
+        3.29,
+        14.65,
+        14.66,
+        14.76,
+        12.69,
+        15.4,
+        11.04,
+        3.35,
+        3.59,
+        3.02,
+        3.44,
+        3.43,
+        3.93,
+        13.42,
+        16.94,
+        15.65,
+        15.66,
+        11.96,
+        14.21,
+        3.49,
+        2.83,
+        2.88,
+        3.33,
+        3.34,
+        3.17,
+        16.19,
+        13.33,
+        16.56,
+        16.51,
+        14.05,
+        14.6,
+        2.25,
+        4.32,
+        2.5,
+        2.93,
+        3.13,
+        3.78
+      ]
+    },
+    "4": {
+      "category": "men over 60 years old",
+      "ns": [
+        0.0,
+        58.42,
+        79.73,
+        79.78,
+        90.2,
+        95.31,
+        15.48,
+        13.63,
+        12.21,
+        11.73,
+        11.99,
+        9.81,
+        11.46,
+        8.18,
+        11.08,
+        9.91,
+        8.24,
+        3.54,
+        4.31,
+        3.59,
+        3.82,
+        3.36,
+        3.28,
+        14.55,
+        11.19,
+        15.29,
+        12.81,
+        11.03,
+        15.02,
+        3.47,
+        3.58,
+        3.1,
+        3.25,
+        2.88,
+        3.16,
+        14.06,
+        14.22,
+        14.34,
+        12.42,
+        14.61,
+        10.11,
+        3.13,
+        3.64,
+        2.9,
+        3.2,
+        3.89,
+        4.02,
+        13.96,
+        17.74,
+        15.76,
+        16.18,
+        11.87,
+        14.0,
+        3.13,
+        2.39,
+        2.74,
+        3.41,
+        3.5,
+        3.11,
+        16.32,
+        14.41,
+        17.54,
+        16.65,
+        14.98,
+        15.18,
+        2.31,
+        4.49,
+        2.3,
+        2.68,
+        2.76,
+        3.61
+      ]
+    },
+    "5": {
+      "category": "women under 21 years old",
+      "ns": [
+        0.0,
+        73.41,
+        84.26,
+        89.01,
+        89.14,
+        81.27,
+        15.61,
+        14.98,
+        11.84,
+        13.21,
+        14.38,
+        13.31,
+        13.09,
+        11.05,
+        12.11,
+        12.48,
+        11.3,
+        3.62,
+        4.18,
+        4.2,
+        3.82,
+        3.3,
+        3.47,
+        14.47,
+        13.12,
+        14.03,
+        12.67,
+        14.69,
+        15.34,
+        3.6,
+        4.13,
+        3.68,
+        3.09,
+        3.48,
+        3.42,
+        16.86,
+        15.93,
+        16.02,
+        12.95,
+        15.06,
+        12.17,
+        2.89,
+        3.44,
+        2.95,
+        3.24,
+        3.51,
+        3.02,
+        13.46,
+        16.11,
+        16.66,
+        13.73,
+        13.23,
+        15.7,
+        3.72,
+        2.94,
+        2.69,
+        4.14,
+        3.79,
+        2.84,
+        15.3,
+        11.11,
+        15.62,
+        14.69,
+        12.73,
+        11.82,
+        2.54,
+        4.17,
+        2.76,
+        3.37,
+        3.19,
+        4.01
+      ]
+    },
+    "6": {
+      "category": "women between 21 and 40 years old",
+      "ns": [
+        0.0,
+        72.14,
+        80.78,
+        88.25,
+        91.91,
+        87.57,
+        16.16,
+        14.64,
+        12.15,
+        11.39,
+        13.87,
+        13.08,
+        12.72,
+        10.79,
+        12.2,
+        12.71,
+        10.69,
+        3.68,
+        4.13,
+        4.07,
+        3.79,
+        3.58,
+        3.64,
+        14.05,
+        11.92,
+        14.25,
+        12.77,
+        12.84,
+        14.96,
+        3.66,
+        4.05,
+        3.61,
+        3.24,
+        3.53,
+        3.31,
+        15.64,
+        15.97,
+        16.41,
+        12.84,
+        15.28,
+        12.06,
+        3.34,
+        3.3,
+        2.69,
+        3.44,
+        3.47,
+        3.46,
+        13.15,
+        17.34,
+        16.81,
+        15.57,
+        12.98,
+        15.52,
+        3.71,
+        2.61,
+        2.53,
+        3.5,
+        3.57,
+        2.87,
+        16.02,
+        12.67,
+        16.36,
+        16.11,
+        13.56,
+        12.91,
+        2.34,
+        4.51,
+        2.54,
+        3.05,
+        3.23,
+        4.18
+      ]
+    },
+    "7": {
+      "category": "women between 41 and 61 years old",
+      "ns": [
+        0.0,
+        67.38,
+        78.62,
+        86.15,
+        95.73,
+        93.45,
+        16.1,
+        14.19,
+        12.62,
+        9.84,
+        12.94,
+        12.05,
+        11.19,
+        10.07,
+        12.07,
+        11.98,
+        10.07,
+        3.72,
+        4.03,
+        3.97,
+        3.73,
+        3.69,
+        3.56,
+        14.1,
+        10.84,
+        14.51,
+        13.03,
+        11.08,
+        15.0,
+        3.72,
+        3.86,
+        3.5,
+        3.46,
+        3.42,
+        3.26,
+        14.43,
+        16.0,
+        16.37,
+        12.58,
+        14.87,
+        11.85,
+        3.49,
+        3.2,
+        2.58,
+        3.45,
+        3.65,
+        3.74,
+        13.79,
+        18.16,
+        17.04,
+        17.02,
+        13.41,
+        15.82,
+        3.52,
+        2.21,
+        2.4,
+        2.88,
+        3.3,
+        2.71,
+        16.5,
+        13.68,
+        17.29,
+        17.16,
+        14.35,
+        14.41,
+        2.16,
+        4.51,
+        2.27,
+        2.73,
+        3.13,
+        3.86
+      ]
+    },
+    "8": {
+      "category": "women over 60 years old",
+      "ns": [
+        0.0,
+        63.48,
+        78.22,
+        81.56,
+        97.17,
+        96.44,
+        14.92,
+        12.73,
+        12.66,
+        9.52,
+        12.43,
+        11.39,
+        10.52,
+        9.1,
+        12.0,
+        10.21,
+        9.87,
+        3.61,
+        3.82,
+        3.68,
+        3.61,
+        3.58,
+        3.44,
+        14.85,
+        10.93,
+        14.19,
+        12.76,
+        10.08,
+        15.65,
+        3.43,
+        3.7,
+        3.64,
+        3.26,
+        3.2,
+        3.04,
+        13.15,
+        15.95,
+        15.73,
+        11.8,
+        14.21,
+        10.81,
+        3.71,
+        3.12,
+        2.74,
+        3.26,
+        3.47,
+        3.89,
+        14.19,
+        18.64,
+        17.13,
+        17.98,
+        13.58,
+        15.83,
+        3.39,
+        1.9,
+        2.18,
+        2.56,
+        3.38,
+        2.85,
+        16.5,
+        15.15,
+        18.34,
+        17.19,
+        14.7,
+        15.11,
+        2.24,
+        4.07,
+        1.81,
+        2.49,
+        3.15,
+        3.66
+      ]
+    }
+  },
+  "meta": {
+    "domains": {
+      "N": {
+        "zh": "神經質",
+        "en": "Neuroticism",
+        "desc": "對負面情緒的敏感度。分數高的人比較常感到焦慮、低落或緊繃，也比較容易被壓力推倒；分數低的人情緒基線平穩，但也可能對危險訊號比較遲鈍。這個向度測的是情緒反應的強度與頻率，不是心理健康。",
+        "facets": [
+          {
+            "zh": "焦慮",
+            "en": "Anxiety",
+            "low": "你不太容易緊張，多數情況下覺得事情會沒問題。",
+            "mid": "你會擔心，但通常擔心得有理由，也放得下。",
+            "high": "你的警報系統很靈敏，常在事情發生前就先預演最壞的版本。"
+          },
+          {
+            "zh": "憤怒",
+            "en": "Anger",
+            "low": "被冒犯時你不太動怒，脾氣算溫和。",
+            "mid": "你會生氣，但多半只在該生氣的時候。",
+            "high": "你對不公平或被輕視的反應很快，怒意來得又急又明顯。"
+          },
+          {
+            "zh": "憂鬱",
+            "en": "Depression",
+            "low": "你少有低落期，對自己大致滿意。",
+            "mid": "偶爾情緒下滑，但會自己回來。",
+            "high": "你經常提不起勁、覺得沮喪，也比較容易對自己失望。"
+          },
+          {
+            "zh": "自我意識",
+            "en": "Self-Consciousness",
+            "low": "你在陌生人面前自在，不太在意別人怎麼看你。",
+            "mid": "有些場合會不好意思，但不至於退縮。",
+            "high": "你很在意別人的眼光，在人群中容易覺得尷尬或想躲起來。"
+          },
+          {
+            "zh": "放縱",
+            "en": "Immoderation",
+            "low": "你能延遲滿足，慾望對你的拉力不大。",
+            "mid": "大部分時候忍得住，偶爾會破戒。",
+            "high": "眼前的誘惑對你很難抗拒，常常先做了再說。"
+          },
+          {
+            "zh": "脆弱",
+            "en": "Vulnerability",
+            "low": "壓力大時你反而更冷靜，能穩住場面。",
+            "mid": "壓力會影響你，但不至於失去判斷。",
+            "high": "事情一多一急，你容易慌掉、失去平常的判斷力。"
+          }
+        ]
+      },
+      "E": {
+        "zh": "外向性",
+        "en": "Extraversion",
+        "desc": "你從外在世界與人際互動中得到多少能量。分數高的人主動、活躍、話多；分數低的不等於害羞或不快樂，只是獨處時比較不耗損，社交需求量本來就比較小。",
+        "facets": [
+          {
+            "zh": "熱情",
+            "en": "Friendliness",
+            "low": "你和人保持一定距離，要熟起來需要時間。",
+            "mid": "你對人友善，但不會主動熱絡。",
+            "high": "你主動親近人，很快就能讓人覺得跟你熟。"
+          },
+          {
+            "zh": "群聚",
+            "en": "Gregariousness",
+            "low": "你偏好獨處或少數人的深談，人多的場合會消耗你。",
+            "mid": "可以參加聚會，但不會刻意找。",
+            "high": "你喜歡人多熱鬧，愈多人在場你愈有精神。"
+          },
+          {
+            "zh": "主導",
+            "en": "Assertiveness",
+            "low": "你不搶著帶頭，讓別人主導對你沒差。",
+            "mid": "需要時你會出面，但不是預設角色。",
+            "high": "你自然而然會接手主導，也習慣別人聽你的。"
+          },
+          {
+            "zh": "活動量",
+            "en": "Activity Level",
+            "low": "你步調從容，喜歡留白的時間。",
+            "mid": "忙起來會很忙，但也懂得停。",
+            "high": "你的行程總是滿的，停下來反而不舒服。"
+          },
+          {
+            "zh": "尋求刺激",
+            "en": "Excitement-Seeking",
+            "low": "你偏好平穩，太強烈的刺激讓你不適。",
+            "mid": "偶爾想找點新鮮的。",
+            "high": "你需要高強度的刺激才覺得夠，也不太怕冒險。"
+          },
+          {
+            "zh": "愉悅",
+            "en": "Cheerfulness",
+            "low": "你的正面情緒表達含蓄，不常外顯。",
+            "mid": "你會開心，也會表現出來。",
+            "high": "你常處在愉快的狀態，而且旁邊的人感覺得到。"
+          }
+        ]
+      },
+      "O": {
+        "zh": "經驗開放性",
+        "en": "Openness to Experience",
+        "desc": "你對新想法、新感受、新做法的胃口。分數高的人愛探索、抽象、求變；分數低的人務實、專注在具體可行的事情上。這不是聰明程度，是興趣的方向。",
+        "facets": [
+          {
+            "zh": "想像",
+            "en": "Imagination",
+            "low": "你務實，注意力放在眼前實際的事情上。",
+            "mid": "你會想像，但不會沉迷。",
+            "high": "你的內在世界很活躍，常沉浸在幻想與思緒裡。"
+          },
+          {
+            "zh": "藝術興趣",
+            "en": "Artistic Interests",
+            "low": "你對藝術、美感的東西不太有感。",
+            "mid": "你欣賞得來，但不會特別去追。",
+            "high": "你會被美的東西強烈吸引，也常主動去找。"
+          },
+          {
+            "zh": "情緒感受",
+            "en": "Emotionality",
+            "low": "你不太留意情緒，包括自己的。",
+            "mid": "你察覺得到情緒，但不會被牽著走。",
+            "high": "你對情緒訊號很敏銳，自己的感受也很鮮明。"
+          },
+          {
+            "zh": "求變",
+            "en": "Adventurousness",
+            "low": "你偏好熟悉的路線和固定的做法。",
+            "mid": "願意嘗試新的，但不會刻意打破慣例。",
+            "high": "你討厭一成不變，會主動去找沒做過的事。"
+          },
+          {
+            "zh": "智性",
+            "en": "Intellect",
+            "low": "你對抽象、理論性的討論沒興趣，偏好具體的東西。",
+            "mid": "你想得動抽象的東西，但不是嗜好。",
+            "high": "你享受推論、思辨和有難度的概念。"
+          },
+          {
+            "zh": "價值開放",
+            "en": "Liberalism",
+            "low": "你尊重傳統與既有的規範，覺得它們有道理。",
+            "mid": "你會質疑，但也不急著推翻。",
+            "high": "你習慣挑戰權威與慣例，覺得規則應該重新檢視。"
+          }
+        ]
+      },
+      "A": {
+        "zh": "親和性",
+        "en": "Agreeableness",
+        "desc": "你在自己的利益與別人的利益之間怎麼擺。分數高的人合作、體貼、願意讓；分數低的人直接、競爭、把自己的立場放前面。兩端在不同場合各有優勢。",
+        "facets": [
+          {
+            "zh": "信任",
+            "en": "Trust",
+            "low": "你預設要先確認，對別人的動機保持警覺。",
+            "mid": "你信任人，但會看情況。",
+            "high": "你假定別人出於善意，也容易相信人說的話。"
+          },
+          {
+            "zh": "正直",
+            "en": "Morality",
+            "low": "你願意用一些手段取得優勢，覺得那是遊戲規則。",
+            "mid": "你大致坦白，偶爾會保留。",
+            "high": "你不操弄、不迂迴，坦白到有時會吃虧。"
+          },
+          {
+            "zh": "利他",
+            "en": "Altruism",
+            "low": "幫別人對你來說比較像負擔，不是滿足。",
+            "mid": "你會幫忙，在合理範圍內。",
+            "high": "幫助別人本身就讓你有成就感，你也常主動去做。"
+          },
+          {
+            "zh": "合作",
+            "en": "Cooperation",
+            "low": "你會正面對抗，不介意把話講開、爭到底。",
+            "mid": "你避免無謂的衝突，但該爭會爭。",
+            "high": "你會為了維持關係而讓步，很不喜歡起衝突。"
+          },
+          {
+            "zh": "謙遜",
+            "en": "Modesty",
+            "low": "你認為自己比多數人優秀，也不掩飾。",
+            "mid": "你對自己有信心，但不會拿出來說。",
+            "high": "你不喜歡突顯自己，被稱讚時會覺得不自在。"
+          },
+          {
+            "zh": "同理",
+            "en": "Sympathy",
+            "low": "你用理性而非情感看待別人的處境，比較不容易被打動。",
+            "mid": "你有同理心，但不會被情緒淹沒。",
+            "high": "你對弱勢與受苦的人很有感，容易被別人的處境牽動。"
+          }
+        ]
+      },
+      "C": {
+        "zh": "嚴謹自律性",
+        "en": "Conscientiousness",
+        "desc": "你怎麼控制衝動、組織自己、朝目標推進。分數高的人可靠、有計畫、說到做到；分數低的人彈性、隨性、對突發狀況適應快，但持續力較弱。",
+        "facets": [
+          {
+            "zh": "自我效能",
+            "en": "Self-Efficacy",
+            "low": "你對自己能不能把事情做成，沒什麼把握。",
+            "mid": "你相信自己能處理多數事情。",
+            "high": "你很確定自己有能力把事情做成，也通常做得到。"
+          },
+          {
+            "zh": "條理",
+            "en": "Orderliness",
+            "low": "你隨性，環境和流程都不需要整齊。",
+            "mid": "你有基本的秩序，但不強求。",
+            "high": "你有組織、愛整理，東西和計畫都要各就各位。"
+          },
+          {
+            "zh": "盡責",
+            "en": "Dutifulness",
+            "low": "規則對你比較像參考值，承諾也保留彈性。",
+            "mid": "你守約，除非有更重要的理由。",
+            "high": "你把承諾和規範看得很重，說出口就一定做到。"
+          },
+          {
+            "zh": "成就追求",
+            "en": "Achievement-Striving",
+            "low": "夠用就好，你不會為了更高的標準多花力氣。",
+            "mid": "你有目標，但不會把自己逼到底。",
+            "high": "你設定高標準並持續推進，也常做得比要求更多。"
+          },
+          {
+            "zh": "自律",
+            "en": "Self-Discipline",
+            "low": "你很難開始，也容易半途分心。",
+            "mid": "你能完成事情，偶爾需要推一把。",
+            "high": "你能靠自己開始並堅持到完成，不太需要外力督促。"
+          },
+          {
+            "zh": "審慎",
+            "en": "Cautiousness",
+            "low": "你憑直覺快速決定，先做了再說。",
+            "mid": "你會想一下，但不會想太久。",
+            "high": "你三思而後行，不確定的時候寧可先不動。"
+          }
+        ]
+      }
+    }
+  }
+}
