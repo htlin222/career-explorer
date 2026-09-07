@@ -1,0 +1,2324 @@
+{
+  "source": {
+    "instrument": "Basic Interest Markers (BIM)",
+    "citation": "Liao, H.-Y., Armstrong, P. I., & Rounds, J. (2008). Development and initial validation of public domain Basic Interest Markers [Monograph]. Journal of Vocational Behavior, 73(1), 159-183.",
+    "item_source": "Interest Item Pool (IIP), https://jrounds.weebly.com/basic-interest-markers-scalesitems.html",
+    "license": "BIMs are copyrighted by Liao, Armstrong & Rounds. Permission granted free to professionals (researchers and practitioners) for NONCOMMERCIAL use, with credit to the authors. Not for commercial use.",
+    "official_zh_TW": "An official Traditional Chinese translation exists (Hsin-Ya Liao, Washington State University; Changya Hu, National Chengchi University). Contact the authors for formal use.",
+    "this_translation": "Unofficial Traditional Chinese rendering for junior-high readers; verify against the official version before formal school administration.",
+    "riasec_mapping": "Scale-to-RIASEC letters are a theoretical assignment based on Holland's classification of these interest domains, not a table reproduced from the source paper. Scale rankings do not depend on this mapping.",
+    "norms": "None. Basic interest scales are interpreted ipsatively — by the rank order of a person's own 31 scale means.",
+    "scale": {
+      "1": "非常不喜歡",
+      "2": "有點不喜歡",
+      "3": "普通",
+      "4": "有點喜歡",
+      "5": "非常喜歡"
+    }
+  },
+  "scales": [
+    {
+      "id": "athletic_coaching",
+      "en": "Athletic Coaching",
+      "zh": "運動指導",
+      "riasec": "SR",
+      "desc": "帶人運動、教技術、辦比賽。",
+      "track": "體育班、技術型高中運動保健相關科；大學體育、運動教練、運動防護",
+      "count": 6
+    },
+    {
+      "id": "business",
+      "en": "Business",
+      "zh": "經營商業",
+      "riasec": "EC",
+      "desc": "看懂市場、想辦法讓生意變好。",
+      "track": "技術型高中商業與管理群；大學企管、國企、行銷",
+      "count": 12
+    },
+    {
+      "id": "creative_arts",
+      "en": "Creative Arts",
+      "zh": "視覺創作",
+      "riasec": "A",
+      "desc": "畫畫、設計、動手做出美的東西。",
+      "track": "技術型高中設計群、藝術群（美術）；大學視覺傳達、工業設計、美術",
+      "count": 11
+    },
+    {
+      "id": "creative_writing",
+      "en": "Creative Writing",
+      "zh": "文字創作",
+      "riasec": "A",
+      "desc": "寫故事、寫劇本、用文字說故事。",
+      "track": "普通型高中社會組；大學中文、台文、大眾傳播、戲劇",
+      "count": 11
+    },
+    {
+      "id": "engineering",
+      "en": "Engineering",
+      "zh": "工程設計",
+      "riasec": "IR",
+      "desc": "設計和改良機器、系統、結構。",
+      "track": "普通型高中自然組、技術型高中機械群／電機與電子群；大學各類工程學系",
+      "count": 11
+    },
+    {
+      "id": "family_activity",
+      "en": "Family Activity",
+      "zh": "家庭生活",
+      "riasec": "S",
+      "desc": "照顧家人、把家裡經營得舒服。",
+      "track": "技術型高中家政群（幼保、家政）；大學幼教、家庭教育、生活應用科學",
+      "count": 14
+    },
+    {
+      "id": "finance",
+      "en": "Finance",
+      "zh": "財務金融",
+      "riasec": "CE",
+      "desc": "處理錢的事：預算、投資、財務分析。",
+      "track": "技術型高中商業與管理群（會計事務）；大學財金、會計、經濟",
+      "count": 12
+    },
+    {
+      "id": "hr_management",
+      "en": "Human Relations Management",
+      "zh": "人際與人力管理",
+      "riasec": "ES",
+      "desc": "處理組織裡人與人之間的問題。",
+      "track": "技術型高中商業與管理群；大學人力資源、勞工關係、心理",
+      "count": 11
+    },
+    {
+      "id": "information_tech",
+      "en": "Information Technology",
+      "zh": "資訊科技",
+      "riasec": "CI",
+      "desc": "架設和維護電腦、網路、系統。",
+      "track": "技術型高中電機與電子群（資訊科）；大學資工、資管、網路工程",
+      "count": 12
+    },
+    {
+      "id": "law",
+      "en": "Law",
+      "zh": "法律",
+      "riasec": "EI",
+      "desc": "研究法條、蒐證、在法庭上辯論。",
+      "track": "普通型高中社會組；大學法律、司法、財經法",
+      "count": 11
+    },
+    {
+      "id": "life_science",
+      "en": "Life Science",
+      "zh": "生命科學",
+      "riasec": "I",
+      "desc": "研究動物、植物、細胞和基因。",
+      "track": "普通型高中自然組；大學生科、生技、農學、獸醫",
+      "count": 10
+    },
+    {
+      "id": "management",
+      "en": "Management",
+      "zh": "組織管理",
+      "riasec": "E",
+      "desc": "帶團隊、分配資源、讓組織運轉。",
+      "track": "技術型高中商業與管理群；大學企管、公共行政",
+      "count": 9
+    },
+    {
+      "id": "manual_labor",
+      "en": "Manual Labor",
+      "zh": "體力操作",
+      "riasec": "R",
+      "desc": "搬運、清潔、用身體完成的工作。",
+      "track": "技術型高中土木與建築群、農業群；就業導向的技術訓練",
+      "count": 13
+    },
+    {
+      "id": "mathematics",
+      "en": "Mathematics",
+      "zh": "數學",
+      "riasec": "IC",
+      "desc": "解方程式、證明、用數學處理問題。",
+      "track": "普通型高中自然組；大學數學、統計、精算、資工",
+      "count": 10
+    },
+    {
+      "id": "medical_service",
+      "en": "Medical Service",
+      "zh": "醫療照護",
+      "riasec": "IS",
+      "desc": "看病、治療、照顧身體和心理的健康。",
+      "track": "普通型高中自然組、五專護理科；大學醫、牙、藥、護理、物治、職治",
+      "count": 10
+    },
+    {
+      "id": "outdoor_agriculture",
+      "en": "Outdoor-Agriculture",
+      "zh": "戶外與農林漁牧",
+      "riasec": "R",
+      "desc": "在戶外種植、養殖、照顧土地和動物。",
+      "track": "技術型高中農業群、水產群、食品群；大學農藝、園藝、森林、水產養殖",
+      "count": 10
+    },
+    {
+      "id": "office_work",
+      "en": "Office Work",
+      "zh": "辦公事務",
+      "riasec": "C",
+      "desc": "整理文件、排流程、把庶務處理得井井有條。",
+      "track": "技術型高中商業與管理群（資料處理）；大學企管、資管、行政",
+      "count": 11
+    },
+    {
+      "id": "performing_arts",
+      "en": "Performing Arts",
+      "zh": "表演藝術",
+      "riasec": "A",
+      "desc": "唱歌、演戲、上台表演。",
+      "track": "高中藝術才能班（音樂、舞蹈、戲劇）、技術型高中藝術群；大學戲劇、音樂、舞蹈",
+      "count": 11
+    },
+    {
+      "id": "personal_service",
+      "en": "Personal Service",
+      "zh": "生活服務",
+      "riasec": "SE",
+      "desc": "餐飲、美髮、旅遊、直接服務客人。",
+      "track": "技術型高中餐旅群、家政群（美容美髮）；大學餐旅管理、觀光",
+      "count": 14
+    },
+    {
+      "id": "physical_risk",
+      "en": "Physical/Risk-Taking",
+      "zh": "冒險與體能挑戰",
+      "riasec": "R",
+      "desc": "刺激、危險、需要膽量的活動。",
+      "track": "體育班、技術型高中海事群；警消、軍事、專業運動、救難相關訓練",
+      "count": 9
+    },
+    {
+      "id": "physical_science",
+      "en": "Physical Science",
+      "zh": "物質科學",
+      "riasec": "I",
+      "desc": "研究物理、化學、地科、天文的原理。",
+      "track": "普通型高中自然組、技術型高中化工群；大學物理、化學、地科、天文、材料",
+      "count": 12
+    },
+    {
+      "id": "politics",
+      "en": "Politics",
+      "zh": "政治參與",
+      "riasec": "E",
+      "desc": "說服別人、參與選舉和公共議題。",
+      "track": "普通型高中社會組；大學政治、公共行政、社會、法律",
+      "count": 8
+    },
+    {
+      "id": "professional_advising",
+      "en": "Professional Advising",
+      "zh": "職涯與諮詢輔導",
+      "riasec": "SE",
+      "desc": "給人建議、訓練別人的職場能力。",
+      "track": "普通型高中社會組；大學心理、教育、人力資源、企管",
+      "count": 10
+    },
+    {
+      "id": "protective",
+      "en": "Protective",
+      "zh": "保安與救護",
+      "riasec": "RS",
+      "desc": "維護治安、消防、保護人身安全。",
+      "track": "技術型高中相關科別；警專、消防、軍校，大學犯罪防治",
+      "count": 11
+    },
+    {
+      "id": "religious",
+      "en": "Religious Activities",
+      "zh": "宗教與靈性",
+      "riasec": "S",
+      "desc": "參與信仰活動、探索靈性和意義。",
+      "track": "普通型高中社會組；大學宗教、哲學、社工",
+      "count": 12
+    },
+    {
+      "id": "sales",
+      "en": "Sales",
+      "zh": "銷售",
+      "riasec": "E",
+      "desc": "把東西賣出去、說服客人買單。",
+      "track": "技術型高中商業與管理群、外語群；大學行銷、國貿、企管",
+      "count": 13
+    },
+    {
+      "id": "skilled_trades",
+      "en": "Skilled Trades",
+      "zh": "技術工種",
+      "riasec": "R",
+      "desc": "修引擎、配電、做木工，用工具解決問題。",
+      "track": "技術型高中機械群、動力機械群、電機與電子群、土木與建築群",
+      "count": 11
+    },
+    {
+      "id": "social_sciences",
+      "en": "Social Sciences",
+      "zh": "社會科學研究",
+      "riasec": "IS",
+      "desc": "研究人的行為、文化和社會結構。",
+      "track": "普通型高中社會組；大學心理、社會、人類、教育、政治",
+      "count": 10
+    },
+    {
+      "id": "social_service",
+      "en": "Social Service",
+      "zh": "社會服務",
+      "riasec": "S",
+      "desc": "幫助弱勢、陪伴有困難的人。",
+      "track": "技術型高中家政群；大學社工、心理、特教、長照",
+      "count": 12
+    },
+    {
+      "id": "teaching",
+      "en": "Teaching",
+      "zh": "教學",
+      "riasec": "S",
+      "desc": "備課、上課、引導學生學會。",
+      "track": "普通型高中；大學各類師培學系、教育、幼教",
+      "count": 10
+    },
+    {
+      "id": "technical_writing",
+      "en": "Technical Writing",
+      "zh": "技術寫作",
+      "riasec": "CI",
+      "desc": "把複雜的技術寫成別人看得懂的說明。",
+      "track": "普通型高中、技術型高中外語群；大學科技傳播、資訊、外文",
+      "count": 10
+    }
+  ],
+  "items": [
+    {
+      "num": 1,
+      "scale": "athletic_coaching",
+      "text": "參加競技比賽",
+      "en": "Participate in competitive sports"
+    },
+    {
+      "num": 2,
+      "scale": "business",
+      "text": "了解一間公司為什麼會賺錢",
+      "en": "Understand the qualities of an effective business"
+    },
+    {
+      "num": 3,
+      "scale": "creative_arts",
+      "text": "畫一張素描",
+      "en": "Sketch a picture"
+    },
+    {
+      "num": 4,
+      "scale": "creative_writing",
+      "text": "學習創意寫作",
+      "en": "Study creative writing"
+    },
+    {
+      "num": 5,
+      "scale": "engineering",
+      "text": "改良機器設計讓它更安靜",
+      "en": "Modify an equipment design to reduce sound level"
+    },
+    {
+      "num": 6,
+      "scale": "family_activity",
+      "text": "在家照顧小孩",
+      "en": "Take care of children at home"
+    },
+    {
+      "num": 7,
+      "scale": "finance",
+      "text": "了解經濟學的原理",
+      "en": "Understand economics principles"
+    },
+    {
+      "num": 8,
+      "scale": "hr_management",
+      "text": "出面調解員工之間的爭執",
+      "en": "Meet with workers to mediate disagreements"
+    },
+    {
+      "num": 9,
+      "scale": "information_tech",
+      "text": "設計一套遠距教學的系統",
+      "en": "Design a technology system for distance learning"
+    },
+    {
+      "num": 10,
+      "scale": "law",
+      "text": "研究判例",
+      "en": "Research case law"
+    },
+    {
+      "num": 11,
+      "scale": "life_science",
+      "text": "了解一種動物的生命週期",
+      "en": "Learn about the life cycle of an animal species"
+    },
+    {
+      "num": 12,
+      "scale": "management",
+      "text": "管理一所大學的行政事務",
+      "en": "Direct the business affairs of a university"
+    },
+    {
+      "num": 13,
+      "scale": "manual_labor",
+      "text": "裝卸貨物",
+      "en": "Load and unload freight materials"
+    },
+    {
+      "num": 14,
+      "scale": "mathematics",
+      "text": "解一個代數方程式",
+      "en": "Solve an algebraic equation"
+    },
+    {
+      "num": 15,
+      "scale": "medical_service",
+      "text": "研發治療癌症的新藥",
+      "en": "Research new drugs to cure cancer"
+    },
+    {
+      "num": 16,
+      "scale": "outdoor_agriculture",
+      "text": "保護農作物不受病蟲害",
+      "en": "Protect crops from diseases and pests"
+    },
+    {
+      "num": 17,
+      "scale": "office_work",
+      "text": "做辦公室的行政工作",
+      "en": "Perform office work"
+    },
+    {
+      "num": 18,
+      "scale": "performing_arts",
+      "text": "學習一項表演藝術",
+      "en": "Study one of the performing arts"
+    },
+    {
+      "num": 19,
+      "scale": "personal_service",
+      "text": "在餐廳當外場服務生",
+      "en": "Wait on tables in a neighborhood restaurant"
+    },
+    {
+      "num": 20,
+      "scale": "physical_risk",
+      "text": "做危險又刺激的工作",
+      "en": "Do work that is dangerous and exciting"
+    },
+    {
+      "num": 21,
+      "scale": "physical_science",
+      "text": "研究重力定律",
+      "en": "Study the laws of gravity"
+    },
+    {
+      "num": 22,
+      "scale": "politics",
+      "text": "說服別人投票給你支持的候選人",
+      "en": "Persuade people to vote for your candidate"
+    },
+    {
+      "num": 23,
+      "scale": "professional_advising",
+      "text": "建議別人怎麼達成職涯目標",
+      "en": "Advise people in meeting their professional goals"
+    },
+    {
+      "num": 24,
+      "scale": "protective",
+      "text": "在機場搜查爆裂物",
+      "en": "Search for explosives in an airport"
+    },
+    {
+      "num": 25,
+      "scale": "religious",
+      "text": "閱讀宗教經典",
+      "en": "Read a religious text"
+    },
+    {
+      "num": 26,
+      "scale": "sales",
+      "text": "介紹你賣的東西有什麼優點",
+      "en": "Describe features and benefits of a product or service you sell"
+    },
+    {
+      "num": 27,
+      "scale": "skilled_trades",
+      "text": "安裝排水系統的管線和配件",
+      "en": "Install the piping and fixtures of a drainage system"
+    },
+    {
+      "num": 28,
+      "scale": "social_sciences",
+      "text": "了解人類的行為",
+      "en": "Learn about human behavior"
+    },
+    {
+      "num": 29,
+      "scale": "social_service",
+      "text": "協助身心障礙者找工作",
+      "en": "Assist people with disabilities to find employment"
+    },
+    {
+      "num": 30,
+      "scale": "teaching",
+      "text": "備一堂課",
+      "en": "Develop a lecture"
+    },
+    {
+      "num": 31,
+      "scale": "technical_writing",
+      "text": "把複雜的技術寫成看得懂的文字",
+      "en": "Write complex technical information in an understandable way"
+    },
+    {
+      "num": 32,
+      "scale": "athletic_coaching",
+      "text": "帶別人做體能訓練",
+      "en": "Provide physical fitness training"
+    },
+    {
+      "num": 33,
+      "scale": "business",
+      "text": "建立公司的運作制度",
+      "en": "Develop business systems"
+    },
+    {
+      "num": 34,
+      "scale": "creative_arts",
+      "text": "上電影製作的課",
+      "en": "Take a film-making course"
+    },
+    {
+      "num": 35,
+      "scale": "creative_writing",
+      "text": "寫一部電視劇的劇本",
+      "en": "Write a script for a TV drama"
+    },
+    {
+      "num": 36,
+      "scale": "engineering",
+      "text": "設計更好用的機器",
+      "en": "Develop more user-friendly machines"
+    },
+    {
+      "num": 37,
+      "scale": "family_activity",
+      "text": "重新布置客廳",
+      "en": "Redecorate the living room"
+    },
+    {
+      "num": 38,
+      "scale": "finance",
+      "text": "了解財務在企業裡的角色",
+      "en": "Understand the role of finance in business"
+    },
+    {
+      "num": 39,
+      "scale": "hr_management",
+      "text": "向員工說明新的公司規定",
+      "en": "Explain new company policies to workers"
+    },
+    {
+      "num": 40,
+      "scale": "information_tech",
+      "text": "接觸最新的電子科技",
+      "en": "Acquire the latest electronic technology"
+    },
+    {
+      "num": 41,
+      "scale": "law",
+      "text": "找出和案件相關的前例",
+      "en": "Find precedents related to a legal case"
+    },
+    {
+      "num": 42,
+      "scale": "life_science",
+      "text": "在實驗室裡培育動物",
+      "en": "Breed animals in a laboratory"
+    },
+    {
+      "num": 43,
+      "scale": "management",
+      "text": "統籌一家公司的所有業務活動",
+      "en": "Direct all sales activities for a company"
+    },
+    {
+      "num": 44,
+      "scale": "manual_labor",
+      "text": "運送辦公家具",
+      "en": "Deliver office furniture"
+    },
+    {
+      "num": 45,
+      "scale": "mathematics",
+      "text": "推導數學公式",
+      "en": "Develop mathematical formulas"
+    },
+    {
+      "num": 46,
+      "scale": "medical_service",
+      "text": "說明病毒怎麼感染人體",
+      "en": "Explain how viruses infect the human body"
+    },
+    {
+      "num": 47,
+      "scale": "outdoor_agriculture",
+      "text": "在動物園餵食動物",
+      "en": "Feed and water animals in a zoo"
+    },
+    {
+      "num": 48,
+      "scale": "office_work",
+      "text": "設計流程讓辦公室更有效率",
+      "en": "Develop procedures to improve office efficiency"
+    },
+    {
+      "num": 49,
+      "scale": "performing_arts",
+      "text": "參加音樂演出",
+      "en": "Participate in a musical performance"
+    },
+    {
+      "num": 50,
+      "scale": "personal_service",
+      "text": "為會議安排餐點飲料",
+      "en": "Plan the food and drinks for a business meeting"
+    },
+    {
+      "num": 51,
+      "scale": "physical_risk",
+      "text": "探索沒有人去過的地方",
+      "en": "Discover uncharted territories"
+    },
+    {
+      "num": 52,
+      "scale": "physical_science",
+      "text": "研究物質的分子結構",
+      "en": "Investigate the molecular structure of substances"
+    },
+    {
+      "num": 53,
+      "scale": "politics",
+      "text": "參與競選團隊的工作",
+      "en": "Work in a political campaign"
+    },
+    {
+      "num": 54,
+      "scale": "professional_advising",
+      "text": "協助別人規劃退休",
+      "en": "Assist people in planning for retirement"
+    },
+    {
+      "num": 55,
+      "scale": "protective",
+      "text": "稽查是否有違法情形",
+      "en": "Make inspections to be sure that laws are not broken"
+    },
+    {
+      "num": 56,
+      "scale": "religious",
+      "text": "幫助孩子理解宗教的教導",
+      "en": "Help children understand religious teachings"
+    },
+    {
+      "num": 57,
+      "scale": "sales",
+      "text": "提高自己負責區域的業績",
+      "en": "Increase sales in your sales territory"
+    },
+    {
+      "num": 58,
+      "scale": "skilled_trades",
+      "text": "用工具修理工廠設備",
+      "en": "Use tools to repair factory equipment"
+    },
+    {
+      "num": 59,
+      "scale": "social_sciences",
+      "text": "提出關於人類行為的理論",
+      "en": "Develop a theory about human behavior"
+    },
+    {
+      "num": 60,
+      "scale": "social_service",
+      "text": "協助家庭辦理收養",
+      "en": "Help families to adopt a child"
+    },
+    {
+      "num": 61,
+      "scale": "teaching",
+      "text": "設計考題評估學生的學習",
+      "en": "Design tests to evaluate students' learning"
+    },
+    {
+      "num": 62,
+      "scale": "technical_writing",
+      "text": "為一台設備寫操作手冊",
+      "en": "Write instructional manual for a piece of equipment"
+    },
+    {
+      "num": 63,
+      "scale": "athletic_coaching",
+      "text": "擔任球隊教練",
+      "en": "Coach a sports team"
+    },
+    {
+      "num": 64,
+      "scale": "business",
+      "text": "研究市場上大家想要什麼",
+      "en": "Learn about the needs of the marketplace"
+    },
+    {
+      "num": 65,
+      "scale": "creative_arts",
+      "text": "設計一件有創意的藝術作品",
+      "en": "Design a creative work of art"
+    },
+    {
+      "num": 66,
+      "scale": "creative_writing",
+      "text": "幫名人寫傳記",
+      "en": "Write a celebrity biography"
+    },
+    {
+      "num": 67,
+      "scale": "engineering",
+      "text": "重新設計引擎讓它更省油",
+      "en": "Redesign an engine to improve fuel efficiency"
+    },
+    {
+      "num": 68,
+      "scale": "family_activity",
+      "text": "陪小孩玩",
+      "en": "Play with your children"
+    },
+    {
+      "num": 69,
+      "scale": "finance",
+      "text": "處理財務數據",
+      "en": "Work with financial data"
+    },
+    {
+      "num": 70,
+      "scale": "hr_management",
+      "text": "為公司辦一場多元共融工作坊",
+      "en": "Organize a diversity workshop for a company"
+    },
+    {
+      "num": 71,
+      "scale": "information_tech",
+      "text": "維護網路的硬體和軟體",
+      "en": "Maintain network hardware and software"
+    },
+    {
+      "num": 72,
+      "scale": "law",
+      "text": "考取律師執照",
+      "en": "Obtain a license to practice law"
+    },
+    {
+      "num": 73,
+      "scale": "life_science",
+      "text": "解剖動物",
+      "en": "Dissect an animal"
+    },
+    {
+      "num": 74,
+      "scale": "management",
+      "text": "籌辦一場專業團體的大型會議",
+      "en": "Plan and coordinate a convention for a professional association"
+    },
+    {
+      "num": 75,
+      "scale": "manual_labor",
+      "text": "幫人把東西從一個地方搬到另一個地方",
+      "en": "Transport people's belongings from one place to another"
+    },
+    {
+      "num": 76,
+      "scale": "mathematics",
+      "text": "了解微積分的應用",
+      "en": "Understand applications of calculus"
+    },
+    {
+      "num": 77,
+      "scale": "medical_service",
+      "text": "找出生病的原因",
+      "en": "Determine the cause of an illness"
+    },
+    {
+      "num": 78,
+      "scale": "outdoor_agriculture",
+      "text": "在農場飼養牲畜",
+      "en": "Raise livestock on a farm"
+    },
+    {
+      "num": 79,
+      "scale": "office_work",
+      "text": "操作常見的辦公室機器",
+      "en": "Operate commonly-used office machines"
+    },
+    {
+      "num": 80,
+      "scale": "performing_arts",
+      "text": "演出電視廣告",
+      "en": "Act in a television commercial"
+    },
+    {
+      "num": 81,
+      "scale": "personal_service",
+      "text": "在飛機上服務旅客",
+      "en": "Provide personal services to airplane passengers"
+    },
+    {
+      "num": 82,
+      "scale": "physical_risk",
+      "text": "到有武裝衝突的國家出任務",
+      "en": "International travel to countries where there is armed conflict"
+    },
+    {
+      "num": 83,
+      "scale": "physical_science",
+      "text": "尋找新的行星系統",
+      "en": "Search for new solar systems"
+    },
+    {
+      "num": 84,
+      "scale": "politics",
+      "text": "影響選民支持你的主張",
+      "en": "Influence voters to support your ideas"
+    },
+    {
+      "num": 85,
+      "scale": "professional_advising",
+      "text": "帶一場時間管理工作坊",
+      "en": "Conduct a workshop on time management"
+    },
+    {
+      "num": 86,
+      "scale": "protective",
+      "text": "巡邏維持治安",
+      "en": "Patrol an area to maintain security"
+    },
+    {
+      "num": 87,
+      "scale": "religious",
+      "text": "給人靈性上的指引",
+      "en": "Provide spiritual guidance"
+    },
+    {
+      "num": 88,
+      "scale": "sales",
+      "text": "做一份業績抽成的工作",
+      "en": "Work in a position that offers a commission based on sales"
+    },
+    {
+      "num": 89,
+      "scale": "skilled_trades",
+      "text": "修理汽車引擎",
+      "en": "Repair the engine of an automobile"
+    },
+    {
+      "num": 90,
+      "scale": "social_sciences",
+      "text": "研究不同的文化習俗",
+      "en": "Investigate cultural practices"
+    },
+    {
+      "num": 91,
+      "scale": "social_service",
+      "text": "輔導遇到危機的家庭",
+      "en": "Counsel families in crisis"
+    },
+    {
+      "num": 92,
+      "scale": "teaching",
+      "text": "參加教師專業研習",
+      "en": "Take a teacher development workshop"
+    },
+    {
+      "num": 93,
+      "scale": "technical_writing",
+      "text": "寫一份機器的操作步驟",
+      "en": "Write directions for how to operate a VCR"
+    },
+    {
+      "num": 94,
+      "scale": "athletic_coaching",
+      "text": "把一項運動講解給別人聽",
+      "en": "Explain a sport to other people"
+    },
+    {
+      "num": 95,
+      "scale": "business",
+      "text": "想辦法讓公司賣得更好",
+      "en": "Think of ideas to increase the sales for a company"
+    },
+    {
+      "num": 96,
+      "scale": "creative_arts",
+      "text": "設計一件有造型的家具",
+      "en": "Design a piece of artistic furniture"
+    },
+    {
+      "num": 97,
+      "scale": "creative_writing",
+      "text": "寫一本小說",
+      "en": "Write a novel"
+    },
+    {
+      "num": 98,
+      "scale": "engineering",
+      "text": "維護發電廠的主發電機",
+      "en": "Maintain the main generator in a power plant"
+    },
+    {
+      "num": 99,
+      "scale": "family_activity",
+      "text": "把家裡維持得好看",
+      "en": "Maintain the attractiveness of the house"
+    },
+    {
+      "num": 100,
+      "scale": "finance",
+      "text": "編一份預算",
+      "en": "Create a budget"
+    },
+    {
+      "num": 101,
+      "scale": "hr_management",
+      "text": "調查員工對公司的看法",
+      "en": "Assess employee opinions of the company"
+    },
+    {
+      "num": 102,
+      "scale": "information_tech",
+      "text": "維護一個組織的網站",
+      "en": "Maintain a website for an organization"
+    },
+    {
+      "num": 103,
+      "scale": "law",
+      "text": "在法庭上裁定證據能不能採用",
+      "en": "Rule on the admissibility of evidence in court"
+    },
+    {
+      "num": 104,
+      "scale": "life_science",
+      "text": "追蹤鳥類的遷徙路線",
+      "en": "Track the migratory patterns of birds"
+    },
+    {
+      "num": 105,
+      "scale": "management",
+      "text": "管理市政府的運作",
+      "en": "Administer city government"
+    },
+    {
+      "num": 106,
+      "scale": "manual_labor",
+      "text": "把釘子敲進木頭",
+      "en": "Drive a nail into wood"
+    },
+    {
+      "num": 107,
+      "scale": "mathematics",
+      "text": "認識一個新的數學分支",
+      "en": "Learn about a new branch of mathematics"
+    },
+    {
+      "num": 108,
+      "scale": "medical_service",
+      "text": "動手術",
+      "en": "Perform surgery"
+    },
+    {
+      "num": 109,
+      "scale": "outdoor_agriculture",
+      "text": "了解特殊作物需要什麼土壤和氣候",
+      "en": "Learn about soil and climate requirements of specialty crops"
+    },
+    {
+      "num": 110,
+      "scale": "office_work",
+      "text": "改善員工報帳的流程",
+      "en": "Improve a system for handling employee reimbursements"
+    },
+    {
+      "num": 111,
+      "scale": "performing_arts",
+      "text": "上台唱歌",
+      "en": "Sing on a stage"
+    },
+    {
+      "num": 112,
+      "scale": "personal_service",
+      "text": "在店裡調製並供應飲料",
+      "en": "Serve beverages in a club"
+    },
+    {
+      "num": 113,
+      "scale": "physical_risk",
+      "text": "到沒人探索過的珊瑚礁潛水",
+      "en": "Scuba-dive among unexplored coral reefs"
+    },
+    {
+      "num": 114,
+      "scale": "physical_science",
+      "text": "研究量子物理",
+      "en": "Study the nature of quantum physics"
+    },
+    {
+      "num": 115,
+      "scale": "politics",
+      "text": "辯論候選人的優劣",
+      "en": "Debate the merits of political candidates"
+    },
+    {
+      "num": 116,
+      "scale": "professional_advising",
+      "text": "指導別人準備面試",
+      "en": "Coach people to prepare them for an interview"
+    },
+    {
+      "num": 117,
+      "scale": "protective",
+      "text": "事故後指揮交通",
+      "en": "Direct traffic after an accident"
+    },
+    {
+      "num": 118,
+      "scale": "religious",
+      "text": "發展自己的靈性",
+      "en": "Develop my spirituality"
+    },
+    {
+      "num": 119,
+      "scale": "sales",
+      "text": "說服別人相信新產品好用",
+      "en": "Convince people about the usefulness of a new gadget"
+    },
+    {
+      "num": 120,
+      "scale": "skilled_trades",
+      "text": "做木櫃",
+      "en": "Construct wooden cabinets"
+    },
+    {
+      "num": 121,
+      "scale": "social_sciences",
+      "text": "做社會科學實驗",
+      "en": "Conduct social science experiments"
+    },
+    {
+      "num": 122,
+      "scale": "social_service",
+      "text": "幫無家者找到安置的地方",
+      "en": "Help the homeless find shelter"
+    },
+    {
+      "num": 123,
+      "scale": "teaching",
+      "text": "營造好的課堂氣氛",
+      "en": "Create an effective classroom atmosphere"
+    },
+    {
+      "num": 124,
+      "scale": "technical_writing",
+      "text": "規劃並編輯技術手冊",
+      "en": "Plan and edit technical manuals"
+    },
+    {
+      "num": 125,
+      "scale": "athletic_coaching",
+      "text": "擔任比賽的裁判",
+      "en": "Referee a sporting event"
+    },
+    {
+      "num": 126,
+      "scale": "business",
+      "text": "在公司裡建立品質檢查的流程",
+      "en": "Implementing quality review procedures in a company"
+    },
+    {
+      "num": 127,
+      "scale": "creative_arts",
+      "text": "為電影或舞台劇設計服裝",
+      "en": "Design costumes for a movie or play"
+    },
+    {
+      "num": 128,
+      "scale": "creative_writing",
+      "text": "發展一部電影的劇本",
+      "en": "Develop a script for a movie"
+    },
+    {
+      "num": 129,
+      "scale": "engineering",
+      "text": "測試一套新的散熱系統",
+      "en": "Test a new cooling system"
+    },
+    {
+      "num": 130,
+      "scale": "family_activity",
+      "text": "為家人準備豐盛的一餐",
+      "en": "Prepare exciting meals for your family"
+    },
+    {
+      "num": 131,
+      "scale": "finance",
+      "text": "研究公司怎麼賺錢",
+      "en": "Study how to generate business profits"
+    },
+    {
+      "num": 132,
+      "scale": "hr_management",
+      "text": "了解員工的工作滿意度",
+      "en": "Investigate employees' job satisfaction"
+    },
+    {
+      "num": 133,
+      "scale": "information_tech",
+      "text": "隨時掌握最新的軟體",
+      "en": "Keep up-to-date on the latest software"
+    },
+    {
+      "num": 134,
+      "scale": "law",
+      "text": "投入改善司法制度",
+      "en": "Work to improve the legal system"
+    },
+    {
+      "num": 135,
+      "scale": "life_science",
+      "text": "研究一種動物吃什麼",
+      "en": "Study the diet of an animal species"
+    },
+    {
+      "num": 136,
+      "scale": "management",
+      "text": "規劃公司的員工訓練與發展",
+      "en": "Plan and direct training and staff development for a business"
+    },
+    {
+      "num": 137,
+      "scale": "manual_labor",
+      "text": "打掃辦公室",
+      "en": "Clean offices"
+    },
+    {
+      "num": 138,
+      "scale": "mathematics",
+      "text": "畫出一個方程式的圖形",
+      "en": "Graph an equation"
+    },
+    {
+      "num": 139,
+      "scale": "medical_service",
+      "text": "做物理治療",
+      "en": "Provide physical therapy"
+    },
+    {
+      "num": 140,
+      "scale": "outdoor_agriculture",
+      "text": "在酪農場工作",
+      "en": "Work on a dairy farm"
+    },
+    {
+      "num": 141,
+      "scale": "office_work",
+      "text": "採購並管理辦公用品庫存",
+      "en": "Order and maintain an inventory of office supplies"
+    },
+    {
+      "num": 142,
+      "scale": "performing_arts",
+      "text": "在台上表演魔術",
+      "en": "Perform magic tricks on stage"
+    },
+    {
+      "num": 143,
+      "scale": "personal_service",
+      "text": "幫客人做美甲",
+      "en": "Provide a client with a manicure"
+    },
+    {
+      "num": 144,
+      "scale": "physical_risk",
+      "text": "每天上班都有點冒險成分",
+      "en": "Have some adventure during every work day"
+    },
+    {
+      "num": 145,
+      "scale": "physical_science",
+      "text": "測量電子的速度",
+      "en": "Measure the speed of electrons"
+    },
+    {
+      "num": 146,
+      "scale": "politics",
+      "text": "為一個主張辯護或反駁",
+      "en": "Argue for or against an idea"
+    },
+    {
+      "num": 147,
+      "scale": "professional_advising",
+      "text": "提供同事諮詢意見",
+      "en": "Provide consultation for colleagues"
+    },
+    {
+      "num": 148,
+      "scale": "protective",
+      "text": "依拘票逮捕嫌犯",
+      "en": "Take a person into custody on an arrest warrant"
+    },
+    {
+      "num": 149,
+      "scale": "religious",
+      "text": "接受宗教服事的訓練",
+      "en": "Train to be a member of a religious ministry"
+    },
+    {
+      "num": 150,
+      "scale": "sales",
+      "text": "向醫師推廣醫療器材",
+      "en": "Promote sales of medical equipment to physicians"
+    },
+    {
+      "num": 151,
+      "scale": "skilled_trades",
+      "text": "診斷汽車引擎的故障",
+      "en": "Diagnose malfunctions in automotive engines"
+    },
+    {
+      "num": 152,
+      "scale": "social_sciences",
+      "text": "研究教養孩子的問題",
+      "en": "Study child-rearing problems"
+    },
+    {
+      "num": 153,
+      "scale": "social_service",
+      "text": "幫人找到社區可以用的資源",
+      "en": "Help people find community resources"
+    },
+    {
+      "num": 154,
+      "scale": "teaching",
+      "text": "在課堂上和學生互動",
+      "en": "Interact with students in a classroom setting"
+    },
+    {
+      "num": 155,
+      "scale": "technical_writing",
+      "text": "寫手機的使用說明",
+      "en": "Write a manual on how to operate a cell phone"
+    },
+    {
+      "num": 156,
+      "scale": "athletic_coaching",
+      "text": "上運動訓練的課程",
+      "en": "Take a course in athletic training"
+    },
+    {
+      "num": 157,
+      "scale": "business",
+      "text": "規劃廣告和促銷活動的策略",
+      "en": "Develop strategies for advertising campaigns and sales promotions"
+    },
+    {
+      "num": 158,
+      "scale": "creative_arts",
+      "text": "參加美術展覽",
+      "en": "Participate in an art show"
+    },
+    {
+      "num": 159,
+      "scale": "creative_writing",
+      "text": "編修一篇新聞報導",
+      "en": "Edit a newspaper article"
+    },
+    {
+      "num": 160,
+      "scale": "engineering",
+      "text": "設計電子系統",
+      "en": "Design electronic systems"
+    },
+    {
+      "num": 161,
+      "scale": "family_activity",
+      "text": "照顧另一半和孩子的需要",
+      "en": "Meet the needs of my partner and children"
+    },
+    {
+      "num": 162,
+      "scale": "finance",
+      "text": "分析財務資訊",
+      "en": "Analyze financial information"
+    },
+    {
+      "num": 163,
+      "scale": "hr_management",
+      "text": "推動改善辦公室溝通的措施",
+      "en": "Direct activities to improve office communication"
+    },
+    {
+      "num": 164,
+      "scale": "information_tech",
+      "text": "上網路管理的課程",
+      "en": "Take a course on network administration"
+    },
+    {
+      "num": 165,
+      "scale": "law",
+      "text": "解釋一條法律合不合憲",
+      "en": "Interpret the constitutionality of a law"
+    },
+    {
+      "num": 166,
+      "scale": "life_science",
+      "text": "研究人類的基因結構",
+      "en": "Investigate human gene structure"
+    },
+    {
+      "num": 167,
+      "scale": "management",
+      "text": "擔任大學校長",
+      "en": "Serve as a president of a university"
+    },
+    {
+      "num": 168,
+      "scale": "manual_labor",
+      "text": "把木材堆疊整齊",
+      "en": "Stack lumber in piles"
+    },
+    {
+      "num": 169,
+      "scale": "mathematics",
+      "text": "修一門進階數學課",
+      "en": "Take a course in advance mathematics"
+    },
+    {
+      "num": 170,
+      "scale": "medical_service",
+      "text": "診斷心理疾病",
+      "en": "Diagnose mental illness"
+    },
+    {
+      "num": 171,
+      "scale": "outdoor_agriculture",
+      "text": "架設農田灌溉系統",
+      "en": "Install a crop irrigation system"
+    },
+    {
+      "num": 172,
+      "scale": "office_work",
+      "text": "提供客戶服務",
+      "en": "Provide customer service"
+    },
+    {
+      "num": 173,
+      "scale": "performing_arts",
+      "text": "演出舞台劇",
+      "en": "Act in a play"
+    },
+    {
+      "num": 174,
+      "scale": "personal_service",
+      "text": "在飯店接待客人並回答問題",
+      "en": "Greet guests and answer questions about activities in a hotel"
+    },
+    {
+      "num": 175,
+      "scale": "physical_risk",
+      "text": "參與高速追捕",
+      "en": "Participate in high-speed chases"
+    },
+    {
+      "num": 176,
+      "scale": "physical_science",
+      "text": "研究行星的運行",
+      "en": "Study the movement of planets"
+    },
+    {
+      "num": 177,
+      "scale": "politics",
+      "text": "出來參選公職",
+      "en": "Run for a political office"
+    },
+    {
+      "num": 178,
+      "scale": "professional_advising",
+      "text": "用專業能力擔任顧問",
+      "en": "Apply professional skills in a consulting role"
+    },
+    {
+      "num": 179,
+      "scale": "protective",
+      "text": "守衛政府建築",
+      "en": "Guard a government building"
+    },
+    {
+      "num": 180,
+      "scale": "religious",
+      "text": "詮釋宗教典籍",
+      "en": "Interpret religious writings"
+    },
+    {
+      "num": 181,
+      "scale": "sales",
+      "text": "銷售服務和設備",
+      "en": "Sell services and equipment"
+    },
+    {
+      "num": 182,
+      "scale": "skilled_trades",
+      "text": "維護工廠的生產設備",
+      "en": "Maintain manufacturing equipment in an industrial plant"
+    },
+    {
+      "num": 183,
+      "scale": "social_sciences",
+      "text": "比較不同族群的文化差異",
+      "en": "Compare cultural differences among groups"
+    },
+    {
+      "num": 184,
+      "scale": "social_service",
+      "text": "提供托育服務",
+      "en": "Provide childcare services"
+    },
+    {
+      "num": 185,
+      "scale": "teaching",
+      "text": "引導學生討論",
+      "en": "Facilitate students' discussions"
+    },
+    {
+      "num": 186,
+      "scale": "technical_writing",
+      "text": "寫玩具的組裝說明",
+      "en": "Write instructions on how to assemble a toy"
+    },
+    {
+      "num": 187,
+      "scale": "business",
+      "text": "依照對客人需求的預測來定價",
+      "en": "Set prices on goods based on forecasts of customer demand"
+    },
+    {
+      "num": 188,
+      "scale": "creative_arts",
+      "text": "整理自己的作品集",
+      "en": "Develop a portfolio of artwork"
+    },
+    {
+      "num": 189,
+      "scale": "creative_writing",
+      "text": "創作短篇故事",
+      "en": "Compose short stories"
+    },
+    {
+      "num": 190,
+      "scale": "engineering",
+      "text": "改善生產線的效率",
+      "en": "Improve the efficiency of an assembly process"
+    },
+    {
+      "num": 191,
+      "scale": "family_activity",
+      "text": "安排接送小孩和朋友出去玩",
+      "en": "Arrange transportation for your child's and friend's play activities"
+    },
+    {
+      "num": 192,
+      "scale": "finance",
+      "text": "預估未來的支出",
+      "en": "Project future expenditure"
+    },
+    {
+      "num": 193,
+      "scale": "hr_management",
+      "text": "舉辦人際關係的訓練",
+      "en": "Provide human relations training"
+    },
+    {
+      "num": 194,
+      "scale": "information_tech",
+      "text": "為一個組織設計電腦系統",
+      "en": "Design a computer system for an organization"
+    },
+    {
+      "num": 195,
+      "scale": "law",
+      "text": "為審判蒐集證據",
+      "en": "Gather evidence for a trial"
+    },
+    {
+      "num": 196,
+      "scale": "life_science",
+      "text": "辨識並分類細菌",
+      "en": "Identify and classify bacteria"
+    },
+    {
+      "num": 197,
+      "scale": "management",
+      "text": "指揮並協調下屬的工作",
+      "en": "Direct and coordinate the work activities of subordinates"
+    },
+    {
+      "num": 198,
+      "scale": "manual_labor",
+      "text": "挖洞立圍籬",
+      "en": "Dig a hole for a fence"
+    },
+    {
+      "num": 199,
+      "scale": "mathematics",
+      "text": "解幾何證明題",
+      "en": "Solve geometric proofs"
+    },
+    {
+      "num": 200,
+      "scale": "medical_service",
+      "text": "在診所替病人做檢查",
+      "en": "Examine a patient in a clinic"
+    },
+    {
+      "num": 201,
+      "scale": "outdoor_agriculture",
+      "text": "伐木取材",
+      "en": "Harvest trees for timber"
+    },
+    {
+      "num": 202,
+      "scale": "office_work",
+      "text": "設計一套檔案歸檔系統",
+      "en": "Design an office filing system"
+    },
+    {
+      "num": 203,
+      "scale": "performing_arts",
+      "text": "參加才藝節目",
+      "en": "Appear in a talent show"
+    },
+    {
+      "num": 204,
+      "scale": "personal_service",
+      "text": "安排旅遊行程和住宿",
+      "en": "Arrange travel plans and accommodations"
+    },
+    {
+      "num": 205,
+      "scale": "physical_risk",
+      "text": "從飛機上跳傘",
+      "en": "Parachute jump from an airplane"
+    },
+    {
+      "num": 206,
+      "scale": "physical_science",
+      "text": "做化學反應實驗",
+      "en": "Test chemical reactions"
+    },
+    {
+      "num": 207,
+      "scale": "politics",
+      "text": "起草法案",
+      "en": "Write legislation"
+    },
+    {
+      "num": 208,
+      "scale": "professional_advising",
+      "text": "提供技能訓練課程",
+      "en": "Provide skill development training"
+    },
+    {
+      "num": 209,
+      "scale": "protective",
+      "text": "在邊境查緝非法入境",
+      "en": "Patrol borders to stop illegal immigration"
+    },
+    {
+      "num": 210,
+      "scale": "religious",
+      "text": "主持宗教儀式",
+      "en": "Conduct religious ceremonies"
+    },
+    {
+      "num": 211,
+      "scale": "sales",
+      "text": "判斷客人真正需要什麼",
+      "en": "Determine customer needs"
+    },
+    {
+      "num": 212,
+      "scale": "skilled_trades",
+      "text": "為房子配電線",
+      "en": "Install the electrical wiring in a house"
+    },
+    {
+      "num": 213,
+      "scale": "social_sciences",
+      "text": "分析歧視對少數族群的影響",
+      "en": "Analyze the effects of discrimination on minority groups"
+    },
+    {
+      "num": 214,
+      "scale": "social_service",
+      "text": "籌組互助支持團體",
+      "en": "Organize a social support group"
+    },
+    {
+      "num": 215,
+      "scale": "teaching",
+      "text": "設計動手做的學習活動",
+      "en": "Design an active learning activity"
+    },
+    {
+      "num": 216,
+      "scale": "technical_writing",
+      "text": "為一個程式寫使用手冊",
+      "en": "Prepare a manual for a computer program"
+    },
+    {
+      "num": 217,
+      "scale": "business",
+      "text": "規劃公司要怎麼擴張",
+      "en": "Plan the expansion of a company"
+    },
+    {
+      "num": 218,
+      "scale": "creative_arts",
+      "text": "創作一首原創的樂曲",
+      "en": "Write an original musical piece"
+    },
+    {
+      "num": 219,
+      "scale": "creative_writing",
+      "text": "寫一個真實人生的故事",
+      "en": "Write a true-life story"
+    },
+    {
+      "num": 220,
+      "scale": "engineering",
+      "text": "設計能承受巨大壓力的結構",
+      "en": "Design structures that can withstand heavy stresses"
+    },
+    {
+      "num": 221,
+      "scale": "family_activity",
+      "text": "給家人一個舒服的家",
+      "en": "Provide a comfortable home for my family"
+    },
+    {
+      "num": 222,
+      "scale": "finance",
+      "text": "分析一個人的信用紀錄",
+      "en": "Analyze a person's credit history"
+    },
+    {
+      "num": 223,
+      "scale": "hr_management",
+      "text": "促進主管和員工之間的關係",
+      "en": "Facilitate relationships between management and employees"
+    },
+    {
+      "num": 224,
+      "scale": "information_tech",
+      "text": "用電腦把歷史文件數位典藏",
+      "en": "Use computers to archive historical documents"
+    },
+    {
+      "num": 225,
+      "scale": "law",
+      "text": "在陪審團面前提出論述",
+      "en": "Present arguments to a jury"
+    },
+    {
+      "num": 226,
+      "scale": "life_science",
+      "text": "採集植物樣本",
+      "en": "Collect plant samples"
+    },
+    {
+      "num": 227,
+      "scale": "management",
+      "text": "協調銀行各部門的運作",
+      "en": "Coordinate the activities of all departments in a bank"
+    },
+    {
+      "num": 228,
+      "scale": "manual_labor",
+      "text": "清理垃圾和碎屑",
+      "en": "Clean up trash or debris"
+    },
+    {
+      "num": 229,
+      "scale": "mathematics",
+      "text": "用數學方法解決實際問題",
+      "en": "Apply mathematical techniques to practical problems"
+    },
+    {
+      "num": 230,
+      "scale": "medical_service",
+      "text": "做緊急急救",
+      "en": "Provide first aid"
+    },
+    {
+      "num": 231,
+      "scale": "outdoor_agriculture",
+      "text": "種樹和照顧樹木",
+      "en": "Care for and plant trees"
+    },
+    {
+      "num": 232,
+      "scale": "office_work",
+      "text": "做會議紀錄",
+      "en": "Record meeting minutes"
+    },
+    {
+      "num": 233,
+      "scale": "performing_arts",
+      "text": "指導演員的表演",
+      "en": "Direct the performance of actors"
+    },
+    {
+      "num": 234,
+      "scale": "personal_service",
+      "text": "在髮廊幫客人做造型",
+      "en": "Style hair in a salon"
+    },
+    {
+      "num": 235,
+      "scale": "physical_risk",
+      "text": "上山救援受困的人",
+      "en": "Rescue someone stranded on a mountain"
+    },
+    {
+      "num": 236,
+      "scale": "physical_science",
+      "text": "研究岩石和礦物的形成",
+      "en": "Study rock and mineral formations"
+    },
+    {
+      "num": 237,
+      "scale": "politics",
+      "text": "發表演說支持你的候選人",
+      "en": "Give a speech supporting your candidate"
+    },
+    {
+      "num": 238,
+      "scale": "professional_advising",
+      "text": "舉辦生涯規劃工作坊",
+      "en": "Conduct career planning workshops"
+    },
+    {
+      "num": 239,
+      "scale": "protective",
+      "text": "出勤處理緊急求救",
+      "en": "Respond to emergency calls for help"
+    },
+    {
+      "num": 240,
+      "scale": "religious",
+      "text": "參加祈禱或共修團體",
+      "en": "Participate in a prayer group"
+    },
+    {
+      "num": 241,
+      "scale": "sales",
+      "text": "向客人說明產品",
+      "en": "Explain products to customers"
+    },
+    {
+      "num": 242,
+      "scale": "skilled_trades",
+      "text": "更換故障的電話線路",
+      "en": "Replace defective telephone lines"
+    },
+    {
+      "num": 243,
+      "scale": "social_sciences",
+      "text": "閱讀人際關係的研究文獻",
+      "en": "Review the interpersonal relationship literature"
+    },
+    {
+      "num": 244,
+      "scale": "social_service",
+      "text": "到社區服務中心當志工",
+      "en": "Volunteer for a community service center"
+    },
+    {
+      "num": 245,
+      "scale": "teaching",
+      "text": "主持研討課程",
+      "en": "Conduct seminars"
+    },
+    {
+      "num": 246,
+      "scale": "technical_writing",
+      "text": "為任何東西寫使用指南",
+      "en": "Write a user guide on practically anything"
+    },
+    {
+      "num": 247,
+      "scale": "business",
+      "text": "到別的城市開設新據點",
+      "en": "Set up an office in a new city"
+    },
+    {
+      "num": 248,
+      "scale": "creative_arts",
+      "text": "去藝廊看展",
+      "en": "Visit an art gallery"
+    },
+    {
+      "num": 249,
+      "scale": "creative_writing",
+      "text": "寫一齣舞台劇",
+      "en": "Write a play for a theater"
+    },
+    {
+      "num": 250,
+      "scale": "engineering",
+      "text": "分析飛機設計上的問題",
+      "en": "Analyze problems in aircraft design"
+    },
+    {
+      "num": 251,
+      "scale": "family_activity",
+      "text": "帶家人去野餐",
+      "en": "Take the family on a picnic"
+    },
+    {
+      "num": 252,
+      "scale": "finance",
+      "text": "給別人投資的建議",
+      "en": "Provide advice about investments"
+    },
+    {
+      "num": 253,
+      "scale": "hr_management",
+      "text": "檢視公司的平等雇用政策",
+      "en": "Review organizational policy matters on equal employment opportunity"
+    },
+    {
+      "num": 254,
+      "scale": "information_tech",
+      "text": "建立一個資料庫",
+      "en": "Create a computer database"
+    },
+    {
+      "num": 255,
+      "scale": "law",
+      "text": "撰寫法律文件",
+      "en": "Prepare legal documents"
+    },
+    {
+      "num": 256,
+      "scale": "life_science",
+      "text": "研究植物怎麼生長",
+      "en": "Study how plants grow"
+    },
+    {
+      "num": 257,
+      "scale": "management",
+      "text": "主持一家中型公司的營運",
+      "en": "Direct the operations of a medium size company"
+    },
+    {
+      "num": 258,
+      "scale": "manual_labor",
+      "text": "把材料送進機器",
+      "en": "Feed items into a machine"
+    },
+    {
+      "num": 259,
+      "scale": "mathematics",
+      "text": "計算贏得比賽的機率",
+      "en": "Calculate the probability of winning a contest"
+    },
+    {
+      "num": 260,
+      "scale": "medical_service",
+      "text": "開藥幫病人止痛",
+      "en": "Prescribe medication to relieve pain"
+    },
+    {
+      "num": 261,
+      "scale": "outdoor_agriculture",
+      "text": "在漁船上工作",
+      "en": "Work on a commercial fishing vessel"
+    },
+    {
+      "num": 262,
+      "scale": "office_work",
+      "text": "安排並更新行程",
+      "en": "Schedule, maintain, and update appointments"
+    },
+    {
+      "num": 263,
+      "scale": "performing_arts",
+      "text": "指揮管弦樂團",
+      "en": "Conduct an orchestra"
+    },
+    {
+      "num": 264,
+      "scale": "personal_service",
+      "text": "籌辦婚禮或其他慶祝場合",
+      "en": "Plan parties for weddings and other special occasions"
+    },
+    {
+      "num": 265,
+      "scale": "physical_risk",
+      "text": "從事極限運動",
+      "en": "Participate in extreme sports"
+    },
+    {
+      "num": 266,
+      "scale": "physical_science",
+      "text": "描述有機化合物的結構",
+      "en": "Describe the structure of an organic compound"
+    },
+    {
+      "num": 267,
+      "scale": "professional_advising",
+      "text": "評估一個組織的發展需求",
+      "en": "Assess organizational development needs"
+    },
+    {
+      "num": 268,
+      "scale": "protective",
+      "text": "監視可疑對象",
+      "en": "Conduct surveillance of suspects"
+    },
+    {
+      "num": 269,
+      "scale": "religious",
+      "text": "參加宗教儀式",
+      "en": "Attend a religious ceremony"
+    },
+    {
+      "num": 270,
+      "scale": "sales",
+      "text": "說服客人掏錢",
+      "en": "Persuade customers to spend money"
+    },
+    {
+      "num": 271,
+      "scale": "skilled_trades",
+      "text": "學習操作電動工具",
+      "en": "Learn how to operate power tools"
+    },
+    {
+      "num": 272,
+      "scale": "social_sciences",
+      "text": "研究社會的階級結構",
+      "en": "Study class structures of a society"
+    },
+    {
+      "num": 273,
+      "scale": "social_service",
+      "text": "協助弱勢家庭的孩子適應學校",
+      "en": "Help children from disadvantaged background adjust to school"
+    },
+    {
+      "num": 274,
+      "scale": "teaching",
+      "text": "批改並回饋學生的作業",
+      "en": "Offer feedback on student papers"
+    },
+    {
+      "num": 275,
+      "scale": "technical_writing",
+      "text": "製作產品型錄",
+      "en": "Create manufacturer's catalogs"
+    },
+    {
+      "num": 276,
+      "scale": "business",
+      "text": "促成公司之間的交易",
+      "en": "Set up business transactions between companies"
+    },
+    {
+      "num": 277,
+      "scale": "creative_arts",
+      "text": "做一件雕塑",
+      "en": "Create a sculpture"
+    },
+    {
+      "num": 278,
+      "scale": "creative_writing",
+      "text": "加入情境喜劇的編劇團隊",
+      "en": "Be on a team of writers for a situational comedy"
+    },
+    {
+      "num": 279,
+      "scale": "engineering",
+      "text": "設計一座高架橋",
+      "en": "Design a highway overpass"
+    },
+    {
+      "num": 280,
+      "scale": "family_activity",
+      "text": "幫小孩安排和朋友玩的時間",
+      "en": "Arrange play dates for your child"
+    },
+    {
+      "num": 281,
+      "scale": "finance",
+      "text": "評估一項投資好不好",
+      "en": "Evaluate the quality of an investment"
+    },
+    {
+      "num": 282,
+      "scale": "hr_management",
+      "text": "辦活動提振員工士氣",
+      "en": "Organize activities to raise employees' morale"
+    },
+    {
+      "num": 283,
+      "scale": "information_tech",
+      "text": "改善電腦網路的效率",
+      "en": "Improve computer network efficiency"
+    },
+    {
+      "num": 284,
+      "scale": "law",
+      "text": "在法庭上為當事人辯護",
+      "en": "Defend a client against a legal charge (in a courtroom)"
+    },
+    {
+      "num": 285,
+      "scale": "life_science",
+      "text": "做細菌培養的研究",
+      "en": "Conduct research with growing bacteria"
+    },
+    {
+      "num": 286,
+      "scale": "manual_labor",
+      "text": "依重量或大小把東西分類",
+      "en": "Separate items by weight or size"
+    },
+    {
+      "num": 287,
+      "scale": "mathematics",
+      "text": "用數學定理解題",
+      "en": "Use mathematical theorems to solve problems"
+    },
+    {
+      "num": 288,
+      "scale": "medical_service",
+      "text": "治療受傷的動物",
+      "en": "Treat injured animals"
+    },
+    {
+      "num": 289,
+      "scale": "outdoor_agriculture",
+      "text": "在戶外工作",
+      "en": "Work in the outdoors"
+    },
+    {
+      "num": 290,
+      "scale": "office_work",
+      "text": "整理檔案和文件",
+      "en": "Organize files and documents"
+    },
+    {
+      "num": 291,
+      "scale": "performing_arts",
+      "text": "去試鏡演電影",
+      "en": "Take a screen test for a movie"
+    },
+    {
+      "num": 292,
+      "scale": "personal_service",
+      "text": "幫客人規劃運動計畫",
+      "en": "Help a client plan an exercise program"
+    },
+    {
+      "num": 293,
+      "scale": "physical_science",
+      "text": "研究地震為什麼發生",
+      "en": "Study why earthquakes occur"
+    },
+    {
+      "num": 294,
+      "scale": "professional_advising",
+      "text": "建議公司調整營運方式",
+      "en": "Recommend changes in how a company operates"
+    },
+    {
+      "num": 295,
+      "scale": "protective",
+      "text": "隨行保護特定人士",
+      "en": "Escort individuals for their own protection"
+    },
+    {
+      "num": 296,
+      "scale": "religious",
+      "text": "向別人解說宗教經典",
+      "en": "Explain a religious text to people"
+    },
+    {
+      "num": 297,
+      "scale": "sales",
+      "text": "銷售商用不動產",
+      "en": "Sell commercial property"
+    },
+    {
+      "num": 298,
+      "scale": "skilled_trades",
+      "text": "用建材砌一面牆",
+      "en": "Use building materials to construct a wall"
+    },
+    {
+      "num": 299,
+      "scale": "social_sciences",
+      "text": "研究團體中人與人的互動",
+      "en": "Study intersections among people in a group"
+    },
+    {
+      "num": 300,
+      "scale": "social_service",
+      "text": "輔導有個人困擾的人",
+      "en": "Counsel clients with personal problems"
+    },
+    {
+      "num": 301,
+      "scale": "teaching",
+      "text": "指導高中生做專題研究",
+      "en": "Supervise high school students' research projects"
+    },
+    {
+      "num": 302,
+      "scale": "technical_writing",
+      "text": "為組織撰寫作業文件",
+      "en": "Write operating documents for an organization"
+    },
+    {
+      "num": 303,
+      "scale": "business",
+      "text": "談成一筆生意",
+      "en": "Negotiate a business deal"
+    },
+    {
+      "num": 304,
+      "scale": "creative_arts",
+      "text": "學習繪畫",
+      "en": "Study painting"
+    },
+    {
+      "num": 305,
+      "scale": "creative_writing",
+      "text": "寫童書",
+      "en": "Write children books"
+    },
+    {
+      "num": 306,
+      "scale": "engineering",
+      "text": "設計發電廠的故障檢測程序",
+      "en": "Design a diagnostic routine for a power plant"
+    },
+    {
+      "num": 307,
+      "scale": "family_activity",
+      "text": "為朋友和家人下廚",
+      "en": "Cook for your friends and family"
+    },
+    {
+      "num": 308,
+      "scale": "finance",
+      "text": "安排企業貸款",
+      "en": "Arrange business loans"
+    },
+    {
+      "num": 309,
+      "scale": "hr_management",
+      "text": "規劃員工的懲處程序",
+      "en": "Structure an employee disciplinary action"
+    },
+    {
+      "num": 310,
+      "scale": "information_tech",
+      "text": "修改現有的軟體",
+      "en": "Modify existing software"
+    },
+    {
+      "num": 311,
+      "scale": "law",
+      "text": "仲裁雙方的法律爭議",
+      "en": "Arbitrate legal disputes between parties"
+    },
+    {
+      "num": 312,
+      "scale": "manual_labor",
+      "text": "餵食並整理牲畜",
+      "en": "Feed and groom livestock"
+    },
+    {
+      "num": 313,
+      "scale": "office_work",
+      "text": "製作薪資表",
+      "en": "Prepare payrolls"
+    },
+    {
+      "num": 314,
+      "scale": "performing_arts",
+      "text": "演電影",
+      "en": "Act in a movie"
+    },
+    {
+      "num": 315,
+      "scale": "personal_service",
+      "text": "幫客人規劃到歐洲的旅行",
+      "en": "Help a client plan a vacation to Europe"
+    },
+    {
+      "num": 316,
+      "scale": "physical_science",
+      "text": "用氣象資料預測天氣",
+      "en": "Use meteorological information to predict the weather"
+    },
+    {
+      "num": 317,
+      "scale": "protective",
+      "text": "學習消防技術",
+      "en": "Learn fire-fighting techniques"
+    },
+    {
+      "num": 318,
+      "scale": "religious",
+      "text": "禱告或祈願",
+      "en": "Pray"
+    },
+    {
+      "num": 319,
+      "scale": "sales",
+      "text": "把新產品賣給消費者",
+      "en": "Sell a new product to consumers"
+    },
+    {
+      "num": 320,
+      "scale": "skilled_trades",
+      "text": "把金屬零件焊接起來",
+      "en": "Weld together metal components of products"
+    },
+    {
+      "num": 321,
+      "scale": "social_service",
+      "text": "為身心障礙者提供服務",
+      "en": "Provide services to individuals with disabilities"
+    },
+    {
+      "num": 322,
+      "scale": "business",
+      "text": "經營和供應商的關係",
+      "en": "Develop relationship with external suppliers"
+    },
+    {
+      "num": 323,
+      "scale": "family_activity",
+      "text": "帶家人去旅行",
+      "en": "Take the family on a vacation"
+    },
+    {
+      "num": 324,
+      "scale": "finance",
+      "text": "學習理財",
+      "en": "Learn about money management"
+    },
+    {
+      "num": 325,
+      "scale": "information_tech",
+      "text": "安裝一套新的電腦系統",
+      "en": "Install a new computer system"
+    },
+    {
+      "num": 326,
+      "scale": "manual_labor",
+      "text": "用雙手搬、抬、拉東西",
+      "en": "Use hands to lift, carry, and pull objects"
+    },
+    {
+      "num": 327,
+      "scale": "personal_service",
+      "text": "帶團導覽城市景點",
+      "en": "Lead a tour to points of interest in a large city"
+    },
+    {
+      "num": 328,
+      "scale": "physical_science",
+      "text": "修一門物理科學的課",
+      "en": "Take a course in the physical sciences"
+    },
+    {
+      "num": 329,
+      "scale": "religious",
+      "text": "上一門宗教相關的課",
+      "en": "Take a class about religion"
+    },
+    {
+      "num": 330,
+      "scale": "sales",
+      "text": "學習新的銷售技巧",
+      "en": "Learn new sales tactics"
+    },
+    {
+      "num": 331,
+      "scale": "social_service",
+      "text": "幫助別人克服生活上的難關",
+      "en": "Help people overcome social problems"
+    },
+    {
+      "num": 332,
+      "scale": "family_activity",
+      "text": "把家裡保持得舒適",
+      "en": "Keep the home looking comfortable"
+    },
+    {
+      "num": 333,
+      "scale": "manual_labor",
+      "text": "用吸塵器和鏟子清理工作區",
+      "en": "Use vacuums and shovels to clean working areas"
+    },
+    {
+      "num": 334,
+      "scale": "personal_service",
+      "text": "幫客人量身修改衣服",
+      "en": "Fit and alter clothes for a customer"
+    },
+    {
+      "num": 335,
+      "scale": "sales",
+      "text": "擔任零售業的業務代表",
+      "en": "Be a sales representative for a retail business"
+    },
+    {
+      "num": 336,
+      "scale": "family_activity",
+      "text": "念故事給小孩聽",
+      "en": "Read a story to your child"
+    },
+    {
+      "num": 337,
+      "scale": "personal_service",
+      "text": "協助客人認識交往對象",
+      "en": "Work with clients to meet romantic partners"
+    }
+  ]
+}
