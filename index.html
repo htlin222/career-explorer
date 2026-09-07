@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>興趣與人格探索測驗</title>
+<style>
+  :root{
+    --paper:#EDF0EE; --card:#FBFCFB; --ink:#17211F; --muted:#5E6B66;
+    --line:#C9D2CD; --line-soft:#DDE4E0;
+    --R:#4A7C59; --I:#2E6F8E; --A:#6B5B9A; --S:#A8455B; --E:#B5652A; --C:#8A8A2E;
+    --bN:#7A5AA0; --bE:#B5852A; --bO:#1F7A72; --bA:#A8455B; --bC:#35548C;
+    --serif:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",Georgia,serif;
+    --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75}
+  .wrap{max-width:700px;margin:0 auto;padding:0 20px 90px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35;margin:0}
+  p{margin:0 0 1em}
+  button{font-family:inherit;font-size:inherit;cursor:pointer}
+  .btn{background:var(--ink);color:var(--card);border:none;border-radius:2px;padding:12px 26px;letter-spacing:.05em}
+  .btn:hover{opacity:.85}
+  .btn:disabled{opacity:.3;cursor:not-allowed}
+  .btn-quiet{background:none;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:9px 18px}
+  .btn-quiet:hover{color:var(--ink);border-color:var(--ink)}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .hide{display:none}
+
+  /* ---- home ---- */
+  .home{padding-top:60px}
+  .kicker{font-family:var(--serif);font-size:15px;color:var(--muted);margin-bottom:14px}
+  .home h1{font-size:40px;letter-spacing:-.01em}
+  .lede{font-family:var(--serif);font-size:19px;line-height:1.85;margin-top:22px;max-width:33em}
+  .stage{border-top:1px solid var(--line);padding:26px 0 24px;display:grid;
+         grid-template-columns:34px 1fr auto;gap:4px 18px;align-items:start}
+  .stage .idx{font-family:var(--serif);font-size:26px;color:var(--muted);line-height:1.1}
+  .stage h2{font-size:22px}
+  .stage .sub{font-size:14px;color:var(--muted);margin-top:2px}
+  .stage .body{font-size:15px;color:var(--muted);margin-top:10px;grid-column:2/4;max-width:34em}
+  .stage .go{align-self:center}
+  .status{font-size:13px;color:var(--muted);margin-top:8px;grid-column:2/4}
+  .form{margin-top:34px;border-top:1px solid var(--line);padding-top:26px}
+  .field{margin-bottom:18px}
+  .field > span{display:block;font-size:14px;color:var(--muted);margin-bottom:8px}
+  .segs{display:flex;gap:8px;flex-wrap:wrap}
+  .seg{background:none;border:1px solid var(--line);border-radius:2px;padding:9px 20px;color:var(--muted)}
+  .seg[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--card)}
+  input[type=number]{font-family:inherit;font-size:16px;width:110px;padding:9px 12px;
+    border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink)}
+  .note{font-size:13.5px;color:var(--muted);max-width:34em}
+
+  /* ---- quiz ---- */
+  .rulerbar{position:sticky;top:0;z-index:5;background:var(--paper);padding:14px 0 10px;border-bottom:1px solid var(--line-soft)}
+  .ruler{display:flex;gap:1px;align-items:flex-end;height:20px}
+  .tick{flex:1;background:var(--line);height:8px;border-radius:.5px;transition:background .2s,height .2s}
+  .tick.tall{height:14px}
+  .tick.done{background:var(--ink)}
+  .rulermeta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px}
+  .prompt{font-size:14.5px;color:var(--muted);margin:22px 0 0;max-width:36em}
+  .item{border-bottom:1px solid var(--line-soft);padding:20px 0}
+  .item:last-child{border-bottom:none}
+  .stem{display:flex;gap:14px;align-items:baseline;margin-bottom:14px}
+  .stem .no{font-family:var(--serif);font-size:14px;color:var(--muted);min-width:2.4em;flex:none}
+  .stem .txt{font-family:var(--serif);font-size:20px;line-height:1.5}
+  .scale{display:flex;margin-left:2.4em}
+  .opt{flex:1;background:none;border:1px solid var(--line);border-left-width:0;padding:10px 4px 9px;
+       color:var(--muted);font-size:12px;line-height:1.4;text-align:center;transition:color .12s}
+  .opt:first-child{border-left-width:1px;border-radius:2px 0 0 2px}
+  .opt:last-child{border-radius:0 2px 2px 0}
+  .opt .dot{display:block;width:9px;height:9px;border-radius:50%;border:1px solid var(--line);margin:0 auto 7px;transition:background .12s,border-color .12s}
+  .opt:hover .dot{border-color:var(--ink)}
+  .opt[aria-pressed="true"]{color:var(--ink)}
+  .opt[aria-pressed="true"] .dot{background:var(--ink);border-color:var(--ink)}
+  .pager{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:32px}
+  .pager .mid{font-size:14px;color:var(--muted)}
+  .warn{margin-top:16px;font-size:14px;color:var(--S)}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+
+  /* ---- results shared ---- */
+  .res{padding-top:44px}
+  .res h1{font-size:34px}
+  .meta{font-size:14px;color:var(--muted);margin-top:10px}
+
+  /* ---- riasec result ---- */
+  .hexwrap{margin:34px 0 10px;display:flex;justify-content:center}
+  .code{display:flex;gap:10px;align-items:flex-end;margin-top:8px;flex-wrap:wrap}
+  .codeltr{font-family:var(--serif);font-size:56px;line-height:1;letter-spacing:.02em}
+  .codeword{font-size:15px;color:var(--muted);padding-bottom:8px}
+  .tbar{margin-top:26px;border-top:2px solid var(--tc);padding-top:14px}
+  .thead{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .thead h2{font-size:23px}
+  .thead .en{font-size:12.5px;color:var(--muted);font-family:var(--sans);font-weight:400;margin-left:9px}
+  .tnum{font-family:var(--serif);font-size:30px;color:var(--tc);line-height:1}
+  .tnum small{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-left:5px}
+  .track{position:relative;height:3px;background:var(--line);margin:14px 0 6px}
+  .fill{position:absolute;left:0;top:0;height:3px;background:var(--tc)}
+  .scalelbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+  .tdesc{font-size:15px;color:var(--muted);margin:12px 0 0;max-width:36em}
+  .lists{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  .lists h3{font-size:14px;color:var(--tc);font-family:var(--sans);font-weight:600;margin-bottom:4px}
+  .lists ul{margin:0 0 10px;padding-left:1.1em;font-size:14px;color:var(--muted)}
+  .lists li{margin-bottom:3px}
+  .callout{border-left:3px solid var(--ink);padding:2px 0 2px 16px;margin:26px 0;font-size:15px;max-width:36em}
+
+  /* ---- big five result ---- */
+  .domain{margin-top:40px;border-top:2px solid var(--dc);padding-top:16px}
+  .dhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .dhead h2{font-size:24px}
+  .dhead .en{font-size:12.5px;color:var(--muted);font-family:var(--sans);font-weight:400;margin-left:9px}
+  .pctbig{font-family:var(--serif);font-size:32px;color:var(--dc);line-height:1}
+  .pctbig small{font-size:12.5px;color:var(--muted);font-family:var(--sans);margin-left:5px}
+  .ddesc{font-size:15px;color:var(--muted);margin:12px 0 0;max-width:36em}
+  .bar{position:relative;height:24px;margin:16px 0 4px}
+  .bar .track{position:absolute;top:10px;left:0;right:0;margin:0}
+  .bar .fill{top:10px;background:var(--dc)}
+  .bar .pin{position:absolute;top:3px;width:3px;height:17px;background:var(--dc);transform:translateX(-1.5px)}
+  .facet{display:grid;grid-template-columns:1fr 80px;gap:5px 14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+  .facet:last-child{border-bottom:none}
+  .fname{font-family:var(--serif);font-size:16px}
+  .fname .en{font-family:var(--sans);font-size:12px;color:var(--muted);margin-left:7px}
+  .fnote{grid-column:1;font-size:13.5px;color:var(--muted);line-height:1.6}
+  .fbar{grid-column:2;grid-row:1 / span 2;text-align:right}
+  .fbar .n{font-family:var(--serif);font-size:19px;color:var(--dc)}
+  .fbar .track{margin-top:6px}
+  .fbar .fill{background:var(--dc)}
+  .tag{font-size:12px;border:1px solid var(--dc);color:var(--dc);border-radius:2px;padding:1px 7px;margin-left:8px;white-space:nowrap}
+  .tag.t{border-color:var(--tc);color:var(--tc)}
+
+  /* ---- combined ---- */
+  .combo{margin-top:32px;border-top:1px solid var(--line);padding-top:22px}
+  .combo h3{font-size:18px;margin-bottom:8px}
+  .combo p{font-size:15px;color:var(--muted);max-width:36em}
+
+  .ranklist{margin-top:16px;border-top:1px solid var(--line-soft)}
+  .rankrow{display:grid;grid-template-columns:28px minmax(0,1fr) 120px 44px;gap:12px;align-items:center;
+           padding:9px 0;border-bottom:1px solid var(--line-soft)}
+  .rankrow .rk{font-family:var(--serif);font-size:13px;color:var(--muted);text-align:right}
+  .rankrow .rn{font-family:var(--serif);font-size:16px}
+  .rankrow .rl{font-family:var(--sans);font-size:11px;border:1px solid;border-radius:2px;
+               padding:0 5px;margin-left:8px;vertical-align:2px}
+  .rankrow .rt{position:relative;height:3px;background:var(--line)}
+  .rankrow .rf{position:absolute;left:0;top:0;height:3px}
+  .rankrow .rv{font-family:var(--serif);font-size:15px;color:var(--muted);text-align:right}
+  @media (max-width:600px){
+    .rankrow{grid-template-columns:24px minmax(0,1fr) 42px;gap:8px}
+    .rankrow .rt{display:none}
+  }
+  .tune{margin-top:18px;border:1px solid var(--line);border-radius:2px;padding:14px 16px;max-width:36em}
+  .tunehead{font-size:13.5px;color:var(--muted);margin-bottom:11px}
+  .tunerow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .tunerow .seg{padding:7px 16px;font-size:14px}
+  .tunerow input{width:92px;padding:7px 11px;font-size:14px}
+  .footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;font-size:13.5px;color:var(--muted)}
+  @media (max-width:600px){
+    .home h1{font-size:30px}
+    .stem .txt{font-size:18px}
+    .scale{margin-left:0}
+    .stem{margin-bottom:11px}
+    .opt{font-size:11px;padding:9px 2px}
+    .lists{grid-template-columns:1fr}
+    .facet{grid-template-columns:1fr 66px}
+    .stage{grid-template-columns:26px 1fr;gap:4px 12px}
+    .stage .go{grid-column:2;justify-self:start;margin-top:12px}
+    .codeltr{font-size:44px}
+  }
+  @media print{.actions,.rulerbar{display:none}body{background:#fff}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ HOME ============ -->
+<section id="home" class="home">
+  <div class="kicker">適用國中生的三階段生涯探索</div>
+  <h1>你喜歡什麼，<br>又是什麼樣的人</h1>
+  <p class="lede">第一階段用 48 題定出你的興趣大方向，第二階段再細分成 31 個具體領域，告訴你哪些高中職群科和你合得來。第三階段測人格特質，說明你在什麼樣的環境裡做得最順。全部做完會有一份合起來看的說明。</p>
+
+  <div class="stage">
+    <div class="idx">一</div>
+    <div>
+      <h2>興趣測驗</h2>
+      <div class="sub">RIASEC 何倫碼，48 題，約 8 分鐘</div>
+    </div>
+    <div class="go"><button class="btn" id="goRiasec">開始</button></div>
+    <div class="body">看 48 件工作上會做的事，你只要說你有多喜歡做，不用管會不會做。算出六種興趣類型的分數、你的三碼何倫碼，以及對應的升學群科與職業方向。</div>
+    <div class="status" id="st1"></div>
+  </div>
+
+  <div class="stage">
+    <div class="idx">二</div>
+    <div>
+      <h2>興趣細項測驗</h2>
+      <div class="sub">Basic Interest Markers，337 題，約 50 分鐘</div>
+    </div>
+    <div class="go"><button class="btn-quiet" id="goBim">開始</button></div>
+    <div class="body">第一階段把你分成六大類，這一階段細分成 31 個具體興趣領域 —— 視覺創作、表演、工程、數學、醫療、農林漁牧、銷售、教學、社會服務等等。同樣是「藝術型」，這裡會告訴你到底是畫畫、寫作還是上台。題目多，可以分好幾天寫完。</div>
+    <div class="status" id="st2"></div>
+  </div>
+
+  <div class="stage">
+    <div class="idx">三</div>
+    <div>
+      <h2>人格測驗</h2>
+      <div class="sub">IPIP-NEO-120，120 題，約 25 分鐘</div>
+    </div>
+    <div class="go"><button class="btn-quiet" id="goBig5">開始</button></div>
+    <div class="body">五大人格向度加三十個細部面向。興趣決定你想做什麼，人格影響你怎麼做、在什麼環境下做得順。</div>
+    <div class="status" id="st3"></div>
+  </div>
+
+  <p class="note" style="margin-top:26px;border-top:1px solid var(--line);padding-top:22px">
+    不用註冊、不用填任何資料，按「開始」就可以寫。答案只存在這台裝置的瀏覽器裡，
+    關掉再回來會接著上次的進度。
+  </p>
+</section>
+
+<!-- ============ QUIZ (shared) ============ -->
+<section id="quiz" class="hide">
+  <div class="rulerbar">
+    <div class="ruler" id="ruler"></div>
+    <div class="rulermeta"><span id="progressTxt"></span><span id="pageTxt"></span></div>
+  </div>
+  <p class="prompt" id="promptTxt"></p>
+  <div id="itemBox"></div>
+  <div class="warn hide" id="warnBox"></div>
+  <div class="pager">
+    <button class="btn-quiet" id="prevBtn">上一頁</button>
+    <span class="mid" id="midTxt"></span>
+    <button class="btn" id="nextBtn">下一頁</button>
+  </div>
+  <div class="actions"><button class="btn-quiet" id="quitBtn">先回首頁（進度會保留）</button></div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="res1" class="res hide"></section>
+<section id="resM" class="res hide"></section>
+<section id="res2" class="res hide"></section>
+
+</div>
+
+<script>
+const RI = {"source":{"instrument":"IPIP RIASEC Markers (Holland Codes)","items":"Interest Item Pool RIASEC Markers — Liao, H.-Y., Armstrong, P. I., & Rounds, J. (2008). Development and initial validation of public domain Basic Interest Markers. Journal of Vocational Behavior, 73, 159-183. Public domain.","item_source_page":"https://openpsychometrics.org/tests/RIASEC/","norms":"Percentile tables computed from the Open-Source Psychometrics Project RIASEC dataset (2015-2018, CC0), restricted to respondents aged 12-18 with complete responses (n = 47290).","scale":{"1":"非常不喜歡","2":"有點不喜歡","3":"普通","4":"有點喜歡","5":"非常喜歡"},"translation":"Traditional Chinese (Taiwan), wording adapted for junior-high readers. Free to use, modify and redistribute."},"items":[{"num":1,"code":"R1","type":"R","text":"出貨前檢查零件的品質","en":"Test the quality of parts before shipment"},{"num":2,"code":"I1","type":"I","text":"研究人體的構造","en":"Study the structure of the human body"},{"num":3,"code":"A1","type":"A","text":"指揮合唱團","en":"Conduct a musical choir"},{"num":4,"code":"S1","type":"S","text":"給別人生涯規劃的建議","en":"Give career guidance to people"},{"num":5,"code":"E1","type":"E","text":"把餐廳加盟權推銷給別人","en":"Sell restaurant franchises to individuals"},{"num":6,"code":"C1","type":"C","text":"幫公司計算每個月的薪水","en":"Generate the monthly payroll checks for an office"},{"num":7,"code":"R2","type":"R","text":"砌磚或鋪磁磚","en":"Lay brick or tile"},{"num":8,"code":"I2","type":"I","text":"研究動物的行為","en":"Study animal behavior"},{"num":9,"code":"A2","type":"A","text":"導一齣舞台劇","en":"Direct a play"},{"num":10,"code":"S2","type":"S","text":"到公益團體當志工","en":"Do volunteer work at a non-profit organization"},{"num":11,"code":"E2","type":"E","text":"在百貨公司賣東西","en":"Sell merchandise at a department store"},{"num":12,"code":"C2","type":"C","text":"用手持裝置清點庫存","en":"Inventory supplies using a hand-held computer"},{"num":13,"code":"R3","type":"R","text":"在海上的鑽油平台工作","en":"Work on an offshore oil-drilling rig"},{"num":14,"code":"I3","type":"I","text":"做植物或動物的研究","en":"Do research on plants or animals"},{"num":15,"code":"A3","type":"A","text":"幫雜誌設計美術插圖","en":"Design artwork for magazines"},{"num":16,"code":"S3","type":"S","text":"幫助有藥物或酒精問題的人","en":"Help people who have problems with drugs or alcohol"},{"num":17,"code":"E3","type":"E","text":"經營一家旅館","en":"Manage the operations of a hotel"},{"num":18,"code":"C3","type":"C","text":"用電腦程式製作客戶帳單","en":"Use a computer program to generate customer bills"},{"num":19,"code":"R4","type":"R","text":"組裝電子零件","en":"Assemble electronic parts"},{"num":20,"code":"I4","type":"I","text":"研發新的醫療方法","en":"Develop a new medical treatment or procedure"},{"num":21,"code":"A4","type":"A","text":"寫一首歌","en":"Write a song"},{"num":22,"code":"S4","type":"S","text":"教別人做一套運動","en":"Teach an individual an exercise routine"},{"num":23,"code":"E4","type":"E","text":"經營美髮店或理髮店","en":"Operate a beauty salon or barber shop"},{"num":24,"code":"C4","type":"C","text":"維護員工的資料","en":"Maintain employee records"},{"num":25,"code":"R5","type":"R","text":"在工廠操作研磨機器","en":"Operate a grinding machine in a factory"},{"num":26,"code":"I5","type":"I","text":"進行生物學研究","en":"Conduct biological research"},{"num":27,"code":"A5","type":"A","text":"寫書或寫劇本","en":"Write books or plays"},{"num":28,"code":"S5","type":"S","text":"幫助有家庭問題的人","en":"Help people with family-related problems"},{"num":29,"code":"E5","type":"E","text":"管理大公司裡的一個部門","en":"Manage a department within a large company"},{"num":30,"code":"C5","type":"C","text":"計算並記錄統計數字","en":"Compute and record statistical and other numerical data"},{"num":31,"code":"R6","type":"R","text":"修理壞掉的水龍頭","en":"Fix a broken faucet"},{"num":32,"code":"I6","type":"I","text":"研究鯨魚和其他海洋生物","en":"Study whales and other types of marine life"},{"num":33,"code":"A6","type":"A","text":"演奏樂器","en":"Play a musical instrument"},{"num":34,"code":"S6","type":"S","text":"在營隊裡帶小朋友活動","en":"Supervise the activities of children at a camp"},{"num":35,"code":"E6","type":"E","text":"經營一家服飾店","en":"Manage a clothing store"},{"num":36,"code":"C6","type":"C","text":"用計算機處理數字","en":"Operate a calculator"},{"num":37,"code":"R7","type":"R","text":"在工廠組裝產品","en":"Assemble products in a factory"},{"num":38,"code":"I7","type":"I","text":"在生物實驗室工作","en":"Work in a biology lab"},{"num":39,"code":"A7","type":"A","text":"在電影或電視劇裡表演特技","en":"Perform stunts for a movie or television show"},{"num":40,"code":"S7","type":"S","text":"教小朋友認字閱讀","en":"Teach children how to read"},{"num":41,"code":"E7","type":"E","text":"賣房子","en":"Sell houses"},{"num":42,"code":"C7","type":"C","text":"處理客戶的銀行交易","en":"Handle customers' bank transactions"},{"num":43,"code":"R8","type":"R","text":"幫房子鋪設地板","en":"Install flooring in houses"},{"num":44,"code":"I8","type":"I","text":"繪製海底的地形圖","en":"Make a map of the bottom of an ocean"},{"num":45,"code":"A8","type":"A","text":"設計舞台劇的布景","en":"Design sets for plays"},{"num":46,"code":"S8","type":"S","text":"協助長輩處理日常生活","en":"Help elderly people with their daily activities"},{"num":47,"code":"E8","type":"E","text":"開一家玩具店","en":"Run a toy store"},{"num":48,"code":"C8","type":"C","text":"記錄貨物的進出","en":"Keep shipping and receiving records"}],"types":{"R":{"zh":"實用型","en":"Realistic","color":"#4A7C59","one":"喜歡動手做出看得見的成果","desc":"你偏好具體、實際、用手和工具解決的問題。比起討論和寫報告，你更想直接把東西做出來、修好、動起來。這一型的人通常對機械、電子、營建、農林漁牧、體育或戶外活動有感覺。","school":"生活科技、體育、理化實驗、任何要動手的課","tracks":["技術型高中：機械群、動力機械群、電機與電子群","技術型高中：土木與建築群、農業群、水產群、海事群","普通型高中自然組（走工程科系）"],"jobs":["機械／土木／電機工程師","飛機或車輛維修技師","建築師、營造現場管理","獸醫、農業經營","消防員、警察、運動員"]},"I":{"zh":"研究型","en":"Investigative","color":"#2E6F8E","one":"喜歡把事情弄懂、找出原因","desc":"你被「為什麼會這樣」吸引，喜歡觀察、分析、找證據、驗證想法。你能忍受一個問題想很久，而且享受弄懂之後的感覺。這一型的人常走向科學、醫學、資訊與各種研究工作。","school":"數學、理化、生物、地科、資訊","tracks":["普通型高中自然組（數理、生醫）","技術型高中：化工群、電機與電子群（研發方向）","五專／技高：醫護相關科別"],"jobs":["醫師、藥師、醫檢師","科學研究員、實驗室人員","軟體工程師、資料分析師","獸醫、營養師","工程研發"]},"A":{"zh":"藝術型","en":"Artistic","color":"#6B5B9A","one":"喜歡創作、表達、做出自己的東西","desc":"你重視原創和表達，不喜歡被固定流程綁住。你在有空間發揮的時候表現最好，也對美感、聲音、文字、影像特別敏銳。這一型的人走向設計、表演、影視、文字創作的比例很高。","school":"美術、音樂、表演藝術、國文寫作","tracks":["技術型高中：設計群、藝術群","高中藝術才能班（音樂／美術／舞蹈／戲劇）","普通型高中社會組（走傳播、文學）"],"jobs":["平面／產品／室內設計師","動畫師、遊戲美術","音樂家、演員、導演","作家、編劇、記者","攝影師、影像剪輯"]},"S":{"zh":"社會型","en":"Social","color":"#A8455B","one":"喜歡和人相處、幫助別人","desc":"你關心別人的狀況，也擅長聽人說話、把事情講清楚、讓別人變好。你從「幫上忙」得到的滿足感，比從成績或報酬得到的更多。這一型的人多半走向教育、醫護照顧、社會工作與心理相關領域。","school":"公民與社會、健康教育、綜合活動、擔任幹部或小老師","tracks":["普通型高中社會組（走教育、心理、社工）","技術型高中：家政群（幼保）、餐旅群","五專／技高：護理科、照顧服務相關"],"jobs":["老師、輔導老師","護理師、物理治療師","社工師、心理師","幼教老師","職能治療師、語言治療師"]},"E":{"zh":"企業型","en":"Enterprising","color":"#B5652A","one":"喜歡帶頭、說服別人、把事情推動起來","desc":"你喜歡影響別人、承擔決策、看到自己推動的事情成功。你不怕站到前面說話，也享受競爭和達成目標的過程。這一型的人常走向商業、管理、行銷、法律與創業。","school":"公民、班級或社團幹部、辯論、商業競賽","tracks":["技術型高中：商業與管理群、外語群","技術型高中：餐旅群（經營方向）","普通型高中社會組（走商管、法律）"],"jobs":["業務、行銷企劃","公司主管、創業者","律師、談判與公關","餐飲或零售經營","活動企劃、經紀人"]},"C":{"zh":"事務型","en":"Conventional","color":"#8A8A2E","one":"喜歡有條理、清楚規則的工作","desc":"你在流程明確、標準清楚的環境裡最有效率，擅長處理數字、紀錄和細節，而且不容易出錯。你重視準確和秩序，討厭含糊不清的指令。這一型的人常走向會計、金融、行政與資料管理。","school":"數學、電腦應用、需要細心整理的作業","tracks":["技術型高中：商業與管理群（會計事務、資料處理）","技術型高中：食品群、農業群（品管方向）","普通型高中社會組（走財金、會計）"],"jobs":["會計師、記帳士","銀行與金融從業人員","行政、人資、總務","品管、稽核","資料庫與資訊管理"]}},"order":["R","I","A","S","E","C"],"norms":{"all":{"R":{"mean":16.17,"sd":7.12,"n":47290},"I":{"mean":23.53,"sd":8.69,"n":47290},"A":{"mean":22.2,"sd":8.53,"n":47290},"S":{"mean":24.26,"sd":7.85,"n":47290},"E":{"mean":20.55,"sd":7.24,"n":47290},"C":{"mean":18.06,"sd":7.57,"n":47290}},"M":{"R":{"mean":19.8,"sd":7.45,"n":16457},"I":{"mean":23.13,"sd":8.8,"n":16457},"A":{"mean":20.97,"sd":8.22,"n":16457},"S":{"mean":21.85,"sd":7.85,"n":16457},"E":{"mean":20.53,"sd":7.18,"n":16457},"C":{"mean":19.53,"sd":7.53,"n":16457}},"F":{"R":{"mean":14.2,"sd":6.08,"n":30183},"I":{"mean":23.71,"sd":8.62,"n":30183},"A":{"mean":22.78,"sd":8.62,"n":30183},"S":{"mean":25.62,"sd":7.53,"n":30183},"E":{"mean":20.6,"sd":7.28,"n":30183},"C":{"mean":17.29,"sd":7.47,"n":30183}}},"percentile_table":{"R":[7.5,17.8,24.2,30.6,36.4,41.9,46.9,51.6,56.2,60.6,64.8,68.6,72.2,75.5,78.6,81.5,84.3,86.8,89.0,90.9,92.5,94.0,95.2,96.3,97.1,97.7,98.2,98.7,99.0,99.3,99.5,99.7,99.9],"I":[2.2,5.3,7.5,9.9,12.3,14.8,17.3,20.1,23.1,26.2,29.3,32.5,35.9,39.4,42.9,46.6,50.6,54.5,58.3,62.1,65.9,69.7,73.5,77.2,80.7,84.0,86.9,89.5,91.9,94.1,95.9,97.5,99.1],"A":[2.7,6.5,9.0,11.8,15.0,18.2,21.2,24.3,27.6,31.1,34.6,38.0,41.7,45.4,49.2,53.0,56.9,60.8,64.6,68.3,72.0,75.5,78.8,82.0,85.0,87.8,90.3,92.6,94.6,96.2,97.6,98.6,99.5],"S":[1.2,3.0,4.4,6.1,8.1,10.1,12.2,14.5,17.2,20.1,23.1,26.4,30.0,33.8,37.8,42.0,46.6,51.3,55.9,60.6,65.2,69.6,74.0,78.1,82.0,85.5,88.7,91.4,93.8,95.8,97.3,98.5,99.5],"E":[2.5,6.0,8.4,11.3,14.4,17.7,21.0,24.7,28.8,33.4,38.0,42.7,47.5,52.5,57.4,62.4,67.4,72.0,76.2,80.2,83.7,86.7,89.4,91.8,93.7,95.3,96.6,97.6,98.3,98.9,99.3,99.6,99.8],"C":[5.7,13.4,18.0,22.6,27.0,31.2,35.3,39.6,44.1,48.8,53.3,57.6,61.8,65.9,69.7,73.5,77.3,80.7,83.7,86.3,88.6,90.7,92.4,93.9,95.2,96.3,97.2,97.9,98.4,98.9,99.3,99.5,99.8]},"norm_n":47290};
+const BM = {"scales":[{"id":"athletic_coaching","en":"Athletic Coaching","zh":"運動指導","riasec":"SR","desc":"帶人運動、教技術、辦比賽。","track":"體育班、技術型高中運動保健相關科；大學體育、運動教練、運動防護","count":6},{"id":"business","en":"Business","zh":"經營商業","riasec":"EC","desc":"看懂市場、想辦法讓生意變好。","track":"技術型高中商業與管理群；大學企管、國企、行銷","count":12},{"id":"creative_arts","en":"Creative Arts","zh":"視覺創作","riasec":"A","desc":"畫畫、設計、動手做出美的東西。","track":"技術型高中設計群、藝術群（美術）；大學視覺傳達、工業設計、美術","count":11},{"id":"creative_writing","en":"Creative Writing","zh":"文字創作","riasec":"A","desc":"寫故事、寫劇本、用文字說故事。","track":"普通型高中社會組；大學中文、台文、大眾傳播、戲劇","count":11},{"id":"engineering","en":"Engineering","zh":"工程設計","riasec":"IR","desc":"設計和改良機器、系統、結構。","track":"普通型高中自然組、技術型高中機械群／電機與電子群；大學各類工程學系","count":11},{"id":"family_activity","en":"Family Activity","zh":"家庭生活","riasec":"S","desc":"照顧家人、把家裡經營得舒服。","track":"技術型高中家政群（幼保、家政）；大學幼教、家庭教育、生活應用科學","count":14},{"id":"finance","en":"Finance","zh":"財務金融","riasec":"CE","desc":"處理錢的事：預算、投資、財務分析。","track":"技術型高中商業與管理群（會計事務）；大學財金、會計、經濟","count":12},{"id":"hr_management","en":"Human Relations Management","zh":"人際與人力管理","riasec":"ES","desc":"處理組織裡人與人之間的問題。","track":"技術型高中商業與管理群；大學人力資源、勞工關係、心理","count":11},{"id":"information_tech","en":"Information Technology","zh":"資訊科技","riasec":"CI","desc":"架設和維護電腦、網路、系統。","track":"技術型高中電機與電子群（資訊科）；大學資工、資管、網路工程","count":12},{"id":"law","en":"Law","zh":"法律","riasec":"EI","desc":"研究法條、蒐證、在法庭上辯論。","track":"普通型高中社會組；大學法律、司法、財經法","count":11},{"id":"life_science","en":"Life Science","zh":"生命科學","riasec":"I","desc":"研究動物、植物、細胞和基因。","track":"普通型高中自然組；大學生科、生技、農學、獸醫","count":10},{"id":"management","en":"Management","zh":"組織管理","riasec":"E","desc":"帶團隊、分配資源、讓組織運轉。","track":"技術型高中商業與管理群；大學企管、公共行政","count":9},{"id":"manual_labor","en":"Manual Labor","zh":"體力操作","riasec":"R","desc":"搬運、清潔、用身體完成的工作。","track":"技術型高中土木與建築群、農業群；就業導向的技術訓練","count":13},{"id":"mathematics","en":"Mathematics","zh":"數學","riasec":"IC","desc":"解方程式、證明、用數學處理問題。","track":"普通型高中自然組；大學數學、統計、精算、資工","count":10},{"id":"medical_service","en":"Medical Service","zh":"醫療照護","riasec":"IS","desc":"看病、治療、照顧身體和心理的健康。","track":"普通型高中自然組、五專護理科；大學醫、牙、藥、護理、物治、職治","count":10},{"id":"outdoor_agriculture","en":"Outdoor-Agriculture","zh":"戶外與農林漁牧","riasec":"R","desc":"在戶外種植、養殖、照顧土地和動物。","track":"技術型高中農業群、水產群、食品群；大學農藝、園藝、森林、水產養殖","count":10},{"id":"office_work","en":"Office Work","zh":"辦公事務","riasec":"C","desc":"整理文件、排流程、把庶務處理得井井有條。","track":"技術型高中商業與管理群（資料處理）；大學企管、資管、行政","count":11},{"id":"performing_arts","en":"Performing Arts","zh":"表演藝術","riasec":"A","desc":"唱歌、演戲、上台表演。","track":"高中藝術才能班（音樂、舞蹈、戲劇）、技術型高中藝術群；大學戲劇、音樂、舞蹈","count":11},{"id":"personal_service","en":"Personal Service","zh":"生活服務","riasec":"SE","desc":"餐飲、美髮、旅遊、直接服務客人。","track":"技術型高中餐旅群、家政群（美容美髮）；大學餐旅管理、觀光","count":14},{"id":"physical_risk","en":"Physical/Risk-Taking","zh":"冒險與體能挑戰","riasec":"R","desc":"刺激、危險、需要膽量的活動。","track":"體育班、技術型高中海事群；警消、軍事、專業運動、救難相關訓練","count":9},{"id":"physical_science","en":"Physical Science","zh":"物質科學","riasec":"I","desc":"研究物理、化學、地科、天文的原理。","track":"普通型高中自然組、技術型高中化工群；大學物理、化學、地科、天文、材料","count":12},{"id":"politics","en":"Politics","zh":"政治參與","riasec":"E","desc":"說服別人、參與選舉和公共議題。","track":"普通型高中社會組；大學政治、公共行政、社會、法律","count":8},{"id":"professional_advising","en":"Professional Advising","zh":"職涯與諮詢輔導","riasec":"SE","desc":"給人建議、訓練別人的職場能力。","track":"普通型高中社會組；大學心理、教育、人力資源、企管","count":10},{"id":"protective","en":"Protective","zh":"保安與救護","riasec":"RS","desc":"維護治安、消防、保護人身安全。","track":"技術型高中相關科別；警專、消防、軍校，大學犯罪防治","count":11},{"id":"religious","en":"Religious Activities","zh":"宗教與靈性","riasec":"S","desc":"參與信仰活動、探索靈性和意義。","track":"普通型高中社會組；大學宗教、哲學、社工","count":12},{"id":"sales","en":"Sales","zh":"銷售","riasec":"E","desc":"把東西賣出去、說服客人買單。","track":"技術型高中商業與管理群、外語群；大學行銷、國貿、企管","count":13},{"id":"skilled_trades","en":"Skilled Trades","zh":"技術工種","riasec":"R","desc":"修引擎、配電、做木工，用工具解決問題。","track":"技術型高中機械群、動力機械群、電機與電子群、土木與建築群","count":11},{"id":"social_sciences","en":"Social Sciences","zh":"社會科學研究","riasec":"IS","desc":"研究人的行為、文化和社會結構。","track":"普通型高中社會組；大學心理、社會、人類、教育、政治","count":10},{"id":"social_service","en":"Social Service","zh":"社會服務","riasec":"S","desc":"幫助弱勢、陪伴有困難的人。","track":"技術型高中家政群；大學社工、心理、特教、長照","count":12},{"id":"teaching","en":"Teaching","zh":"教學","riasec":"S","desc":"備課、上課、引導學生學會。","track":"普通型高中；大學各類師培學系、教育、幼教","count":10},{"id":"technical_writing","en":"Technical Writing","zh":"技術寫作","riasec":"CI","desc":"把複雜的技術寫成別人看得懂的說明。","track":"普通型高中、技術型高中外語群；大學科技傳播、資訊、外文","count":10}],"items":[{"num":1,"scale":"athletic_coaching","text":"參加競技比賽","en":"Participate in competitive sports"},{"num":2,"scale":"business","text":"了解一間公司為什麼會賺錢","en":"Understand the qualities of an effective business"},{"num":3,"scale":"creative_arts","text":"畫一張素描","en":"Sketch a picture"},{"num":4,"scale":"creative_writing","text":"學習創意寫作","en":"Study creative writing"},{"num":5,"scale":"engineering","text":"改良機器設計讓它更安靜","en":"Modify an equipment design to reduce sound level"},{"num":6,"scale":"family_activity","text":"在家照顧小孩","en":"Take care of children at home"},{"num":7,"scale":"finance","text":"了解經濟學的原理","en":"Understand economics principles"},{"num":8,"scale":"hr_management","text":"出面調解員工之間的爭執","en":"Meet with workers to mediate disagreements"},{"num":9,"scale":"information_tech","text":"設計一套遠距教學的系統","en":"Design a technology system for distance learning"},{"num":10,"scale":"law","text":"研究判例","en":"Research case law"},{"num":11,"scale":"life_science","text":"了解一種動物的生命週期","en":"Learn about the life cycle of an animal species"},{"num":12,"scale":"management","text":"管理一所大學的行政事務","en":"Direct the business affairs of a university"},{"num":13,"scale":"manual_labor","text":"裝卸貨物","en":"Load and unload freight materials"},{"num":14,"scale":"mathematics","text":"解一個代數方程式","en":"Solve an algebraic equation"},{"num":15,"scale":"medical_service","text":"研發治療癌症的新藥","en":"Research new drugs to cure cancer"},{"num":16,"scale":"outdoor_agriculture","text":"保護農作物不受病蟲害","en":"Protect crops from diseases and pests"},{"num":17,"scale":"office_work","text":"做辦公室的行政工作","en":"Perform office work"},{"num":18,"scale":"performing_arts","text":"學習一項表演藝術","en":"Study one of the performing arts"},{"num":19,"scale":"personal_service","text":"在餐廳當外場服務生","en":"Wait on tables in a neighborhood restaurant"},{"num":20,"scale":"physical_risk","text":"做危險又刺激的工作","en":"Do work that is dangerous and exciting"},{"num":21,"scale":"physical_science","text":"研究重力定律","en":"Study the laws of gravity"},{"num":22,"scale":"politics","text":"說服別人投票給你支持的候選人","en":"Persuade people to vote for your candidate"},{"num":23,"scale":"professional_advising","text":"建議別人怎麼達成職涯目標","en":"Advise people in meeting their professional goals"},{"num":24,"scale":"protective","text":"在機場搜查爆裂物","en":"Search for explosives in an airport"},{"num":25,"scale":"religious","text":"閱讀宗教經典","en":"Read a religious text"},{"num":26,"scale":"sales","text":"介紹你賣的東西有什麼優點","en":"Describe features and benefits of a product or service you sell"},{"num":27,"scale":"skilled_trades","text":"安裝排水系統的管線和配件","en":"Install the piping and fixtures of a drainage system"},{"num":28,"scale":"social_sciences","text":"了解人類的行為","en":"Learn about human behavior"},{"num":29,"scale":"social_service","text":"協助身心障礙者找工作","en":"Assist people with disabilities to find employment"},{"num":30,"scale":"teaching","text":"備一堂課","en":"Develop a lecture"},{"num":31,"scale":"technical_writing","text":"把複雜的技術寫成看得懂的文字","en":"Write complex technical information in an understandable way"},{"num":32,"scale":"athletic_coaching","text":"帶別人做體能訓練","en":"Provide physical fitness training"},{"num":33,"scale":"business","text":"建立公司的運作制度","en":"Develop business systems"},{"num":34,"scale":"creative_arts","text":"上電影製作的課","en":"Take a film-making course"},{"num":35,"scale":"creative_writing","text":"寫一部電視劇的劇本","en":"Write a script for a TV drama"},{"num":36,"scale":"engineering","text":"設計更好用的機器","en":"Develop more user-friendly machines"},{"num":37,"scale":"family_activity","text":"重新布置客廳","en":"Redecorate the living room"},{"num":38,"scale":"finance","text":"了解財務在企業裡的角色","en":"Understand the role of finance in business"},{"num":39,"scale":"hr_management","text":"向員工說明新的公司規定","en":"Explain new company policies to workers"},{"num":40,"scale":"information_tech","text":"接觸最新的電子科技","en":"Acquire the latest electronic technology"},{"num":41,"scale":"law","text":"找出和案件相關的前例","en":"Find precedents related to a legal case"},{"num":42,"scale":"life_science","text":"在實驗室裡培育動物","en":"Breed animals in a laboratory"},{"num":43,"scale":"management","text":"統籌一家公司的所有業務活動","en":"Direct all sales activities for a company"},{"num":44,"scale":"manual_labor","text":"運送辦公家具","en":"Deliver office furniture"},{"num":45,"scale":"mathematics","text":"推導數學公式","en":"Develop mathematical formulas"},{"num":46,"scale":"medical_service","text":"說明病毒怎麼感染人體","en":"Explain how viruses infect the human body"},{"num":47,"scale":"outdoor_agriculture","text":"在動物園餵食動物","en":"Feed and water animals in a zoo"},{"num":48,"scale":"office_work","text":"設計流程讓辦公室更有效率","en":"Develop procedures to improve office efficiency"},{"num":49,"scale":"performing_arts","text":"參加音樂演出","en":"Participate in a musical performance"},{"num":50,"scale":"personal_service","text":"為會議安排餐點飲料","en":"Plan the food and drinks for a business meeting"},{"num":51,"scale":"physical_risk","text":"探索沒有人去過的地方","en":"Discover uncharted territories"},{"num":52,"scale":"physical_science","text":"研究物質的分子結構","en":"Investigate the molecular structure of substances"},{"num":53,"scale":"politics","text":"參與競選團隊的工作","en":"Work in a political campaign"},{"num":54,"scale":"professional_advising","text":"協助別人規劃退休","en":"Assist people in planning for retirement"},{"num":55,"scale":"protective","text":"稽查是否有違法情形","en":"Make inspections to be sure that laws are not broken"},{"num":56,"scale":"religious","text":"幫助孩子理解宗教的教導","en":"Help children understand religious teachings"},{"num":57,"scale":"sales","text":"提高自己負責區域的業績","en":"Increase sales in your sales territory"},{"num":58,"scale":"skilled_trades","text":"用工具修理工廠設備","en":"Use tools to repair factory equipment"},{"num":59,"scale":"social_sciences","text":"提出關於人類行為的理論","en":"Develop a theory about human behavior"},{"num":60,"scale":"social_service","text":"協助家庭辦理收養","en":"Help families to adopt a child"},{"num":61,"scale":"teaching","text":"設計考題評估學生的學習","en":"Design tests to evaluate students' learning"},{"num":62,"scale":"technical_writing","text":"為一台設備寫操作手冊","en":"Write instructional manual for a piece of equipment"},{"num":63,"scale":"athletic_coaching","text":"擔任球隊教練","en":"Coach a sports team"},{"num":64,"scale":"business","text":"研究市場上大家想要什麼","en":"Learn about the needs of the marketplace"},{"num":65,"scale":"creative_arts","text":"設計一件有創意的藝術作品","en":"Design a creative work of art"},{"num":66,"scale":"creative_writing","text":"幫名人寫傳記","en":"Write a celebrity biography"},{"num":67,"scale":"engineering","text":"重新設計引擎讓它更省油","en":"Redesign an engine to improve fuel efficiency"},{"num":68,"scale":"family_activity","text":"陪小孩玩","en":"Play with your children"},{"num":69,"scale":"finance","text":"處理財務數據","en":"Work with financial data"},{"num":70,"scale":"hr_management","text":"為公司辦一場多元共融工作坊","en":"Organize a diversity workshop for a company"},{"num":71,"scale":"information_tech","text":"維護網路的硬體和軟體","en":"Maintain network hardware and software"},{"num":72,"scale":"law","text":"考取律師執照","en":"Obtain a license to practice law"},{"num":73,"scale":"life_science","text":"解剖動物","en":"Dissect an animal"},{"num":74,"scale":"management","text":"籌辦一場專業團體的大型會議","en":"Plan and coordinate a convention for a professional association"},{"num":75,"scale":"manual_labor","text":"幫人把東西從一個地方搬到另一個地方","en":"Transport people's belongings from one place to another"},{"num":76,"scale":"mathematics","text":"了解微積分的應用","en":"Understand applications of calculus"},{"num":77,"scale":"medical_service","text":"找出生病的原因","en":"Determine the cause of an illness"},{"num":78,"scale":"outdoor_agriculture","text":"在農場飼養牲畜","en":"Raise livestock on a farm"},{"num":79,"scale":"office_work","text":"操作常見的辦公室機器","en":"Operate commonly-used office machines"},{"num":80,"scale":"performing_arts","text":"演出電視廣告","en":"Act in a television commercial"},{"num":81,"scale":"personal_service","text":"在飛機上服務旅客","en":"Provide personal services to airplane passengers"},{"num":82,"scale":"physical_risk","text":"到有武裝衝突的國家出任務","en":"International travel to countries where there is armed conflict"},{"num":83,"scale":"physical_science","text":"尋找新的行星系統","en":"Search for new solar systems"},{"num":84,"scale":"politics","text":"影響選民支持你的主張","en":"Influence voters to support your ideas"},{"num":85,"scale":"professional_advising","text":"帶一場時間管理工作坊","en":"Conduct a workshop on time management"},{"num":86,"scale":"protective","text":"巡邏維持治安","en":"Patrol an area to maintain security"},{"num":87,"scale":"religious","text":"給人靈性上的指引","en":"Provide spiritual guidance"},{"num":88,"scale":"sales","text":"做一份業績抽成的工作","en":"Work in a position that offers a commission based on sales"},{"num":89,"scale":"skilled_trades","text":"修理汽車引擎","en":"Repair the engine of an automobile"},{"num":90,"scale":"social_sciences","text":"研究不同的文化習俗","en":"Investigate cultural practices"},{"num":91,"scale":"social_service","text":"輔導遇到危機的家庭","en":"Counsel families in crisis"},{"num":92,"scale":"teaching","text":"參加教師專業研習","en":"Take a teacher development workshop"},{"num":93,"scale":"technical_writing","text":"寫一份機器的操作步驟","en":"Write directions for how to operate a VCR"},{"num":94,"scale":"athletic_coaching","text":"把一項運動講解給別人聽","en":"Explain a sport to other people"},{"num":95,"scale":"business","text":"想辦法讓公司賣得更好","en":"Think of ideas to increase the sales for a company"},{"num":96,"scale":"creative_arts","text":"設計一件有造型的家具","en":"Design a piece of artistic furniture"},{"num":97,"scale":"creative_writing","text":"寫一本小說","en":"Write a novel"},{"num":98,"scale":"engineering","text":"維護發電廠的主發電機","en":"Maintain the main generator in a power plant"},{"num":99,"scale":"family_activity","text":"把家裡維持得好看","en":"Maintain the attractiveness of the house"},{"num":100,"scale":"finance","text":"編一份預算","en":"Create a budget"},{"num":101,"scale":"hr_management","text":"調查員工對公司的看法","en":"Assess employee opinions of the company"},{"num":102,"scale":"information_tech","text":"維護一個組織的網站","en":"Maintain a website for an organization"},{"num":103,"scale":"law","text":"在法庭上裁定證據能不能採用","en":"Rule on the admissibility of evidence in court"},{"num":104,"scale":"life_science","text":"追蹤鳥類的遷徙路線","en":"Track the migratory patterns of birds"},{"num":105,"scale":"management","text":"管理市政府的運作","en":"Administer city government"},{"num":106,"scale":"manual_labor","text":"把釘子敲進木頭","en":"Drive a nail into wood"},{"num":107,"scale":"mathematics","text":"認識一個新的數學分支","en":"Learn about a new branch of mathematics"},{"num":108,"scale":"medical_service","text":"動手術","en":"Perform surgery"},{"num":109,"scale":"outdoor_agriculture","text":"了解特殊作物需要什麼土壤和氣候","en":"Learn about soil and climate requirements of specialty crops"},{"num":110,"scale":"office_work","text":"改善員工報帳的流程","en":"Improve a system for handling employee reimbursements"},{"num":111,"scale":"performing_arts","text":"上台唱歌","en":"Sing on a stage"},{"num":112,"scale":"personal_service","text":"在店裡調製並供應飲料","en":"Serve beverages in a club"},{"num":113,"scale":"physical_risk","text":"到沒人探索過的珊瑚礁潛水","en":"Scuba-dive among unexplored coral reefs"},{"num":114,"scale":"physical_science","text":"研究量子物理","en":"Study the nature of quantum physics"},{"num":115,"scale":"politics","text":"辯論候選人的優劣","en":"Debate the merits of political candidates"},{"num":116,"scale":"professional_advising","text":"指導別人準備面試","en":"Coach people to prepare them for an interview"},{"num":117,"scale":"protective","text":"事故後指揮交通","en":"Direct traffic after an accident"},{"num":118,"scale":"religious","text":"發展自己的靈性","en":"Develop my spirituality"},{"num":119,"scale":"sales","text":"說服別人相信新產品好用","en":"Convince people about the usefulness of a new gadget"},{"num":120,"scale":"skilled_trades","text":"做木櫃","en":"Construct wooden cabinets"},{"num":121,"scale":"social_sciences","text":"做社會科學實驗","en":"Conduct social science experiments"},{"num":122,"scale":"social_service","text":"幫無家者找到安置的地方","en":"Help the homeless find shelter"},{"num":123,"scale":"teaching","text":"營造好的課堂氣氛","en":"Create an effective classroom atmosphere"},{"num":124,"scale":"technical_writing","text":"規劃並編輯技術手冊","en":"Plan and edit technical manuals"},{"num":125,"scale":"athletic_coaching","text":"擔任比賽的裁判","en":"Referee a sporting event"},{"num":126,"scale":"business","text":"在公司裡建立品質檢查的流程","en":"Implementing quality review procedures in a company"},{"num":127,"scale":"creative_arts","text":"為電影或舞台劇設計服裝","en":"Design costumes for a movie or play"},{"num":128,"scale":"creative_writing","text":"發展一部電影的劇本","en":"Develop a script for a movie"},{"num":129,"scale":"engineering","text":"測試一套新的散熱系統","en":"Test a new cooling system"},{"num":130,"scale":"family_activity","text":"為家人準備豐盛的一餐","en":"Prepare exciting meals for your family"},{"num":131,"scale":"finance","text":"研究公司怎麼賺錢","en":"Study how to generate business profits"},{"num":132,"scale":"hr_management","text":"了解員工的工作滿意度","en":"Investigate employees' job satisfaction"},{"num":133,"scale":"information_tech","text":"隨時掌握最新的軟體","en":"Keep up-to-date on the latest software"},{"num":134,"scale":"law","text":"投入改善司法制度","en":"Work to improve the legal system"},{"num":135,"scale":"life_science","text":"研究一種動物吃什麼","en":"Study the diet of an animal species"},{"num":136,"scale":"management","text":"規劃公司的員工訓練與發展","en":"Plan and direct training and staff development for a business"},{"num":137,"scale":"manual_labor","text":"打掃辦公室","en":"Clean offices"},{"num":138,"scale":"mathematics","text":"畫出一個方程式的圖形","en":"Graph an equation"},{"num":139,"scale":"medical_service","text":"做物理治療","en":"Provide physical therapy"},{"num":140,"scale":"outdoor_agriculture","text":"在酪農場工作","en":"Work on a dairy farm"},{"num":141,"scale":"office_work","text":"採購並管理辦公用品庫存","en":"Order and maintain an inventory of office supplies"},{"num":142,"scale":"performing_arts","text":"在台上表演魔術","en":"Perform magic tricks on stage"},{"num":143,"scale":"personal_service","text":"幫客人做美甲","en":"Provide a client with a manicure"},{"num":144,"scale":"physical_risk","text":"每天上班都有點冒險成分","en":"Have some adventure during every work day"},{"num":145,"scale":"physical_science","text":"測量電子的速度","en":"Measure the speed of electrons"},{"num":146,"scale":"politics","text":"為一個主張辯護或反駁","en":"Argue for or against an idea"},{"num":147,"scale":"professional_advising","text":"提供同事諮詢意見","en":"Provide consultation for colleagues"},{"num":148,"scale":"protective","text":"依拘票逮捕嫌犯","en":"Take a person into custody on an arrest warrant"},{"num":149,"scale":"religious","text":"接受宗教服事的訓練","en":"Train to be a member of a religious ministry"},{"num":150,"scale":"sales","text":"向醫師推廣醫療器材","en":"Promote sales of medical equipment to physicians"},{"num":151,"scale":"skilled_trades","text":"診斷汽車引擎的故障","en":"Diagnose malfunctions in automotive engines"},{"num":152,"scale":"social_sciences","text":"研究教養孩子的問題","en":"Study child-rearing problems"},{"num":153,"scale":"social_service","text":"幫人找到社區可以用的資源","en":"Help people find community resources"},{"num":154,"scale":"teaching","text":"在課堂上和學生互動","en":"Interact with students in a classroom setting"},{"num":155,"scale":"technical_writing","text":"寫手機的使用說明","en":"Write a manual on how to operate a cell phone"},{"num":156,"scale":"athletic_coaching","text":"上運動訓練的課程","en":"Take a course in athletic training"},{"num":157,"scale":"business","text":"規劃廣告和促銷活動的策略","en":"Develop strategies for advertising campaigns and sales promotions"},{"num":158,"scale":"creative_arts","text":"參加美術展覽","en":"Participate in an art show"},{"num":159,"scale":"creative_writing","text":"編修一篇新聞報導","en":"Edit a newspaper article"},{"num":160,"scale":"engineering","text":"設計電子系統","en":"Design electronic systems"},{"num":161,"scale":"family_activity","text":"照顧另一半和孩子的需要","en":"Meet the needs of my partner and children"},{"num":162,"scale":"finance","text":"分析財務資訊","en":"Analyze financial information"},{"num":163,"scale":"hr_management","text":"推動改善辦公室溝通的措施","en":"Direct activities to improve office communication"},{"num":164,"scale":"information_tech","text":"上網路管理的課程","en":"Take a course on network administration"},{"num":165,"scale":"law","text":"解釋一條法律合不合憲","en":"Interpret the constitutionality of a law"},{"num":166,"scale":"life_science","text":"研究人類的基因結構","en":"Investigate human gene structure"},{"num":167,"scale":"management","text":"擔任大學校長","en":"Serve as a president of a university"},{"num":168,"scale":"manual_labor","text":"把木材堆疊整齊","en":"Stack lumber in piles"},{"num":169,"scale":"mathematics","text":"修一門進階數學課","en":"Take a course in advance mathematics"},{"num":170,"scale":"medical_service","text":"診斷心理疾病","en":"Diagnose mental illness"},{"num":171,"scale":"outdoor_agriculture","text":"架設農田灌溉系統","en":"Install a crop irrigation system"},{"num":172,"scale":"office_work","text":"提供客戶服務","en":"Provide customer service"},{"num":173,"scale":"performing_arts","text":"演出舞台劇","en":"Act in a play"},{"num":174,"scale":"personal_service","text":"在飯店接待客人並回答問題","en":"Greet guests and answer questions about activities in a hotel"},{"num":175,"scale":"physical_risk","text":"參與高速追捕","en":"Participate in high-speed chases"},{"num":176,"scale":"physical_science","text":"研究行星的運行","en":"Study the movement of planets"},{"num":177,"scale":"politics","text":"出來參選公職","en":"Run for a political office"},{"num":178,"scale":"professional_advising","text":"用專業能力擔任顧問","en":"Apply professional skills in a consulting role"},{"num":179,"scale":"protective","text":"守衛政府建築","en":"Guard a government building"},{"num":180,"scale":"religious","text":"詮釋宗教典籍","en":"Interpret religious writings"},{"num":181,"scale":"sales","text":"銷售服務和設備","en":"Sell services and equipment"},{"num":182,"scale":"skilled_trades","text":"維護工廠的生產設備","en":"Maintain manufacturing equipment in an industrial plant"},{"num":183,"scale":"social_sciences","text":"比較不同族群的文化差異","en":"Compare cultural differences among groups"},{"num":184,"scale":"social_service","text":"提供托育服務","en":"Provide childcare services"},{"num":185,"scale":"teaching","text":"引導學生討論","en":"Facilitate students' discussions"},{"num":186,"scale":"technical_writing","text":"寫玩具的組裝說明","en":"Write instructions on how to assemble a toy"},{"num":187,"scale":"business","text":"依照對客人需求的預測來定價","en":"Set prices on goods based on forecasts of customer demand"},{"num":188,"scale":"creative_arts","text":"整理自己的作品集","en":"Develop a portfolio of artwork"},{"num":189,"scale":"creative_writing","text":"創作短篇故事","en":"Compose short stories"},{"num":190,"scale":"engineering","text":"改善生產線的效率","en":"Improve the efficiency of an assembly process"},{"num":191,"scale":"family_activity","text":"安排接送小孩和朋友出去玩","en":"Arrange transportation for your child's and friend's play activities"},{"num":192,"scale":"finance","text":"預估未來的支出","en":"Project future expenditure"},{"num":193,"scale":"hr_management","text":"舉辦人際關係的訓練","en":"Provide human relations training"},{"num":194,"scale":"information_tech","text":"為一個組織設計電腦系統","en":"Design a computer system for an organization"},{"num":195,"scale":"law","text":"為審判蒐集證據","en":"Gather evidence for a trial"},{"num":196,"scale":"life_science","text":"辨識並分類細菌","en":"Identify and classify bacteria"},{"num":197,"scale":"management","text":"指揮並協調下屬的工作","en":"Direct and coordinate the work activities of subordinates"},{"num":198,"scale":"manual_labor","text":"挖洞立圍籬","en":"Dig a hole for a fence"},{"num":199,"scale":"mathematics","text":"解幾何證明題","en":"Solve geometric proofs"},{"num":200,"scale":"medical_service","text":"在診所替病人做檢查","en":"Examine a patient in a clinic"},{"num":201,"scale":"outdoor_agriculture","text":"伐木取材","en":"Harvest trees for timber"},{"num":202,"scale":"office_work","text":"設計一套檔案歸檔系統","en":"Design an office filing system"},{"num":203,"scale":"performing_arts","text":"參加才藝節目","en":"Appear in a talent show"},{"num":204,"scale":"personal_service","text":"安排旅遊行程和住宿","en":"Arrange travel plans and accommodations"},{"num":205,"scale":"physical_risk","text":"從飛機上跳傘","en":"Parachute jump from an airplane"},{"num":206,"scale":"physical_science","text":"做化學反應實驗","en":"Test chemical reactions"},{"num":207,"scale":"politics","text":"起草法案","en":"Write legislation"},{"num":208,"scale":"professional_advising","text":"提供技能訓練課程","en":"Provide skill development training"},{"num":209,"scale":"protective","text":"在邊境查緝非法入境","en":"Patrol borders to stop illegal immigration"},{"num":210,"scale":"religious","text":"主持宗教儀式","en":"Conduct religious ceremonies"},{"num":211,"scale":"sales","text":"判斷客人真正需要什麼","en":"Determine customer needs"},{"num":212,"scale":"skilled_trades","text":"為房子配電線","en":"Install the electrical wiring in a house"},{"num":213,"scale":"social_sciences","text":"分析歧視對少數族群的影響","en":"Analyze the effects of discrimination on minority groups"},{"num":214,"scale":"social_service","text":"籌組互助支持團體","en":"Organize a social support group"},{"num":215,"scale":"teaching","text":"設計動手做的學習活動","en":"Design an active learning activity"},{"num":216,"scale":"technical_writing","text":"為一個程式寫使用手冊","en":"Prepare a manual for a computer program"},{"num":217,"scale":"business","text":"規劃公司要怎麼擴張","en":"Plan the expansion of a company"},{"num":218,"scale":"creative_arts","text":"創作一首原創的樂曲","en":"Write an original musical piece"},{"num":219,"scale":"creative_writing","text":"寫一個真實人生的故事","en":"Write a true-life story"},{"num":220,"scale":"engineering","text":"設計能承受巨大壓力的結構","en":"Design structures that can withstand heavy stresses"},{"num":221,"scale":"family_activity","text":"給家人一個舒服的家","en":"Provide a comfortable home for my family"},{"num":222,"scale":"finance","text":"分析一個人的信用紀錄","en":"Analyze a person's credit history"},{"num":223,"scale":"hr_management","text":"促進主管和員工之間的關係","en":"Facilitate relationships between management and employees"},{"num":224,"scale":"information_tech","text":"用電腦把歷史文件數位典藏","en":"Use computers to archive historical documents"},{"num":225,"scale":"law","text":"在陪審團面前提出論述","en":"Present arguments to a jury"},{"num":226,"scale":"life_science","text":"採集植物樣本","en":"Collect plant samples"},{"num":227,"scale":"management","text":"協調銀行各部門的運作","en":"Coordinate the activities of all departments in a bank"},{"num":228,"scale":"manual_labor","text":"清理垃圾和碎屑","en":"Clean up trash or debris"},{"num":229,"scale":"mathematics","text":"用數學方法解決實際問題","en":"Apply mathematical techniques to practical problems"},{"num":230,"scale":"medical_service","text":"做緊急急救","en":"Provide first aid"},{"num":231,"scale":"outdoor_agriculture","text":"種樹和照顧樹木","en":"Care for and plant trees"},{"num":232,"scale":"office_work","text":"做會議紀錄","en":"Record meeting minutes"},{"num":233,"scale":"performing_arts","text":"指導演員的表演","en":"Direct the performance of actors"},{"num":234,"scale":"personal_service","text":"在髮廊幫客人做造型","en":"Style hair in a salon"},{"num":235,"scale":"physical_risk","text":"上山救援受困的人","en":"Rescue someone stranded on a mountain"},{"num":236,"scale":"physical_science","text":"研究岩石和礦物的形成","en":"Study rock and mineral formations"},{"num":237,"scale":"politics","text":"發表演說支持你的候選人","en":"Give a speech supporting your candidate"},{"num":238,"scale":"professional_advising","text":"舉辦生涯規劃工作坊","en":"Conduct career planning workshops"},{"num":239,"scale":"protective","text":"出勤處理緊急求救","en":"Respond to emergency calls for help"},{"num":240,"scale":"religious","text":"參加祈禱或共修團體","en":"Participate in a prayer group"},{"num":241,"scale":"sales","text":"向客人說明產品","en":"Explain products to customers"},{"num":242,"scale":"skilled_trades","text":"更換故障的電話線路","en":"Replace defective telephone lines"},{"num":243,"scale":"social_sciences","text":"閱讀人際關係的研究文獻","en":"Review the interpersonal relationship literature"},{"num":244,"scale":"social_service","text":"到社區服務中心當志工","en":"Volunteer for a community service center"},{"num":245,"scale":"teaching","text":"主持研討課程","en":"Conduct seminars"},{"num":246,"scale":"technical_writing","text":"為任何東西寫使用指南","en":"Write a user guide on practically anything"},{"num":247,"scale":"business","text":"到別的城市開設新據點","en":"Set up an office in a new city"},{"num":248,"scale":"creative_arts","text":"去藝廊看展","en":"Visit an art gallery"},{"num":249,"scale":"creative_writing","text":"寫一齣舞台劇","en":"Write a play for a theater"},{"num":250,"scale":"engineering","text":"分析飛機設計上的問題","en":"Analyze problems in aircraft design"},{"num":251,"scale":"family_activity","text":"帶家人去野餐","en":"Take the family on a picnic"},{"num":252,"scale":"finance","text":"給別人投資的建議","en":"Provide advice about investments"},{"num":253,"scale":"hr_management","text":"檢視公司的平等雇用政策","en":"Review organizational policy matters on equal employment opportunity"},{"num":254,"scale":"information_tech","text":"建立一個資料庫","en":"Create a computer database"},{"num":255,"scale":"law","text":"撰寫法律文件","en":"Prepare legal documents"},{"num":256,"scale":"life_science","text":"研究植物怎麼生長","en":"Study how plants grow"},{"num":257,"scale":"management","text":"主持一家中型公司的營運","en":"Direct the operations of a medium size company"},{"num":258,"scale":"manual_labor","text":"把材料送進機器","en":"Feed items into a machine"},{"num":259,"scale":"mathematics","text":"計算贏得比賽的機率","en":"Calculate the probability of winning a contest"},{"num":260,"scale":"medical_service","text":"開藥幫病人止痛","en":"Prescribe medication to relieve pain"},{"num":261,"scale":"outdoor_agriculture","text":"在漁船上工作","en":"Work on a commercial fishing vessel"},{"num":262,"scale":"office_work","text":"安排並更新行程","en":"Schedule, maintain, and update appointments"},{"num":263,"scale":"performing_arts","text":"指揮管弦樂團","en":"Conduct an orchestra"},{"num":264,"scale":"personal_service","text":"籌辦婚禮或其他慶祝場合","en":"Plan parties for weddings and other special occasions"},{"num":265,"scale":"physical_risk","text":"從事極限運動","en":"Participate in extreme sports"},{"num":266,"scale":"physical_science","text":"描述有機化合物的結構","en":"Describe the structure of an organic compound"},{"num":267,"scale":"professional_advising","text":"評估一個組織的發展需求","en":"Assess organizational development needs"},{"num":268,"scale":"protective","text":"監視可疑對象","en":"Conduct surveillance of suspects"},{"num":269,"scale":"religious","text":"參加宗教儀式","en":"Attend a religious ceremony"},{"num":270,"scale":"sales","text":"說服客人掏錢","en":"Persuade customers to spend money"},{"num":271,"scale":"skilled_trades","text":"學習操作電動工具","en":"Learn how to operate power tools"},{"num":272,"scale":"social_sciences","text":"研究社會的階級結構","en":"Study class structures of a society"},{"num":273,"scale":"social_service","text":"協助弱勢家庭的孩子適應學校","en":"Help children from disadvantaged background adjust to school"},{"num":274,"scale":"teaching","text":"批改並回饋學生的作業","en":"Offer feedback on student papers"},{"num":275,"scale":"technical_writing","text":"製作產品型錄","en":"Create manufacturer's catalogs"},{"num":276,"scale":"business","text":"促成公司之間的交易","en":"Set up business transactions between companies"},{"num":277,"scale":"creative_arts","text":"做一件雕塑","en":"Create a sculpture"},{"num":278,"scale":"creative_writing","text":"加入情境喜劇的編劇團隊","en":"Be on a team of writers for a situational comedy"},{"num":279,"scale":"engineering","text":"設計一座高架橋","en":"Design a highway overpass"},{"num":280,"scale":"family_activity","text":"幫小孩安排和朋友玩的時間","en":"Arrange play dates for your child"},{"num":281,"scale":"finance","text":"評估一項投資好不好","en":"Evaluate the quality of an investment"},{"num":282,"scale":"hr_management","text":"辦活動提振員工士氣","en":"Organize activities to raise employees' morale"},{"num":283,"scale":"information_tech","text":"改善電腦網路的效率","en":"Improve computer network efficiency"},{"num":284,"scale":"law","text":"在法庭上為當事人辯護","en":"Defend a client against a legal charge (in a courtroom)"},{"num":285,"scale":"life_science","text":"做細菌培養的研究","en":"Conduct research with growing bacteria"},{"num":286,"scale":"manual_labor","text":"依重量或大小把東西分類","en":"Separate items by weight or size"},{"num":287,"scale":"mathematics","text":"用數學定理解題","en":"Use mathematical theorems to solve problems"},{"num":288,"scale":"medical_service","text":"治療受傷的動物","en":"Treat injured animals"},{"num":289,"scale":"outdoor_agriculture","text":"在戶外工作","en":"Work in the outdoors"},{"num":290,"scale":"office_work","text":"整理檔案和文件","en":"Organize files and documents"},{"num":291,"scale":"performing_arts","text":"去試鏡演電影","en":"Take a screen test for a movie"},{"num":292,"scale":"personal_service","text":"幫客人規劃運動計畫","en":"Help a client plan an exercise program"},{"num":293,"scale":"physical_science","text":"研究地震為什麼發生","en":"Study why earthquakes occur"},{"num":294,"scale":"professional_advising","text":"建議公司調整營運方式","en":"Recommend changes in how a company operates"},{"num":295,"scale":"protective","text":"隨行保護特定人士","en":"Escort individuals for their own protection"},{"num":296,"scale":"religious","text":"向別人解說宗教經典","en":"Explain a religious text to people"},{"num":297,"scale":"sales","text":"銷售商用不動產","en":"Sell commercial property"},{"num":298,"scale":"skilled_trades","text":"用建材砌一面牆","en":"Use building materials to construct a wall"},{"num":299,"scale":"social_sciences","text":"研究團體中人與人的互動","en":"Study intersections among people in a group"},{"num":300,"scale":"social_service","text":"輔導有個人困擾的人","en":"Counsel clients with personal problems"},{"num":301,"scale":"teaching","text":"指導高中生做專題研究","en":"Supervise high school students' research projects"},{"num":302,"scale":"technical_writing","text":"為組織撰寫作業文件","en":"Write operating documents for an organization"},{"num":303,"scale":"business","text":"談成一筆生意","en":"Negotiate a business deal"},{"num":304,"scale":"creative_arts","text":"學習繪畫","en":"Study painting"},{"num":305,"scale":"creative_writing","text":"寫童書","en":"Write children books"},{"num":306,"scale":"engineering","text":"設計發電廠的故障檢測程序","en":"Design a diagnostic routine for a power plant"},{"num":307,"scale":"family_activity","text":"為朋友和家人下廚","en":"Cook for your friends and family"},{"num":308,"scale":"finance","text":"安排企業貸款","en":"Arrange business loans"},{"num":309,"scale":"hr_management","text":"規劃員工的懲處程序","en":"Structure an employee disciplinary action"},{"num":310,"scale":"information_tech","text":"修改現有的軟體","en":"Modify existing software"},{"num":311,"scale":"law","text":"仲裁雙方的法律爭議","en":"Arbitrate legal disputes between parties"},{"num":312,"scale":"manual_labor","text":"餵食並整理牲畜","en":"Feed and groom livestock"},{"num":313,"scale":"office_work","text":"製作薪資表","en":"Prepare payrolls"},{"num":314,"scale":"performing_arts","text":"演電影","en":"Act in a movie"},{"num":315,"scale":"personal_service","text":"幫客人規劃到歐洲的旅行","en":"Help a client plan a vacation to Europe"},{"num":316,"scale":"physical_science","text":"用氣象資料預測天氣","en":"Use meteorological information to predict the weather"},{"num":317,"scale":"protective","text":"學習消防技術","en":"Learn fire-fighting techniques"},{"num":318,"scale":"religious","text":"禱告或祈願","en":"Pray"},{"num":319,"scale":"sales","text":"把新產品賣給消費者","en":"Sell a new product to consumers"},{"num":320,"scale":"skilled_trades","text":"把金屬零件焊接起來","en":"Weld together metal components of products"},{"num":321,"scale":"social_service","text":"為身心障礙者提供服務","en":"Provide services to individuals with disabilities"},{"num":322,"scale":"business","text":"經營和供應商的關係","en":"Develop relationship with external suppliers"},{"num":323,"scale":"family_activity","text":"帶家人去旅行","en":"Take the family on a vacation"},{"num":324,"scale":"finance","text":"學習理財","en":"Learn about money management"},{"num":325,"scale":"information_tech","text":"安裝一套新的電腦系統","en":"Install a new computer system"},{"num":326,"scale":"manual_labor","text":"用雙手搬、抬、拉東西","en":"Use hands to lift, carry, and pull objects"},{"num":327,"scale":"personal_service","text":"帶團導覽城市景點","en":"Lead a tour to points of interest in a large city"},{"num":328,"scale":"physical_science","text":"修一門物理科學的課","en":"Take a course in the physical sciences"},{"num":329,"scale":"religious","text":"上一門宗教相關的課","en":"Take a class about religion"},{"num":330,"scale":"sales","text":"學習新的銷售技巧","en":"Learn new sales tactics"},{"num":331,"scale":"social_service","text":"幫助別人克服生活上的難關","en":"Help people overcome social problems"},{"num":332,"scale":"family_activity","text":"把家裡保持得舒適","en":"Keep the home looking comfortable"},{"num":333,"scale":"manual_labor","text":"用吸塵器和鏟子清理工作區","en":"Use vacuums and shovels to clean working areas"},{"num":334,"scale":"personal_service","text":"幫客人量身修改衣服","en":"Fit and alter clothes for a customer"},{"num":335,"scale":"sales","text":"擔任零售業的業務代表","en":"Be a sales representative for a retail business"},{"num":336,"scale":"family_activity","text":"念故事給小孩聽","en":"Read a story to your child"},{"num":337,"scale":"personal_service","text":"協助客人認識交往對象","en":"Work with clients to meet romantic partners"}]};
+const B5 = {"items":[{"num":1,"text":"我常為各種事情擔心","en":"Worry about things","domain":"N","facet":1,"keyed":1},{"num":2,"text":"我很容易交到朋友","en":"Make friends easily","domain":"E","facet":1,"keyed":1},{"num":3,"text":"我的想像力很豐富","en":"Have a vivid imagination","domain":"O","facet":1,"keyed":1},{"num":4,"text":"我信任別人","en":"Trust others","domain":"A","facet":1,"keyed":1},{"num":5,"text":"我能順利完成交付的任務","en":"Complete tasks successfully","domain":"C","facet":1,"keyed":1},{"num":6,"text":"我很容易生氣","en":"Get angry easily","domain":"N","facet":2,"keyed":1},{"num":7,"text":"我喜歡人多的聚會","en":"Love large parties","domain":"E","facet":2,"keyed":1},{"num":8,"text":"我認為藝術很重要","en":"Believe in the importance of art","domain":"O","facet":2,"keyed":1},{"num":9,"text":"我會利用別人來達成自己的目的","en":"Use others for my own ends","domain":"A","facet":2,"keyed":-1},{"num":10,"text":"我喜歡把東西整理乾淨","en":"Like to tidy up","domain":"C","facet":2,"keyed":1},{"num":11,"text":"我常覺得心情低落","en":"Often feel blue","domain":"N","facet":3,"keyed":1},{"num":12,"text":"我會主動跳出來主導事情","en":"Take charge","domain":"E","facet":3,"keyed":1},{"num":13,"text":"我的情緒感受很強烈","en":"Experience my emotions intensely","domain":"O","facet":3,"keyed":1},{"num":14,"text":"我很樂意幫助別人","en":"Love to help others","domain":"A","facet":3,"keyed":1},{"num":15,"text":"我會信守承諾","en":"Keep my promises","domain":"C","facet":3,"keyed":1},{"num":16,"text":"我覺得主動接近別人很困難","en":"Find it difficult to approach others","domain":"N","facet":4,"keyed":1},{"num":17,"text":"我總是很忙碌","en":"Am always busy","domain":"E","facet":4,"keyed":1},{"num":18,"text":"比起一成不變，我更喜歡有變化","en":"Prefer variety to routine","domain":"O","facet":4,"keyed":1},{"num":19,"text":"我喜歡跟人爭辯到底","en":"Love a good fight","domain":"A","facet":4,"keyed":-1},{"num":20,"text":"我做事很努力","en":"Work hard","domain":"C","facet":4,"keyed":1},{"num":21,"text":"我會毫無節制地大吃大喝或放縱自己","en":"Go on binges","domain":"N","facet":5,"keyed":1},{"num":22,"text":"我熱愛刺激的感覺","en":"Love excitement","domain":"E","facet":5,"keyed":1},{"num":23,"text":"我喜歡閱讀有難度的內容","en":"Love to read challenging material","domain":"O","facet":5,"keyed":1},{"num":24,"text":"我認為自己比別人優秀","en":"Believe that I am better than others","domain":"A","facet":5,"keyed":-1},{"num":25,"text":"我總是事先做好準備","en":"Am always prepared","domain":"C","facet":5,"keyed":1},{"num":26,"text":"我很容易慌張","en":"Panic easily","domain":"N","facet":6,"keyed":1},{"num":27,"text":"我身上散發著愉快的氣息","en":"Radiate joy","domain":"E","facet":6,"keyed":1},{"num":28,"text":"我傾向支持自由派的政治人物","en":"Tend to vote for liberal political candidates","domain":"O","facet":6,"keyed":1},{"num":29,"text":"我同情無家可歸的人","en":"Sympathize with the homeless","domain":"A","facet":6,"keyed":1},{"num":30,"text":"我常常沒想清楚就一頭栽進去","en":"Jump into things without thinking","domain":"C","facet":6,"keyed":-1},{"num":31,"text":"我會擔心最壞的情況發生","en":"Fear for the worst","domain":"N","facet":1,"keyed":1},{"num":32,"text":"我和人相處時感到自在","en":"Feel comfortable around people","domain":"E","facet":1,"keyed":1},{"num":33,"text":"我享受天馬行空的幻想","en":"Enjoy wild flights of fantasy","domain":"O","facet":1,"keyed":1},{"num":34,"text":"我相信別人的出發點是好的","en":"Believe that others have good intentions","domain":"A","facet":1,"keyed":1},{"num":35,"text":"我在自己做的事情上表現出色","en":"Excel in what I do","domain":"C","facet":1,"keyed":1},{"num":36,"text":"我很容易被惹毛","en":"Get irritated easily","domain":"N","facet":2,"keyed":1},{"num":37,"text":"在聚會上我會和很多不同的人聊天","en":"Talk to a lot of different people at parties","domain":"E","facet":2,"keyed":1},{"num":38,"text":"我能在別人不會注意的地方看見美","en":"See beauty in things that others might not notice","domain":"O","facet":2,"keyed":1},{"num":39,"text":"為了佔上風，我會用不正當的手段","en":"Cheat to get ahead","domain":"A","facet":2,"keyed":-1},{"num":40,"text":"我常忘記把東西歸回原位","en":"Often forget to put things back in their proper place","domain":"C","facet":2,"keyed":-1},{"num":41,"text":"我不喜歡自己","en":"Dislike myself","domain":"N","facet":3,"keyed":1},{"num":42,"text":"我會試著帶領別人","en":"Try to lead others","domain":"E","facet":3,"keyed":1},{"num":43,"text":"我能感受到別人的情緒","en":"Feel others' emotions","domain":"O","facet":3,"keyed":1},{"num":44,"text":"我很關心別人","en":"Am concerned about others","domain":"A","facet":3,"keyed":1},{"num":45,"text":"我說實話","en":"Tell the truth","domain":"C","facet":3,"keyed":1},{"num":46,"text":"我害怕引起別人注意","en":"Am afraid to draw attention to myself","domain":"N","facet":4,"keyed":1},{"num":47,"text":"我總是動個不停","en":"Am always on the go","domain":"E","facet":4,"keyed":1},{"num":48,"text":"我偏好維持自己熟悉的方式","en":"Prefer to stick with things that I know","domain":"O","facet":4,"keyed":-1},{"num":49,"text":"我會對別人大吼","en":"Yell at people","domain":"A","facet":4,"keyed":-1},{"num":50,"text":"我做的比別人期待的更多","en":"Do more than what's expected of me","domain":"C","facet":4,"keyed":1},{"num":51,"text":"我很少放縱自己","en":"Rarely overindulge","domain":"N","facet":5,"keyed":-1},{"num":52,"text":"我會主動尋求冒險","en":"Seek adventure","domain":"E","facet":5,"keyed":1},{"num":53,"text":"我會避開哲學性的討論","en":"Avoid philosophical discussions","domain":"O","facet":5,"keyed":-1},{"num":54,"text":"我對自己的評價很高","en":"Think highly of myself","domain":"A","facet":5,"keyed":-1},{"num":55,"text":"我會把計畫確實執行完","en":"Carry out my plans","domain":"C","facet":5,"keyed":1},{"num":56,"text":"事情一多我就招架不住","en":"Become overwhelmed by events","domain":"N","facet":6,"keyed":1},{"num":57,"text":"我玩得很開心","en":"Have a lot of fun","domain":"E","facet":6,"keyed":1},{"num":58,"text":"我認為對錯沒有絕對的標準","en":"Believe that there is no absolute right and wrong","domain":"O","facet":6,"keyed":1},{"num":59,"text":"我同情處境比我差的人","en":"Feel sympathy for those who are worse off than myself","domain":"A","facet":6,"keyed":1},{"num":60,"text":"我會做出草率的決定","en":"Make rash decisions","domain":"C","facet":6,"keyed":-1},{"num":61,"text":"我害怕很多事情","en":"Am afraid of many things","domain":"N","facet":1,"keyed":1},{"num":62,"text":"我會避免與人接觸","en":"Avoid contacts with others","domain":"E","facet":1,"keyed":-1},{"num":63,"text":"我喜歡做白日夢","en":"Love to daydream","domain":"O","facet":1,"keyed":1},{"num":64,"text":"我相信別人說的話","en":"Trust what people say","domain":"A","facet":1,"keyed":1},{"num":65,"text":"我能把事情處理得很順","en":"Handle tasks smoothly","domain":"C","facet":1,"keyed":1},{"num":66,"text":"我會發脾氣","en":"Lose my temper","domain":"N","facet":2,"keyed":1},{"num":67,"text":"我偏好獨處","en":"Prefer to be alone","domain":"E","facet":2,"keyed":-1},{"num":68,"text":"我不喜歡詩","en":"Do not like poetry","domain":"O","facet":2,"keyed":-1},{"num":69,"text":"我會佔別人便宜","en":"Take advantage of others","domain":"A","facet":2,"keyed":-1},{"num":70,"text":"我的房間總是亂七八糟","en":"Leave a mess in my room","domain":"C","facet":2,"keyed":-1},{"num":71,"text":"我常常提不起勁、意志消沉","en":"Am often down in the dumps","domain":"N","facet":3,"keyed":1},{"num":72,"text":"我會把事情掌握在自己手上","en":"Take control of things","domain":"E","facet":3,"keyed":1},{"num":73,"text":"我很少察覺自己的情緒反應","en":"Rarely notice my emotional reactions","domain":"O","facet":3,"keyed":-1},{"num":74,"text":"我對別人的感受無動於衷","en":"Am indifferent to the feelings of others","domain":"A","facet":3,"keyed":-1},{"num":75,"text":"我會違反規定","en":"Break rules","domain":"C","facet":3,"keyed":-1},{"num":76,"text":"只有和朋友在一起時我才自在","en":"Only feel comfortable with friends","domain":"N","facet":4,"keyed":1},{"num":77,"text":"我在空閒時間也安排很多事","en":"Do a lot in my spare time","domain":"E","facet":4,"keyed":1},{"num":78,"text":"我不喜歡改變","en":"Dislike changes","domain":"O","facet":4,"keyed":-1},{"num":79,"text":"我會出言羞辱別人","en":"Insult people","domain":"A","facet":4,"keyed":-1},{"num":80,"text":"我做事只求過得去","en":"Do just enough work to get by","domain":"C","facet":4,"keyed":-1},{"num":81,"text":"我很容易抵抗誘惑","en":"Easily resist temptations","domain":"N","facet":5,"keyed":-1},{"num":82,"text":"我享受不顧後果的感覺","en":"Enjoy being reckless","domain":"E","facet":5,"keyed":1},{"num":83,"text":"我很難理解抽象的概念","en":"Have difficulty understanding abstract ideas","domain":"O","facet":5,"keyed":-1},{"num":84,"text":"我覺得自己很了不起","en":"Have a high opinion of myself","domain":"A","facet":5,"keyed":-1},{"num":85,"text":"我會浪費時間","en":"Waste my time","domain":"C","facet":5,"keyed":-1},{"num":86,"text":"我覺得自己應付不來","en":"Feel that I'm unable to deal with things","domain":"N","facet":6,"keyed":1},{"num":87,"text":"我熱愛生活","en":"Love life","domain":"E","facet":6,"keyed":1},{"num":88,"text":"我傾向支持保守派的政治人物","en":"Tend to vote for conservative political candidates","domain":"O","facet":6,"keyed":-1},{"num":89,"text":"我對別人的問題不感興趣","en":"Am not interested in other people's problems","domain":"A","facet":6,"keyed":-1},{"num":90,"text":"我做事很衝","en":"Rush into things","domain":"C","facet":6,"keyed":-1},{"num":91,"text":"我很容易感到壓力大","en":"Get stressed out easily","domain":"N","facet":1,"keyed":1},{"num":92,"text":"我和別人保持距離","en":"Keep others at a distance","domain":"E","facet":1,"keyed":-1},{"num":93,"text":"我喜歡沉浸在自己的思緒裡","en":"Like to get lost in thought","domain":"O","facet":1,"keyed":1},{"num":94,"text":"我不太相信別人","en":"Distrust people","domain":"A","facet":1,"keyed":-1},{"num":95,"text":"我知道怎麼把事情搞定","en":"Know how to get things done","domain":"C","facet":1,"keyed":1},{"num":96,"text":"我不容易被激怒","en":"Am not easily annoyed","domain":"N","facet":2,"keyed":-1},{"num":97,"text":"我會避開人多的場合","en":"Avoid crowds","domain":"E","facet":2,"keyed":-1},{"num":98,"text":"我不喜歡逛美術館","en":"Do not enjoy going to art museums","domain":"O","facet":2,"keyed":-1},{"num":99,"text":"我會從中阻撓別人的計畫","en":"Obstruct others' plans","domain":"A","facet":2,"keyed":-1},{"num":100,"text":"我會隨手把東西亂放","en":"Leave my belongings around","domain":"C","facet":2,"keyed":-1},{"num":101,"text":"我對自己感到自在","en":"Feel comfortable with myself","domain":"N","facet":3,"keyed":-1},{"num":102,"text":"我會等別人先帶頭","en":"Wait for others to lead the way","domain":"E","facet":3,"keyed":-1},{"num":103,"text":"我不理解情緒化的人","en":"Don't understand people who get emotional","domain":"O","facet":3,"keyed":-1},{"num":104,"text":"我不會為別人花時間","en":"Take no time for others","domain":"A","facet":3,"keyed":-1},{"num":105,"text":"我會違背自己的承諾","en":"Break my promises","domain":"C","facet":3,"keyed":-1},{"num":106,"text":"尷尬的社交場合不會困擾我","en":"Am not bothered by difficult social situations","domain":"N","facet":4,"keyed":-1},{"num":107,"text":"我喜歡放慢步調","en":"Like to take it easy","domain":"E","facet":4,"keyed":-1},{"num":108,"text":"我習慣依循傳統的做法","en":"Am attached to conventional ways","domain":"O","facet":4,"keyed":-1},{"num":109,"text":"我會報復別人","en":"Get back at others","domain":"A","facet":4,"keyed":-1},{"num":110,"text":"我在工作上不太投入時間和心力","en":"Put little time and effort into my work","domain":"C","facet":4,"keyed":-1},{"num":111,"text":"我能控制自己的慾望","en":"Am able to control my cravings","domain":"N","facet":5,"keyed":-1},{"num":112,"text":"我會瘋狂、放得很開","en":"Act wild and crazy","domain":"E","facet":5,"keyed":1},{"num":113,"text":"我對理論性的討論不感興趣","en":"Am not interested in theoretical discussions","domain":"O","facet":5,"keyed":-1},{"num":114,"text":"我會誇耀自己的優點","en":"Boast about my virtues","domain":"A","facet":5,"keyed":-1},{"num":115,"text":"我很難開始動手做事","en":"Have difficulty starting tasks","domain":"C","facet":5,"keyed":-1},{"num":116,"text":"在壓力下我仍能保持冷靜","en":"Remain calm under pressure","domain":"N","facet":6,"keyed":-1},{"num":117,"text":"我凡事往好處想","en":"Look at the bright side of life","domain":"E","facet":6,"keyed":1},{"num":118,"text":"我認為對犯罪應該從重處罰","en":"Believe that we should be tough on crime","domain":"O","facet":6,"keyed":-1},{"num":119,"text":"我盡量不去想那些需要幫助的人","en":"Try not to think about the needy","domain":"A","facet":6,"keyed":-1},{"num":120,"text":"我做事不經思考","en":"Act without thinking","domain":"C","facet":6,"keyed":-1}],"norms":{"1":{"category":"men under 21 years old","ns":[0.0,67.84,80.7,85.98,81.98,79.66,15.83,15.37,12.37,14.66,14.49,11.72,11.93,10.58,12.38,11.67,9.63,3.76,4.41,4.25,3.83,3.25,3.38,13.76,12.23,14.06,11.54,14.67,14.41,3.78,4.17,3.66,3.15,3.38,3.68,16.68,14.51,14.52,12.84,15.47,11.86,2.96,3.87,3.31,3.16,3.5,3.17,13.18,14.85,15.37,12.73,12.01,13.96,3.69,3.44,3.1,4.05,3.94,3.35,15.31,10.97,15.22,13.61,12.35,12.08,2.55,3.93,2.92,3.65,3.24,4.02]},"2":{"category":"men between 21 and 40 years old","ns":[0.0,66.97,78.9,86.51,84.22,85.5,16.48,15.21,12.65,13.1,14.27,11.44,11.75,10.37,12.11,12.18,9.13,3.76,4.3,4.12,3.81,3.52,3.48,13.31,11.34,14.58,12.07,13.34,14.3,3.8,3.99,3.58,3.23,3.43,3.53,15.94,14.94,14.6,13.14,16.11,11.66,3.18,3.63,3.19,3.39,3.25,3.72,12.81,15.93,15.37,14.58,11.43,13.77,3.69,3.18,2.92,3.7,3.57,3.29,15.8,12.05,15.68,15.36,13.27,13.31,2.44,4.26,2.76,3.39,3.31,4.03]},"3":{"category":"men between 41 and 60 years of age","ns":[0.0,64.11,77.06,83.04,88.33,91.27,16.04,14.31,13.05,11.76,13.35,10.79,11.6,9.78,11.85,11.24,8.81,3.56,4.16,3.94,3.62,3.55,3.35,13.22,10.45,14.95,12.27,11.82,14.32,3.71,3.68,3.44,3.3,3.23,3.29,14.65,14.66,14.76,12.69,15.4,11.04,3.35,3.59,3.02,3.44,3.43,3.93,13.42,16.94,15.65,15.66,11.96,14.21,3.49,2.83,2.88,3.33,3.34,3.17,16.19,13.33,16.56,16.51,14.05,14.6,2.25,4.32,2.5,2.93,3.13,3.78]},"4":{"category":"men over 60 years old","ns":[0.0,58.42,79.73,79.78,90.2,95.31,15.48,13.63,12.21,11.73,11.99,9.81,11.46,8.18,11.08,9.91,8.24,3.54,4.31,3.59,3.82,3.36,3.28,14.55,11.19,15.29,12.81,11.03,15.02,3.47,3.58,3.1,3.25,2.88,3.16,14.06,14.22,14.34,12.42,14.61,10.11,3.13,3.64,2.9,3.2,3.89,4.02,13.96,17.74,15.76,16.18,11.87,14.0,3.13,2.39,2.74,3.41,3.5,3.11,16.32,14.41,17.54,16.65,14.98,15.18,2.31,4.49,2.3,2.68,2.76,3.61]},"5":{"category":"women under 21 years old","ns":[0.0,73.41,84.26,89.01,89.14,81.27,15.61,14.98,11.84,13.21,14.38,13.31,13.09,11.05,12.11,12.48,11.3,3.62,4.18,4.2,3.82,3.3,3.47,14.47,13.12,14.03,12.67,14.69,15.34,3.6,4.13,3.68,3.09,3.48,3.42,16.86,15.93,16.02,12.95,15.06,12.17,2.89,3.44,2.95,3.24,3.51,3.02,13.46,16.11,16.66,13.73,13.23,15.7,3.72,2.94,2.69,4.14,3.79,2.84,15.3,11.11,15.62,14.69,12.73,11.82,2.54,4.17,2.76,3.37,3.19,4.01]},"6":{"category":"women between 21 and 40 years old","ns":[0.0,72.14,80.78,88.25,91.91,87.57,16.16,14.64,12.15,11.39,13.87,13.08,12.72,10.79,12.2,12.71,10.69,3.68,4.13,4.07,3.79,3.58,3.64,14.05,11.92,14.25,12.77,12.84,14.96,3.66,4.05,3.61,3.24,3.53,3.31,15.64,15.97,16.41,12.84,15.28,12.06,3.34,3.3,2.69,3.44,3.47,3.46,13.15,17.34,16.81,15.57,12.98,15.52,3.71,2.61,2.53,3.5,3.57,2.87,16.02,12.67,16.36,16.11,13.56,12.91,2.34,4.51,2.54,3.05,3.23,4.18]},"7":{"category":"women between 41 and 61 years old","ns":[0.0,67.38,78.62,86.15,95.73,93.45,16.1,14.19,12.62,9.84,12.94,12.05,11.19,10.07,12.07,11.98,10.07,3.72,4.03,3.97,3.73,3.69,3.56,14.1,10.84,14.51,13.03,11.08,15.0,3.72,3.86,3.5,3.46,3.42,3.26,14.43,16.0,16.37,12.58,14.87,11.85,3.49,3.2,2.58,3.45,3.65,3.74,13.79,18.16,17.04,17.02,13.41,15.82,3.52,2.21,2.4,2.88,3.3,2.71,16.5,13.68,17.29,17.16,14.35,14.41,2.16,4.51,2.27,2.73,3.13,3.86]},"8":{"category":"women over 60 years old","ns":[0.0,63.48,78.22,81.56,97.17,96.44,14.92,12.73,12.66,9.52,12.43,11.39,10.52,9.1,12.0,10.21,9.87,3.61,3.82,3.68,3.61,3.58,3.44,14.85,10.93,14.19,12.76,10.08,15.65,3.43,3.7,3.64,3.26,3.2,3.04,13.15,15.95,15.73,11.8,14.21,10.81,3.71,3.12,2.74,3.26,3.47,3.89,14.19,18.64,17.13,17.98,13.58,15.83,3.39,1.9,2.18,2.56,3.38,2.85,16.5,15.15,18.34,17.19,14.7,15.11,2.24,4.07,1.81,2.49,3.15,3.66]}},"meta":{"domains":{"N":{"zh":"神經質","en":"Neuroticism","desc":"對負面情緒的敏感度。分數高的人比較常感到焦慮、低落或緊繃，也比較容易被壓力推倒；分數低的人情緒基線平穩，但也可能對危險訊號比較遲鈍。這個向度測的是情緒反應的強度與頻率，不是心理健康。","facets":[{"zh":"焦慮","en":"Anxiety","low":"你不太容易緊張，多數情況下覺得事情會沒問題。","mid":"你會擔心，但通常擔心得有理由，也放得下。","high":"你的警報系統很靈敏，常在事情發生前就先預演最壞的版本。"},{"zh":"憤怒","en":"Anger","low":"被冒犯時你不太動怒，脾氣算溫和。","mid":"你會生氣，但多半只在該生氣的時候。","high":"你對不公平或被輕視的反應很快，怒意來得又急又明顯。"},{"zh":"憂鬱","en":"Depression","low":"你少有低落期，對自己大致滿意。","mid":"偶爾情緒下滑，但會自己回來。","high":"你經常提不起勁、覺得沮喪，也比較容易對自己失望。"},{"zh":"自我意識","en":"Self-Consciousness","low":"你在陌生人面前自在，不太在意別人怎麼看你。","mid":"有些場合會不好意思，但不至於退縮。","high":"你很在意別人的眼光，在人群中容易覺得尷尬或想躲起來。"},{"zh":"放縱","en":"Immoderation","low":"你能延遲滿足，慾望對你的拉力不大。","mid":"大部分時候忍得住，偶爾會破戒。","high":"眼前的誘惑對你很難抗拒，常常先做了再說。"},{"zh":"脆弱","en":"Vulnerability","low":"壓力大時你反而更冷靜，能穩住場面。","mid":"壓力會影響你，但不至於失去判斷。","high":"事情一多一急，你容易慌掉、失去平常的判斷力。"}]},"E":{"zh":"外向性","en":"Extraversion","desc":"你從外在世界與人際互動中得到多少能量。分數高的人主動、活躍、話多；分數低的不等於害羞或不快樂，只是獨處時比較不耗損，社交需求量本來就比較小。","facets":[{"zh":"熱情","en":"Friendliness","low":"你和人保持一定距離，要熟起來需要時間。","mid":"你對人友善，但不會主動熱絡。","high":"你主動親近人，很快就能讓人覺得跟你熟。"},{"zh":"群聚","en":"Gregariousness","low":"你偏好獨處或少數人的深談，人多的場合會消耗你。","mid":"可以參加聚會，但不會刻意找。","high":"你喜歡人多熱鬧，愈多人在場你愈有精神。"},{"zh":"主導","en":"Assertiveness","low":"你不搶著帶頭，讓別人主導對你沒差。","mid":"需要時你會出面，但不是預設角色。","high":"你自然而然會接手主導，也習慣別人聽你的。"},{"zh":"活動量","en":"Activity Level","low":"你步調從容，喜歡留白的時間。","mid":"忙起來會很忙，但也懂得停。","high":"你的行程總是滿的，停下來反而不舒服。"},{"zh":"尋求刺激","en":"Excitement-Seeking","low":"你偏好平穩，太強烈的刺激讓你不適。","mid":"偶爾想找點新鮮的。","high":"你需要高強度的刺激才覺得夠，也不太怕冒險。"},{"zh":"愉悅","en":"Cheerfulness","low":"你的正面情緒表達含蓄，不常外顯。","mid":"你會開心，也會表現出來。","high":"你常處在愉快的狀態，而且旁邊的人感覺得到。"}]},"O":{"zh":"經驗開放性","en":"Openness to Experience","desc":"你對新想法、新感受、新做法的胃口。分數高的人愛探索、抽象、求變；分數低的人務實、專注在具體可行的事情上。這不是聰明程度，是興趣的方向。","facets":[{"zh":"想像","en":"Imagination","low":"你務實，注意力放在眼前實際的事情上。","mid":"你會想像，但不會沉迷。","high":"你的內在世界很活躍，常沉浸在幻想與思緒裡。"},{"zh":"藝術興趣","en":"Artistic Interests","low":"你對藝術、美感的東西不太有感。","mid":"你欣賞得來，但不會特別去追。","high":"你會被美的東西強烈吸引，也常主動去找。"},{"zh":"情緒感受","en":"Emotionality","low":"你不太留意情緒，包括自己的。","mid":"你察覺得到情緒，但不會被牽著走。","high":"你對情緒訊號很敏銳，自己的感受也很鮮明。"},{"zh":"求變","en":"Adventurousness","low":"你偏好熟悉的路線和固定的做法。","mid":"願意嘗試新的，但不會刻意打破慣例。","high":"你討厭一成不變，會主動去找沒做過的事。"},{"zh":"智性","en":"Intellect","low":"你對抽象、理論性的討論沒興趣，偏好具體的東西。","mid":"你想得動抽象的東西，但不是嗜好。","high":"你享受推論、思辨和有難度的概念。"},{"zh":"價值開放","en":"Liberalism","low":"你尊重傳統與既有的規範，覺得它們有道理。","mid":"你會質疑，但也不急著推翻。","high":"你習慣挑戰權威與慣例，覺得規則應該重新檢視。"}]},"A":{"zh":"親和性","en":"Agreeableness","desc":"你在自己的利益與別人的利益之間怎麼擺。分數高的人合作、體貼、願意讓；分數低的人直接、競爭、把自己的立場放前面。兩端在不同場合各有優勢。","facets":[{"zh":"信任","en":"Trust","low":"你預設要先確認，對別人的動機保持警覺。","mid":"你信任人，但會看情況。","high":"你假定別人出於善意，也容易相信人說的話。"},{"zh":"正直","en":"Morality","low":"你願意用一些手段取得優勢，覺得那是遊戲規則。","mid":"你大致坦白，偶爾會保留。","high":"你不操弄、不迂迴，坦白到有時會吃虧。"},{"zh":"利他","en":"Altruism","low":"幫別人對你來說比較像負擔，不是滿足。","mid":"你會幫忙，在合理範圍內。","high":"幫助別人本身就讓你有成就感，你也常主動去做。"},{"zh":"合作","en":"Cooperation","low":"你會正面對抗，不介意把話講開、爭到底。","mid":"你避免無謂的衝突，但該爭會爭。","high":"你會為了維持關係而讓步，很不喜歡起衝突。"},{"zh":"謙遜","en":"Modesty","low":"你認為自己比多數人優秀，也不掩飾。","mid":"你對自己有信心，但不會拿出來說。","high":"你不喜歡突顯自己，被稱讚時會覺得不自在。"},{"zh":"同理","en":"Sympathy","low":"你用理性而非情感看待別人的處境，比較不容易被打動。","mid":"你有同理心，但不會被情緒淹沒。","high":"你對弱勢與受苦的人很有感，容易被別人的處境牽動。"}]},"C":{"zh":"嚴謹自律性","en":"Conscientiousness","desc":"你怎麼控制衝動、組織自己、朝目標推進。分數高的人可靠、有計畫、說到做到；分數低的人彈性、隨性、對突發狀況適應快，但持續力較弱。","facets":[{"zh":"自我效能","en":"Self-Efficacy","low":"你對自己能不能把事情做成，沒什麼把握。","mid":"你相信自己能處理多數事情。","high":"你很確定自己有能力把事情做成，也通常做得到。"},{"zh":"條理","en":"Orderliness","low":"你隨性，環境和流程都不需要整齊。","mid":"你有基本的秩序，但不強求。","high":"你有組織、愛整理，東西和計畫都要各就各位。"},{"zh":"盡責","en":"Dutifulness","low":"規則對你比較像參考值，承諾也保留彈性。","mid":"你守約，除非有更重要的理由。","high":"你把承諾和規範看得很重，說出口就一定做到。"},{"zh":"成就追求","en":"Achievement-Striving","low":"夠用就好，你不會為了更高的標準多花力氣。","mid":"你有目標，但不會把自己逼到底。","high":"你設定高標準並持續推進，也常做得比要求更多。"},{"zh":"自律","en":"Self-Discipline","low":"你很難開始，也容易半途分心。","mid":"你能完成事情，偶爾需要推一把。","high":"你能靠自己開始並堅持到完成，不太需要外力督促。"},{"zh":"審慎","en":"Cautiousness","low":"你憑直覺快速決定，先做了再說。","mid":"你會想一下，但不會想太久。","high":"你三思而後行，不確定的時候寧可先不動。"}]}}}};
+const $ = id => document.getElementById(id);
+const KEY = "careerexplorer_v1";
+
+const BLANK = () => ({
+  sex:null, age:null,
+  r:{ans:new Array(48).fill(0), page:0, done:false},
+  m:{ans:new Array(337).fill(0), page:0, done:false},
+  b:{ans:new Array(120).fill(0), page:0, done:false}
+});
+let S = BLANK();
+let active = null;               // "r" | "b"
+let memoryOnly = false;
+
+const CFG = {
+  r:{ n:48, per:8, labels:["非常不喜歡","有點不喜歡","普通","有點喜歡","非常喜歡"],
+     prompt:"想像你要做下面每一件事。你有多喜歡做它？不用管你現在會不會做、薪水多少，或別人怎麼想 —— 只憑喜不喜歡。",
+     items:RI.items },
+  m:{ n:337, per:8, labels:["非常不喜歡","有點不喜歡","普通","有點喜歡","非常喜歡"],
+     prompt:"這裡是 337 件更具體的活動。一樣只問你喜不喜歡做，不用管會不會、也不用管未來做不做得成。題目很多，隨時可以離開，進度會留著。",
+     items:BM.items },
+  b:{ n:120, per:6, labels:["非常不符合","有點不符合","不確定","有點符合","非常符合"],
+     prompt:"下面每句話描述一個人。請憑直覺選出它有多符合現在的你，不用想太久，也沒有好壞之分。",
+     items:B5.items }
+};
+
+/* ---------- storage ---------- */
+async function save(){ if(memoryOnly) return;
+  try{ await window.storage.set(KEY, JSON.stringify(S)); }catch(e){ memoryOnly = true; } }
+async function load(){ try{ const r = await window.storage.get(KEY); return r?JSON.parse(r.value):null; }catch(e){ return null; } }
+async function wipe(){ try{ await window.storage.delete(KEY); }catch(e){} }
+
+/* ---------- RIASEC scoring ---------- */
+function scoreRiasec(){
+  const raw = {R:0,I:0,A:0,S:0,E:0,C:0};
+  RI.items.forEach((it,i)=> raw[it.type] += S.r.ans[i]);
+  const out = {};
+  for(const t of RI.order){
+    out[t] = { raw:raw[t], pct:RI.percentile_table[t][raw[t]-8] };
+  }
+  const ranked = RI.order.slice().sort((a,b)=> out[b].raw - out[a].raw);
+  const vals = RI.order.map(t=> out[t].raw);
+  return { s:out, ranked, code:ranked.slice(0,3).join(""),
+           diff: Math.max(...vals) - Math.min(...vals) };
+}
+// hexagon adjacency: R-I-A-S-E-C in a circle
+function consistency(code){
+  const p = RI.order.indexOf(code[0]), q = RI.order.indexOf(code[1]);
+  const d = Math.min(Math.abs(p-q), 6-Math.abs(p-q));
+  return d === 1 ? "高" : d === 2 ? "中" : "低";
+}
+
+/* ---------- BIM scoring ---------- */
+function scoreBim(){
+  const sum = {}, cnt = {};
+  BM.items.forEach((it,i)=>{
+    sum[it.scale] = (sum[it.scale]||0) + S.m.ans[i];
+    cnt[it.scale] = (cnt[it.scale]||0) + 1;
+  });
+  const rows = BM.scales.map(sc=>({
+    ...sc, mean: sum[sc.id]/cnt[sc.id], raw: sum[sc.id]
+  }));
+  const all = rows.map(r=>r.mean);
+  const avg = all.reduce((a,b)=>a+b,0)/all.length;
+  const sd = Math.sqrt(all.reduce((a,b)=>a+(b-avg)**2,0)/all.length) || 1;
+  rows.forEach(r=> r.z = (r.mean-avg)/sd);          // relative to your own profile
+  rows.sort((a,b)=> b.mean - a.mean);
+  rows.forEach((r,i)=> r.rank = i+1);
+  return { rows, avg };
+}
+
+/* ---------- Big Five scoring ---------- */
+const DOM_OFF={N:[1,6],E:[2,7],O:[3,8],A:[4,9],C:[5,10]};
+const FAC_OFF={N:[10,16],E:[22,28],O:[34,40],A:[46,52],C:[58,64]};
+const K1=210.335958661391,K2=16.7379362643389,K3=0.405936512733332,K4=0.00270624341822222;
+function normFor(sex,age){
+  const a = age || 16;                       // no age given: use the youngest band
+  const b = a<21?0 : a<41?1 : a<61?2 : 3;
+  if(sex==="M") return B5.norms[String(1+b)].ns;
+  if(sex==="F") return B5.norms[String(5+b)].ns;
+  const m=B5.norms[String(1+b)].ns, f=B5.norms[String(5+b)].ns;
+  return m.map((v,i)=>(v+f[i])/2);           // no sex given: male/female combined
+}
+const pct = t => t<32 ? 1 : t>73 ? 99 : K1-K2*t+K3*t*t-K4*t*t*t;
+function scoreBig5(){
+  const ns = normFor(S.sex, S.age), raw = {};
+  B5.items.forEach((it,i)=>{
+    const v = it.keyed===1 ? S.b.ans[i] : 6-S.b.ans[i];
+    raw[it.domain+it.facet] = (raw[it.domain+it.facet]||0)+v;
+  });
+  const out = {};
+  for(const d of ["N","E","O","A","C"]){
+    let sum=0; for(let f=1;f<=6;f++) sum+=raw[d+f];
+    const [mi,si]=DOM_OFF[d], T=50+10*(sum-ns[mi])/ns[si], [mo,so]=FAC_OFF[d];
+    const facets=[];
+    for(let f=1;f<=6;f++){
+      const ft = 50+10*(raw[d+f]-ns[mo+f])/ns[so+f];
+      facets.push({f, raw:raw[d+f], T:ft, pct:pct(ft)});
+    }
+    out[d]={raw:sum, T, pct:pct(T), facets};
+  }
+  return out;
+}
+const level = p => p<30 ? "偏低" : p>70 ? "偏高" : "中等";
+
+/* ---------- home ---------- */
+function showHome(){
+  ["quiz","res1","resM","res2"].forEach(x=> $(x).classList.add("hide"));
+  $("home").classList.remove("hide");
+  const cnt = k => S[k].ans.filter(a=>a).length;
+  const line = (k, total, id) => S[k].done
+      ? `已完成 —— <a href="#" id="${id}">看結果</a>`
+      : cnt(k) ? `作答中，已完成 ${cnt(k)} / ${total} 題` : "";
+  $("st1").innerHTML = line("r", 48, "see1");
+  $("st2").innerHTML = line("m", 337, "see2");
+  $("st3").innerHTML = line("b", 120, "see3");
+  const lbl = k => S[k].done ? "重做" : cnt(k) ? "繼續" : "開始";
+  $("goRiasec").textContent = lbl("r");
+  $("goBim").textContent    = lbl("m");
+  $("goBig5").textContent   = lbl("b");
+  // highlight whichever stage is the natural next one
+  const nxt = !S.r.done ? "goRiasec" : !S.m.done ? "goBim" : !S.b.done ? "goBig5" : null;
+  ["goRiasec","goBim","goBig5"].forEach(id=> $(id).className = (id===nxt ? "btn" : "btn-quiet"));
+  const s1=$("see1"), s2=$("see2"), s3=$("see3");
+  if(s1) s1.onclick = e=>{ e.preventDefault(); renderRiasec(); };
+  if(s2) s2.onclick = e=>{ e.preventDefault(); renderBim(); };
+  if(s3) s3.onclick = e=>{ e.preventDefault(); renderBig5(); };
+  window.scrollTo({top:0,behavior:"instant"});
+}
+$("goRiasec").addEventListener("click", ()=> startQuiz("r"));
+$("goBim").addEventListener("click", ()=> startQuiz("m"));
+$("goBig5").addEventListener("click", ()=> startQuiz("b"));
+async function resetAll(){
+  if(!confirm("兩份測驗的作答都會清掉，確定嗎？")) return;
+  await wipe();
+  S = BLANK();
+  showHome();
+}
+
+/* ---------- quiz engine ---------- */
+function startQuiz(which){
+  active = which;
+  const st = S[which];
+  if(st.done){ st.ans.fill(0); st.page = 0; st.done = false; save(); }
+  ["home","res1","resM","res2"].forEach(x=> $(x).classList.add("hide"));
+  $("quiz").classList.remove("hide");
+  $("promptTxt").textContent = CFG[which].prompt;
+  buildRuler();
+  renderPage();
+}
+function pageCount(){ const c = CFG[active]; return Math.ceil(c.n / c.per); }
+function pageEnd(){ const c = CFG[active]; return Math.min((S[active].page+1)*c.per, c.n); }
+function buildRuler(){
+  const r = $("ruler"), n = CFG[active].n;
+  r.innerHTML = "";
+  if(n > 200){                       // too many ticks to draw individually
+    r.innerHTML = '<div class="tick tall" style="flex:1" id="longbar"></div>';
+    return;
+  }
+  for(let i=0;i<n;i++){
+    const t = document.createElement("div");
+    t.className = "tick" + ((i+1)%(n===48?8:n===337?25:10)===0 ? " tall":"");
+    r.appendChild(t);
+  }
+}
+function updateRuler(){
+  const st = S[active], c = CFG[active];
+  const n = st.ans.filter(a=>a>0).length;
+  const lb = $("longbar"), pctDone = n / c.n * 100;
+  if(lb){
+    lb.style.background =
+      `linear-gradient(to right, var(--ink) ${pctDone}%, var(--line) ${pctDone}%)`;
+  } else {
+    const ticks = $("ruler").children;
+    for(let i=0;i<c.n;i++) ticks[i].classList.toggle("done", st.ans[i]>0);
+  }
+  $("progressTxt").textContent = `已答 ${n} 題，還剩 ${c.n-n} 題`;
+  $("pageTxt").textContent = `第 ${st.page+1} / ${pageCount()} 頁`;
+}
+function renderPage(){
+  const st = S[active], c = CFG[active], box = $("itemBox");
+  box.innerHTML = "";
+  const start = st.page * c.per, stop = pageEnd();
+  for(let i=start;i<stop;i++){
+    const it = c.items[i], el = document.createElement("div");
+    el.className = "item";
+    el.innerHTML =
+      `<div class="stem"><span class="no">${i+1}.</span><span class="txt">${it.text}</span></div>
+       <div class="scale" role="group" aria-label="第 ${i+1} 題">` +
+      c.labels.map((L,j)=>
+        `<button class="opt" data-i="${i}" data-v="${j+1}" aria-pressed="${st.ans[i]===j+1}">
+           <span class="dot"></span>${L}</button>`).join("") + `</div>`;
+    box.appendChild(el);
+  }
+  $("prevBtn").disabled = st.page===0;
+  $("nextBtn").textContent = st.page === pageCount()-1 ? "看結果" : "下一頁";
+  $("midTxt").textContent = `第 ${start+1}–${stop} 題`;
+  $("warnBox").classList.add("hide");
+  updateRuler();
+  window.scrollTo({top:0,behavior:"instant"});
+}
+$("itemBox").addEventListener("click", e=>{
+  const b = e.target.closest(".opt"); if(!b) return;
+  S[active].ans[+b.dataset.i] = +b.dataset.v;
+  [...b.parentElement.children].forEach(x=> x.setAttribute("aria-pressed", x===b));
+  updateRuler(); save();
+});
+$("prevBtn").addEventListener("click", ()=>{
+  const st = S[active];
+  if(st.page>0){ st.page--; save(); renderPage(); }
+});
+$("nextBtn").addEventListener("click", ()=>{
+  const st = S[active], c = CFG[active], start = st.page*c.per, missing = [];
+  for(let i=start;i<pageEnd();i++) if(!st.ans[i]) missing.push(i+1);
+  if(missing.length){
+    $("warnBox").textContent = `還有第 ${missing.join("、")} 題沒選。`;
+    $("warnBox").classList.remove("hide"); return;
+  }
+  if(st.page < pageCount()-1){ st.page++; save(); renderPage(); return; }
+  const un = st.ans.map((a,i)=> a?0:i+1).filter(Boolean);
+  if(un.length){
+    st.page = Math.floor((un[0]-1)/c.per); save(); renderPage();
+    $("warnBox").textContent = `第 ${un.join("、")} 題還沒作答，已跳到第一題沒答的地方。`;
+    $("warnBox").classList.remove("hide"); return;
+  }
+  st.done = true; save();
+  active==="r" ? renderRiasec() : active==="m" ? renderBim() : renderBig5();
+});
+$("quitBtn").addEventListener("click", ()=>{ save(); showHome(); });
+
+/* ---------- hexagon ---------- */
+function hexSVG(res){
+  const R = 118, cx = 160, cy = 148;
+  const pt = (i, r) => {
+    const a = -Math.PI/2 + i*Math.PI/3;
+    return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+  };
+  const ring = r => RI.order.map((_,i)=> pt(i,r).map(v=>v.toFixed(1)).join(",")).join(" ");
+  const poly = RI.order.map((t,i)=>{
+    const r = R * Math.max(res.s[t].pct,2)/100;
+    return pt(i,r).map(v=>v.toFixed(1)).join(",");
+  }).join(" ");
+  const labels = RI.order.map((t,i)=>{
+    const [x,y] = pt(i, R+27);
+    const c = RI.types[t];
+    return `<text x="${x.toFixed(1)}" y="${(y+5).toFixed(1)}" text-anchor="middle"
+             font-size="14" fill="${c.color}" font-family="serif">${c.zh}</text>`;
+  }).join("");
+  const dots = RI.order.map((t,i)=>{
+    const r = R * Math.max(res.s[t].pct,2)/100, [x,y] = pt(i,r);
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${RI.types[t].color}"/>`;
+  }).join("");
+  return `<svg viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="六種興趣類型的側面圖">
+    ${[0.25,0.5,0.75,1].map(f=>
+      `<polygon points="${ring(R*f)}" fill="none" stroke="#C9D2CD" stroke-width="1"/>`).join("")}
+    ${RI.order.map((_,i)=>{const [x,y]=pt(i,R);
+      return `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#DDE4E0"/>`}).join("")}
+    <polygon points="${poly}" fill="#17211F" fill-opacity="0.07" stroke="#17211F" stroke-width="1.5"/>
+    ${dots}${labels}
+  </svg>`;
+}
+
+/* ---------- RIASEC results ---------- */
+function renderRiasec(){
+  const res = scoreRiasec();
+  ["home","quiz","resM","res2"].forEach(x=> $(x).classList.add("hide"));
+  const el = $("res1"); el.classList.remove("hide");
+  const [t1,t2,t3] = res.ranked;
+  const cons = consistency(res.code);
+  const diffTxt = res.diff >= 12
+    ? "你的興趣輪廓很分明，前幾名和後幾名差距明顯，方向相對好抓。"
+    : res.diff >= 6
+    ? "你的興趣輪廓算清楚，但第二、三名也有一定分量，值得一起考慮。"
+    : "你六種類型的分數很接近。這在國中階段很常見，通常代表你接觸過的領域還不夠多，還不是「你沒有興趣」。建議先用前三名去試試看，做過再回來重測。";
+
+  el.innerHTML =
+    `<h1>你的興趣類型</h1>
+     <div class="meta">RIASEC 何倫碼，對照 ${RI.norm_n.toLocaleString()} 位 12–18 歲青少年的常模</div>
+     <div class="hexwrap">${hexSVG(res)}</div>
+     <div class="code">
+       <span class="codeltr">${res.code}</span>
+       <span class="codeword">${res.ranked.slice(0,3).map(t=>RI.types[t].zh).join("、")}</span>
+     </div>
+     <p class="tdesc" style="margin-top:14px">
+       這三個字母就是你的何倫碼，代表你最強的三種興趣傾向，順序有意義。
+       ${RI.types[t1].zh}是主軸，${RI.types[t2].zh}和${RI.types[t3].zh}是搭配。
+     </p>
+     <div class="callout">
+       <p style="margin:0 0 8px"><b>輪廓分明度</b>：${diffTxt}</p>
+       <p style="margin:0"><b>一致性</b>：${cons}。前兩型在何倫六邊形上${
+         cons==="高" ? "相鄰，性質接近，比較容易找到同時滿足兩者的方向。"
+         : cons==="中" ? "隔一個位置，方向不同但可以結合，例如把兩邊當成主修和副修。"
+         : "位在對角，性質差異大。這不是壞事，代表你有兩種很不一樣的面向，可以找「用得到兩邊」的路，或分成工作和興趣。"}</p>
+     </div>` +
+    res.ranked.map((t,rank)=>{
+      const c = RI.types[t], s = res.s[t], p = Math.round(s.pct);
+      return `<section class="tbar" style="--tc:${c.color}">
+        <div class="thead">
+          <h2>${rank+1}. ${c.zh}<span class="en">${c.en}</span></h2>
+          <div class="tnum">${p}<small>百分位，${level(p)}</small></div>
+        </div>
+        <div class="track"><div class="fill" style="width:${p}%"></div></div>
+        <div class="scalelbl"><span>1</span><span>50</span><span>99</span></div>
+        <p class="tdesc"><b>${c.one}。</b>${c.desc}</p>
+        <div class="lists">
+          <div><h3>可以考慮的升學方向</h3><ul>${c.tracks.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+          <div><h3>相關職業</h3><ul>${c.jobs.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+          <div style="grid-column:1/-1"><h3>現在就能留意的科目</h3>
+            <ul><li>${c.school}</li></ul></div>
+        </div>
+      </section>`;
+    }).join("") +
+    `<div class="actions">
+       <button class="btn" id="next2">${S.b.done ? "看人格測驗結果" : "接著做第二階段人格測驗"}</button>
+       <button class="btn-quiet" id="json1">下載 JSON</button>
+       <button class="btn-quiet" id="print1">列印／存成 PDF</button>
+       <button class="btn-quiet" id="home1">回首頁</button>
+       <button class="btn-quiet" id="reset1">清除所有作答</button>
+     </div>
+     <div class="footer">
+       <p>原始分數每型 8–40 分；百分位是拿你的分數跟 ${RI.norm_n.toLocaleString()} 位 12–18 歲填答者比較後得出的。</p>
+       <p>興趣測驗量的是「你喜歡什麼」，不是「你能力好不好」，也不是要你現在就決定未來。分數低的類型不代表你做不來，只代表你目前對那類活動比較沒感覺。</p>
+       <p style="margin-bottom:0">題目為 Liao, Armstrong &amp; Rounds (2008) 的公共領域 IPIP RIASEC Markers；常模資料來自 Open-Source Psychometrics Project（CC0）。</p>
+     </div>`;
+  $("next2").onclick = ()=> S.b.done ? renderBig5() : startQuiz("b");
+  $("print1").onclick = ()=> window.print();
+  $("home1").onclick = showHome;
+  $("reset1").onclick = resetAll;
+  $("json1").onclick = ()=> download("riasec-result.json",
+    {instrument:"IPIP RIASEC Markers", sex:S.sex, age:S.age,
+     answers:S.r.ans, code:res.code, scores:res.s});
+  window.scrollTo({top:0,behavior:"instant"});
+}
+/* ---------- BIM results ---------- */
+function renderBim(){
+  const { rows, avg } = scoreBim();
+  ["home","quiz","res1","res2"].forEach(x=> $(x).classList.add("hide"));
+  const el = $("resM"); el.classList.remove("hide");
+  const top = rows.slice(0,8), bottom = rows.slice(-5).reverse();
+  const band = m => m>=4.2?"很高":m>=3.6?"高":m>=2.8?"中等":m>=2.0?"低":"很低";
+
+  el.innerHTML =
+    `<h1>你的興趣細項</h1>
+     <div class="meta">Basic Interest Markers，31 個興趣領域，337 題</div>
+     <p class="ddesc" style="margin-top:18px">
+       這一份沒有跟別人比較，而是把你自己的 31 個分數排名。
+       每個領域算出 1 到 5 的平均分，你的整體平均是 ${avg.toFixed(2)} 分。
+       重點看的是<b>哪幾個明顯高於你自己的平均</b> —— 那才是真正把你和其他人區分開來的地方。
+     </p>
+     <h2 style="font-size:22px;margin-top:34px">最感興趣的八個領域</h2>` +
+    top.map(r=>scaleRow(r, band(r.mean), true)).join("") +
+    `<h2 style="font-size:22px;margin-top:40px">全部 31 個領域的排名</h2>
+     <div class="ranklist">` +
+    rows.map(r=>{
+      const c = `var(--${r.riasec[0]})`;
+      return `<div class="rankrow">
+        <span class="rk">${r.rank}</span>
+        <span class="rn">${r.zh}<span class="rl" style="color:${c};border-color:${c}">${r.riasec}</span></span>
+        <span class="rt"><span class="rf" style="width:${(r.mean-1)/4*100}%;background:${c}"></span></span>
+        <span class="rv">${r.mean.toFixed(2)}</span>
+      </div>`;
+    }).join("") + `</div>` +
+    `<h2 style="font-size:22px;margin-top:40px">最沒興趣的五個領域</h2>
+     <p class="ddesc">分數低只代表你現在對這類活動沒感覺，不代表做不來。國中階段沒接觸過的東西分數自然會低。</p>
+     <ul style="font-size:15px;color:var(--muted);padding-left:1.2em">
+       ${bottom.map(r=>`<li>${r.zh}（${r.mean.toFixed(2)}）—— ${r.desc}</li>`).join("")}
+     </ul>
+     <div class="actions">
+       <button class="btn" id="nextM">${S.b.done ? "看人格測驗結果" : "接著做人格測驗"}</button>
+       <button class="btn-quiet" id="jsonM">下載 JSON</button>
+       <button class="btn-quiet" id="printM">列印／存成 PDF</button>
+       <button class="btn-quiet" id="homeM">回首頁</button>
+     </div>
+     <div class="footer">
+       <p>字母標籤是這個興趣領域在何倫六型中的歸屬，方便你和第一階段的結果對照。這個歸屬是依 Holland 對各興趣領域的分類推定的，不是量表原始論文的對照表；排名本身不受它影響。</p>
+       <p>這 31 個量表沒有台灣的常模，所以不提供百分位。基本興趣量表本來就是用「同一個人自己的排序」來解讀的，這是標準做法。</p>
+       <p style="margin-bottom:0">量表為 Liao, Armstrong &amp; Rounds (2008) 的 Basic Interest Markers，作者授權專業人員非商業使用，須標註出處，不得商用。作者群另有官方繁體中文版（廖新雅、政治大學胡昌亞），正式施測建議向作者索取。</p>
+     </div>`;
+  $("nextM").onclick = ()=> S.b.done ? renderBig5() : startQuiz("b");
+  $("homeM").onclick = showHome;
+  $("printM").onclick = ()=> window.print();
+  $("jsonM").onclick = ()=> download("basic-interest-result.json",
+    {instrument:"Basic Interest Markers", answers:S.m.ans,
+     scales: rows.map(r=>({id:r.id, zh:r.zh, riasec:r.riasec, mean:+r.mean.toFixed(3), rank:r.rank}))});
+  window.scrollTo({top:0,behavior:"instant"});
+}
+function scaleRow(r, bandTxt, full){
+  const c = `var(--${r.riasec[0]})`;
+  return `<section class="tbar" style="--tc:${c}">
+    <div class="thead">
+      <h2>${r.rank}. ${r.zh}<span class="en">${r.en}</span></h2>
+      <div class="tnum">${r.mean.toFixed(2)}<small>／5，${bandTxt}</small></div>
+    </div>
+    <div class="track"><div class="fill" style="width:${(r.mean-1)/4*100}%"></div></div>
+    <p class="tdesc">${r.desc}</p>
+    ${full ? `<div class="lists"><div style="grid-column:1/-1">
+       <h3>升學方向</h3><ul><li>${r.track}</li></ul></div></div>` : ""}
+  </section>`;
+}
+
+/* ---------- Big Five results ---------- */
+function renderBig5(){
+  const r = scoreBig5();
+  ["home","quiz","res1","resM"].forEach(x=> $(x).classList.add("hide"));
+  const el = $("res2"); el.classList.remove("hide");
+  const sexTxt = S.sex==="M"?"男性":S.sex==="F"?"女性":"男女合併";
+  const band = S.age<21?"未滿 21 歲":S.age<41?"21–40 歲":S.age<61?"41–60 歲":"61 歲以上";
+  const hi = Object.entries(r).sort((a,b)=>b[1].pct-a[1].pct)[0];
+  const lo = Object.entries(r).sort((a,b)=>a[1].pct-b[1].pct)[0];
+
+  el.innerHTML =
+    `<h1>你的人格側寫</h1>
+     <div class="meta">IPIP-NEO-120，對照常模：${sexTxt}，${band}</div>
+     <div class="tune">
+       <div class="tunehead">${S.sex && S.age
+         ? "百分位已依你填的性別與年齡計算。想改的話："
+         : "百分位目前用預設常模（男女合併、未滿 21 歲）。填下面兩項會立刻重算，不填也能看："}</div>
+       <div class="tunerow">
+         <div class="segs" id="sexSegs2">
+           <button class="seg" data-v="M" aria-pressed="${S.sex==="M"}">男</button>
+           <button class="seg" data-v="F" aria-pressed="${S.sex==="F"}">女</button>
+           <button class="seg" data-v="N" aria-pressed="${S.sex==="N"}">不分</button>
+         </div>
+         <input type="number" id="age2" min="10" max="110" placeholder="年齡" value="${S.age||""}">
+       </div>
+     </div>
+     ${(S.age||16) < 18 ? `<p class="note" style="margin-top:14px;border-left:3px solid var(--line);padding-left:14px">
+       這份量表最年輕的常模組是「未滿 21 歲」，實際上以大學年齡的填答者為主。
+       國中生的年齡比這一組小，所以百分位只能當粗略參考，向度之間的高低順序仍然可以看。</p>` : ""}
+     <p class="ddesc" style="margin-top:18px">
+       五個向度裡，你分數最高的是${B5.meta.domains[hi[0]].zh}（第 ${Math.round(hi[1].pct)} 百分位），
+       最低的是${B5.meta.domains[lo[0]].zh}（第 ${Math.round(lo[1].pct)} 百分位）。
+       每個向度都拆成六個面向，面向之間的落差往往比總分更能說明一個人。
+     </p>` +
+    ["N","E","O","A","C"].map(d=>{
+      const m = B5.meta.domains[d], s = r[d], p = Math.round(s.pct);
+      return `<section class="domain" style="--dc:var(--b${d})">
+        <div class="dhead">
+          <h2>${m.zh}<span class="en">${m.en}</span></h2>
+          <div class="pctbig">${p}<small>百分位，${level(p)}</small></div>
+        </div>
+        <p class="ddesc">${m.desc}</p>
+        <div class="bar"><div class="track"></div><div class="fill" style="width:${p}%"></div>
+          <div class="pin" style="left:${p}%"></div></div>
+        <div class="scalelbl"><span>1</span><span>50</span><span>99</span></div>` +
+        s.facets.map(f=>{
+          const fm = m.facets[f.f-1], fp = Math.round(f.pct);
+          const note = fp<30 ? fm.low : fp>70 ? fm.high : fm.mid;
+          return `<div class="facet">
+            <div class="fname">${fm.zh}<span class="en">${fm.en}</span><span class="tag">${level(fp)}</span></div>
+            <div class="fnote">${note}</div>
+            <div class="fbar"><span class="n">${fp}</span>
+              <div class="track"><div class="fill" style="width:${fp}%"></div></div></div>
+          </div>`;
+        }).join("") + `</section>`;
+    }).join("") +
+    (S.r.done ? comboHTML(scoreRiasec(), r) : "") +
+    `<div class="actions">
+       <button class="btn-quiet" id="back1">看興趣測驗結果</button>
+       <button class="btn-quiet" id="json2">下載 JSON</button>
+       <button class="btn-quiet" id="print2">列印／存成 PDF</button>
+       <button class="btn-quiet" id="home2">回首頁</button>
+       <button class="btn-quiet" id="reset2">清除所有作答</button>
+     </div>
+     <div class="footer">
+       <p>百分位代表「一百個同齡同性別的人裡，大約有幾個人分數比你低」。50 附近就是典型，數字本身沒有好壞。</p>
+       <p>這是自陳量表，不是診斷工具，也測不出智力或能力。國中階段人格還在變動，隔一年再測分數會有浮動，很正常。</p>
+       <p style="margin-bottom:0">題目來自 International Personality Item Pool（公共領域）；計分與常模依 Johnson (2014)。與 rubynor/bigfive-web 使用同一套題目。</p>
+     </div>`;
+  const ss = $("sexSegs2");
+  if(ss) ss.onclick = e=>{
+    const b = e.target.closest(".seg"); if(!b) return;
+    S.sex = (S.sex === b.dataset.v) ? null : b.dataset.v;   // tap again to clear
+    save(); renderBig5();
+  };
+  const a2 = $("age2");
+  if(a2) a2.onchange = e=>{
+    const v = parseInt(e.target.value,10);
+    S.age = (v>=10 && v<=110) ? v : null;
+    save(); renderBig5();
+  };
+  $("back1").onclick = ()=> S.r.done ? renderRiasec() : showHome();
+  $("home2").onclick = showHome;
+  $("reset2").onclick = resetAll;
+  $("print2").onclick = ()=> window.print();
+  $("json2").onclick = ()=> download("bigfive-result.json",
+    {instrument:"IPIP-NEO-120", sex:S.sex, age:S.age, answers:S.b.ans, scores:r});
+  window.scrollTo({top:0,behavior:"instant"});
+}
+/* ---------- combined reading ---------- */
+function comboHTML(ri, b5){
+  const t1 = ri.ranked[0], c1 = RI.types[t1];
+  const C = Math.round(b5.C.pct), E = Math.round(b5.E.pct),
+        O = Math.round(b5.O.pct), A = Math.round(b5.A.pct), N = Math.round(b5.N.pct);
+  const lines = [];
+  let head = `你的興趣主軸是<b>${c1.zh}</b>（何倫碼 ${ri.code}），${c1.one}。`;
+  if(S.m.done){
+    const t3 = scoreBim().rows.slice(0,3).map(x=>x.zh);
+    head += `細項測驗中你最感興趣的三個領域是<b>${t3.join("、")}</b>。`;
+  }
+  lines.push(head + `以下是把人格結果放進來一起看的幾點：`);
+  const pts = [];
+  pts.push(E>=60
+    ? `外向性偏高，代表你在有人互動、需要開口的環境裡比較有精神。同樣是${c1.zh}的路，選帶團隊、面對客戶或要上台的那一種，會比一個人埋頭做更適合你。`
+    : E<=40
+    ? `外向性偏低，代表你在安靜、能專心的環境裡效率最好。這不影響你走${c1.zh}的方向，但可以優先找不需要一直社交的角色。`
+    : `外向性中等，代表你在團隊和獨立作業之間都能適應，環境不會是你的主要限制。`);
+  pts.push(C>=60
+    ? `嚴謹自律性偏高，你能自己把長期的事做完。這是升學和技能養成階段最有用的特質，需要長時間累積的路線（證照、術科、實驗、程式）對你相對划算。`
+    : C<=40
+    ? `嚴謹自律性偏低，你比較靠興趣和當下的動力推進。這代表選一條你真的想做的路特別重要 —— 對你來說，硬撐不喜歡的科目會比別人吃力。同時建議用外部結構幫忙：固定的社團、進度表、有人一起做。`
+    : `嚴謹自律性中等，你能完成該做的事，但長期目標需要一點外部提醒，例如固定的社團或讀書進度。`);
+  pts.push(O>=60
+    ? `經驗開放性偏高，你對新東西的胃口大。國中階段建議多方嘗試再收斂，不要太早把自己鎖在一條路上。`
+    : O<=40
+    ? `經驗開放性偏低，你偏好具體、清楚、有明確做法的內容。挑科系時，看得到實際成品和明確職涯路徑的方向會讓你比較安心。`
+    : `經驗開放性中等，你願意嘗試新東西，但也需要有把握的部分，適合先深入一個方向再慢慢往外擴。`);
+  if(N>=70) pts.push(`神經質偏高，代表你對壓力的感受比多數人強烈。這和能力無關，但在選校選科時，把「這個環境競爭壓力多大、我有沒有支持系統」列進考量會很值得。`);
+  if(A<=30) pts.push(`親和性偏低，你習慣直接表達、不怕爭取。這在需要談判和競爭的領域（企業型、法律、業務）是優勢，在需要長期照顧他人的工作上則要多留意。`);
+  if(A>=70 && ri.ranked.slice(0,2).includes("S")) pts.push(`親和性偏高又有社會型的興趣，這兩個是相互加強的，教育、醫護、社工這類方向對你的適配度很高。`);
+  return `<section class="combo">
+    <h3>兩份合起來看</h3>
+    <p>${lines[0]}</p>
+    <ul style="font-size:15px;color:var(--muted);max-width:36em;padding-left:1.2em">
+      ${pts.map(p=>`<li style="margin-bottom:10px">${p}</li>`).join("")}
+    </ul>
+    <p style="font-size:14px">最後提醒：興趣和人格都只是參考資料，不是答案。真正有用的下一步，是拿前三名的方向去實際接觸看看 —— 找相關社團、參加職業試探課程、問問做這行的大人 —— 做過之後的感覺，比任何測驗分數都準。</p>
+  </section>`;
+}
+
+/* ---------- utils ---------- */
+function download(name, obj){
+  const url = URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:"application/json"}));
+  const a = document.createElement("a"); a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+
+(async function init(){
+  const saved = await load();
+  if(saved && saved.r && saved.b) S = Object.assign(BLANK(), saved);
+  showHome();
+})();
+</script>
+</body>
+</html>
