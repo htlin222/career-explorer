@@ -1,0 +1,795 @@
+{
+  "source": {
+    "instrument": "IPIP RIASEC Markers (Holland Codes)",
+    "items": "Interest Item Pool RIASEC Markers — Liao, H.-Y., Armstrong, P. I., & Rounds, J. (2008). Development and initial validation of public domain Basic Interest Markers. Journal of Vocational Behavior, 73, 159-183. Public domain.",
+    "item_source_page": "https://openpsychometrics.org/tests/RIASEC/",
+    "norms": "Percentile tables computed from the Open-Source Psychometrics Project RIASEC dataset (2015-2018, CC0), restricted to respondents aged 12-18 with complete responses (n = 47290).",
+    "scale": {
+      "1": "非常不喜歡",
+      "2": "有點不喜歡",
+      "3": "普通",
+      "4": "有點喜歡",
+      "5": "非常喜歡"
+    },
+    "translation": "Traditional Chinese (Taiwan), wording adapted for junior-high readers. Free to use, modify and redistribute."
+  },
+  "items": [
+    {
+      "num": 1,
+      "code": "R1",
+      "type": "R",
+      "text": "出貨前檢查零件的品質",
+      "en": "Test the quality of parts before shipment"
+    },
+    {
+      "num": 2,
+      "code": "I1",
+      "type": "I",
+      "text": "研究人體的構造",
+      "en": "Study the structure of the human body"
+    },
+    {
+      "num": 3,
+      "code": "A1",
+      "type": "A",
+      "text": "指揮合唱團",
+      "en": "Conduct a musical choir"
+    },
+    {
+      "num": 4,
+      "code": "S1",
+      "type": "S",
+      "text": "給別人生涯規劃的建議",
+      "en": "Give career guidance to people"
+    },
+    {
+      "num": 5,
+      "code": "E1",
+      "type": "E",
+      "text": "把餐廳加盟權推銷給別人",
+      "en": "Sell restaurant franchises to individuals"
+    },
+    {
+      "num": 6,
+      "code": "C1",
+      "type": "C",
+      "text": "幫公司計算每個月的薪水",
+      "en": "Generate the monthly payroll checks for an office"
+    },
+    {
+      "num": 7,
+      "code": "R2",
+      "type": "R",
+      "text": "砌磚或鋪磁磚",
+      "en": "Lay brick or tile"
+    },
+    {
+      "num": 8,
+      "code": "I2",
+      "type": "I",
+      "text": "研究動物的行為",
+      "en": "Study animal behavior"
+    },
+    {
+      "num": 9,
+      "code": "A2",
+      "type": "A",
+      "text": "導一齣舞台劇",
+      "en": "Direct a play"
+    },
+    {
+      "num": 10,
+      "code": "S2",
+      "type": "S",
+      "text": "到公益團體當志工",
+      "en": "Do volunteer work at a non-profit organization"
+    },
+    {
+      "num": 11,
+      "code": "E2",
+      "type": "E",
+      "text": "在百貨公司賣東西",
+      "en": "Sell merchandise at a department store"
+    },
+    {
+      "num": 12,
+      "code": "C2",
+      "type": "C",
+      "text": "用手持裝置清點庫存",
+      "en": "Inventory supplies using a hand-held computer"
+    },
+    {
+      "num": 13,
+      "code": "R3",
+      "type": "R",
+      "text": "在海上的鑽油平台工作",
+      "en": "Work on an offshore oil-drilling rig"
+    },
+    {
+      "num": 14,
+      "code": "I3",
+      "type": "I",
+      "text": "做植物或動物的研究",
+      "en": "Do research on plants or animals"
+    },
+    {
+      "num": 15,
+      "code": "A3",
+      "type": "A",
+      "text": "幫雜誌設計美術插圖",
+      "en": "Design artwork for magazines"
+    },
+    {
+      "num": 16,
+      "code": "S3",
+      "type": "S",
+      "text": "幫助有藥物或酒精問題的人",
+      "en": "Help people who have problems with drugs or alcohol"
+    },
+    {
+      "num": 17,
+      "code": "E3",
+      "type": "E",
+      "text": "經營一家旅館",
+      "en": "Manage the operations of a hotel"
+    },
+    {
+      "num": 18,
+      "code": "C3",
+      "type": "C",
+      "text": "用電腦程式製作客戶帳單",
+      "en": "Use a computer program to generate customer bills"
+    },
+    {
+      "num": 19,
+      "code": "R4",
+      "type": "R",
+      "text": "組裝電子零件",
+      "en": "Assemble electronic parts"
+    },
+    {
+      "num": 20,
+      "code": "I4",
+      "type": "I",
+      "text": "研發新的醫療方法",
+      "en": "Develop a new medical treatment or procedure"
+    },
+    {
+      "num": 21,
+      "code": "A4",
+      "type": "A",
+      "text": "寫一首歌",
+      "en": "Write a song"
+    },
+    {
+      "num": 22,
+      "code": "S4",
+      "type": "S",
+      "text": "教別人做一套運動",
+      "en": "Teach an individual an exercise routine"
+    },
+    {
+      "num": 23,
+      "code": "E4",
+      "type": "E",
+      "text": "經營美髮店或理髮店",
+      "en": "Operate a beauty salon or barber shop"
+    },
+    {
+      "num": 24,
+      "code": "C4",
+      "type": "C",
+      "text": "維護員工的資料",
+      "en": "Maintain employee records"
+    },
+    {
+      "num": 25,
+      "code": "R5",
+      "type": "R",
+      "text": "在工廠操作研磨機器",
+      "en": "Operate a grinding machine in a factory"
+    },
+    {
+      "num": 26,
+      "code": "I5",
+      "type": "I",
+      "text": "進行生物學研究",
+      "en": "Conduct biological research"
+    },
+    {
+      "num": 27,
+      "code": "A5",
+      "type": "A",
+      "text": "寫書或寫劇本",
+      "en": "Write books or plays"
+    },
+    {
+      "num": 28,
+      "code": "S5",
+      "type": "S",
+      "text": "幫助有家庭問題的人",
+      "en": "Help people with family-related problems"
+    },
+    {
+      "num": 29,
+      "code": "E5",
+      "type": "E",
+      "text": "管理大公司裡的一個部門",
+      "en": "Manage a department within a large company"
+    },
+    {
+      "num": 30,
+      "code": "C5",
+      "type": "C",
+      "text": "計算並記錄統計數字",
+      "en": "Compute and record statistical and other numerical data"
+    },
+    {
+      "num": 31,
+      "code": "R6",
+      "type": "R",
+      "text": "修理壞掉的水龍頭",
+      "en": "Fix a broken faucet"
+    },
+    {
+      "num": 32,
+      "code": "I6",
+      "type": "I",
+      "text": "研究鯨魚和其他海洋生物",
+      "en": "Study whales and other types of marine life"
+    },
+    {
+      "num": 33,
+      "code": "A6",
+      "type": "A",
+      "text": "演奏樂器",
+      "en": "Play a musical instrument"
+    },
+    {
+      "num": 34,
+      "code": "S6",
+      "type": "S",
+      "text": "在營隊裡帶小朋友活動",
+      "en": "Supervise the activities of children at a camp"
+    },
+    {
+      "num": 35,
+      "code": "E6",
+      "type": "E",
+      "text": "經營一家服飾店",
+      "en": "Manage a clothing store"
+    },
+    {
+      "num": 36,
+      "code": "C6",
+      "type": "C",
+      "text": "用計算機處理數字",
+      "en": "Operate a calculator"
+    },
+    {
+      "num": 37,
+      "code": "R7",
+      "type": "R",
+      "text": "在工廠組裝產品",
+      "en": "Assemble products in a factory"
+    },
+    {
+      "num": 38,
+      "code": "I7",
+      "type": "I",
+      "text": "在生物實驗室工作",
+      "en": "Work in a biology lab"
+    },
+    {
+      "num": 39,
+      "code": "A7",
+      "type": "A",
+      "text": "在電影或電視劇裡表演特技",
+      "en": "Perform stunts for a movie or television show"
+    },
+    {
+      "num": 40,
+      "code": "S7",
+      "type": "S",
+      "text": "教小朋友認字閱讀",
+      "en": "Teach children how to read"
+    },
+    {
+      "num": 41,
+      "code": "E7",
+      "type": "E",
+      "text": "賣房子",
+      "en": "Sell houses"
+    },
+    {
+      "num": 42,
+      "code": "C7",
+      "type": "C",
+      "text": "處理客戶的銀行交易",
+      "en": "Handle customers' bank transactions"
+    },
+    {
+      "num": 43,
+      "code": "R8",
+      "type": "R",
+      "text": "幫房子鋪設地板",
+      "en": "Install flooring in houses"
+    },
+    {
+      "num": 44,
+      "code": "I8",
+      "type": "I",
+      "text": "繪製海底的地形圖",
+      "en": "Make a map of the bottom of an ocean"
+    },
+    {
+      "num": 45,
+      "code": "A8",
+      "type": "A",
+      "text": "設計舞台劇的布景",
+      "en": "Design sets for plays"
+    },
+    {
+      "num": 46,
+      "code": "S8",
+      "type": "S",
+      "text": "協助長輩處理日常生活",
+      "en": "Help elderly people with their daily activities"
+    },
+    {
+      "num": 47,
+      "code": "E8",
+      "type": "E",
+      "text": "開一家玩具店",
+      "en": "Run a toy store"
+    },
+    {
+      "num": 48,
+      "code": "C8",
+      "type": "C",
+      "text": "記錄貨物的進出",
+      "en": "Keep shipping and receiving records"
+    }
+  ],
+  "types": {
+    "R": {
+      "zh": "實用型",
+      "en": "Realistic",
+      "color": "#4A7C59",
+      "one": "喜歡動手做出看得見的成果",
+      "desc": "你偏好具體、實際、用手和工具解決的問題。比起討論和寫報告，你更想直接把東西做出來、修好、動起來。這一型的人通常對機械、電子、營建、農林漁牧、體育或戶外活動有感覺。",
+      "school": "生活科技、體育、理化實驗、任何要動手的課",
+      "tracks": [
+        "技術型高中：機械群、動力機械群、電機與電子群",
+        "技術型高中：土木與建築群、農業群、水產群、海事群",
+        "普通型高中自然組（走工程科系）"
+      ],
+      "jobs": [
+        "機械／土木／電機工程師",
+        "飛機或車輛維修技師",
+        "建築師、營造現場管理",
+        "獸醫、農業經營",
+        "消防員、警察、運動員"
+      ]
+    },
+    "I": {
+      "zh": "研究型",
+      "en": "Investigative",
+      "color": "#2E6F8E",
+      "one": "喜歡把事情弄懂、找出原因",
+      "desc": "你被「為什麼會這樣」吸引，喜歡觀察、分析、找證據、驗證想法。你能忍受一個問題想很久，而且享受弄懂之後的感覺。這一型的人常走向科學、醫學、資訊與各種研究工作。",
+      "school": "數學、理化、生物、地科、資訊",
+      "tracks": [
+        "普通型高中自然組（數理、生醫）",
+        "技術型高中：化工群、電機與電子群（研發方向）",
+        "五專／技高：醫護相關科別"
+      ],
+      "jobs": [
+        "醫師、藥師、醫檢師",
+        "科學研究員、實驗室人員",
+        "軟體工程師、資料分析師",
+        "獸醫、營養師",
+        "工程研發"
+      ]
+    },
+    "A": {
+      "zh": "藝術型",
+      "en": "Artistic",
+      "color": "#6B5B9A",
+      "one": "喜歡創作、表達、做出自己的東西",
+      "desc": "你重視原創和表達，不喜歡被固定流程綁住。你在有空間發揮的時候表現最好，也對美感、聲音、文字、影像特別敏銳。這一型的人走向設計、表演、影視、文字創作的比例很高。",
+      "school": "美術、音樂、表演藝術、國文寫作",
+      "tracks": [
+        "技術型高中：設計群、藝術群",
+        "高中藝術才能班（音樂／美術／舞蹈／戲劇）",
+        "普通型高中社會組（走傳播、文學）"
+      ],
+      "jobs": [
+        "平面／產品／室內設計師",
+        "動畫師、遊戲美術",
+        "音樂家、演員、導演",
+        "作家、編劇、記者",
+        "攝影師、影像剪輯"
+      ]
+    },
+    "S": {
+      "zh": "社會型",
+      "en": "Social",
+      "color": "#A8455B",
+      "one": "喜歡和人相處、幫助別人",
+      "desc": "你關心別人的狀況，也擅長聽人說話、把事情講清楚、讓別人變好。你從「幫上忙」得到的滿足感，比從成績或報酬得到的更多。這一型的人多半走向教育、醫護照顧、社會工作與心理相關領域。",
+      "school": "公民與社會、健康教育、綜合活動、擔任幹部或小老師",
+      "tracks": [
+        "普通型高中社會組（走教育、心理、社工）",
+        "技術型高中：家政群（幼保）、餐旅群",
+        "五專／技高：護理科、照顧服務相關"
+      ],
+      "jobs": [
+        "老師、輔導老師",
+        "護理師、物理治療師",
+        "社工師、心理師",
+        "幼教老師",
+        "職能治療師、語言治療師"
+      ]
+    },
+    "E": {
+      "zh": "企業型",
+      "en": "Enterprising",
+      "color": "#B5652A",
+      "one": "喜歡帶頭、說服別人、把事情推動起來",
+      "desc": "你喜歡影響別人、承擔決策、看到自己推動的事情成功。你不怕站到前面說話，也享受競爭和達成目標的過程。這一型的人常走向商業、管理、行銷、法律與創業。",
+      "school": "公民、班級或社團幹部、辯論、商業競賽",
+      "tracks": [
+        "技術型高中：商業與管理群、外語群",
+        "技術型高中：餐旅群（經營方向）",
+        "普通型高中社會組（走商管、法律）"
+      ],
+      "jobs": [
+        "業務、行銷企劃",
+        "公司主管、創業者",
+        "律師、談判與公關",
+        "餐飲或零售經營",
+        "活動企劃、經紀人"
+      ]
+    },
+    "C": {
+      "zh": "事務型",
+      "en": "Conventional",
+      "color": "#8A8A2E",
+      "one": "喜歡有條理、清楚規則的工作",
+      "desc": "你在流程明確、標準清楚的環境裡最有效率，擅長處理數字、紀錄和細節，而且不容易出錯。你重視準確和秩序，討厭含糊不清的指令。這一型的人常走向會計、金融、行政與資料管理。",
+      "school": "數學、電腦應用、需要細心整理的作業",
+      "tracks": [
+        "技術型高中：商業與管理群（會計事務、資料處理）",
+        "技術型高中：食品群、農業群（品管方向）",
+        "普通型高中社會組（走財金、會計）"
+      ],
+      "jobs": [
+        "會計師、記帳士",
+        "銀行與金融從業人員",
+        "行政、人資、總務",
+        "品管、稽核",
+        "資料庫與資訊管理"
+      ]
+    }
+  },
+  "order": [
+    "R",
+    "I",
+    "A",
+    "S",
+    "E",
+    "C"
+  ],
+  "norms": {
+    "all": {
+      "R": {
+        "mean": 16.17,
+        "sd": 7.12,
+        "n": 47290
+      },
+      "I": {
+        "mean": 23.53,
+        "sd": 8.69,
+        "n": 47290
+      },
+      "A": {
+        "mean": 22.2,
+        "sd": 8.53,
+        "n": 47290
+      },
+      "S": {
+        "mean": 24.26,
+        "sd": 7.85,
+        "n": 47290
+      },
+      "E": {
+        "mean": 20.55,
+        "sd": 7.24,
+        "n": 47290
+      },
+      "C": {
+        "mean": 18.06,
+        "sd": 7.57,
+        "n": 47290
+      }
+    },
+    "M": {
+      "R": {
+        "mean": 19.8,
+        "sd": 7.45,
+        "n": 16457
+      },
+      "I": {
+        "mean": 23.13,
+        "sd": 8.8,
+        "n": 16457
+      },
+      "A": {
+        "mean": 20.97,
+        "sd": 8.22,
+        "n": 16457
+      },
+      "S": {
+        "mean": 21.85,
+        "sd": 7.85,
+        "n": 16457
+      },
+      "E": {
+        "mean": 20.53,
+        "sd": 7.18,
+        "n": 16457
+      },
+      "C": {
+        "mean": 19.53,
+        "sd": 7.53,
+        "n": 16457
+      }
+    },
+    "F": {
+      "R": {
+        "mean": 14.2,
+        "sd": 6.08,
+        "n": 30183
+      },
+      "I": {
+        "mean": 23.71,
+        "sd": 8.62,
+        "n": 30183
+      },
+      "A": {
+        "mean": 22.78,
+        "sd": 8.62,
+        "n": 30183
+      },
+      "S": {
+        "mean": 25.62,
+        "sd": 7.53,
+        "n": 30183
+      },
+      "E": {
+        "mean": 20.6,
+        "sd": 7.28,
+        "n": 30183
+      },
+      "C": {
+        "mean": 17.29,
+        "sd": 7.47,
+        "n": 30183
+      }
+    }
+  },
+  "percentile_table": {
+    "R": [
+      7.5,
+      17.8,
+      24.2,
+      30.6,
+      36.4,
+      41.9,
+      46.9,
+      51.6,
+      56.2,
+      60.6,
+      64.8,
+      68.6,
+      72.2,
+      75.5,
+      78.6,
+      81.5,
+      84.3,
+      86.8,
+      89.0,
+      90.9,
+      92.5,
+      94.0,
+      95.2,
+      96.3,
+      97.1,
+      97.7,
+      98.2,
+      98.7,
+      99.0,
+      99.3,
+      99.5,
+      99.7,
+      99.9
+    ],
+    "I": [
+      2.2,
+      5.3,
+      7.5,
+      9.9,
+      12.3,
+      14.8,
+      17.3,
+      20.1,
+      23.1,
+      26.2,
+      29.3,
+      32.5,
+      35.9,
+      39.4,
+      42.9,
+      46.6,
+      50.6,
+      54.5,
+      58.3,
+      62.1,
+      65.9,
+      69.7,
+      73.5,
+      77.2,
+      80.7,
+      84.0,
+      86.9,
+      89.5,
+      91.9,
+      94.1,
+      95.9,
+      97.5,
+      99.1
+    ],
+    "A": [
+      2.7,
+      6.5,
+      9.0,
+      11.8,
+      15.0,
+      18.2,
+      21.2,
+      24.3,
+      27.6,
+      31.1,
+      34.6,
+      38.0,
+      41.7,
+      45.4,
+      49.2,
+      53.0,
+      56.9,
+      60.8,
+      64.6,
+      68.3,
+      72.0,
+      75.5,
+      78.8,
+      82.0,
+      85.0,
+      87.8,
+      90.3,
+      92.6,
+      94.6,
+      96.2,
+      97.6,
+      98.6,
+      99.5
+    ],
+    "S": [
+      1.2,
+      3.0,
+      4.4,
+      6.1,
+      8.1,
+      10.1,
+      12.2,
+      14.5,
+      17.2,
+      20.1,
+      23.1,
+      26.4,
+      30.0,
+      33.8,
+      37.8,
+      42.0,
+      46.6,
+      51.3,
+      55.9,
+      60.6,
+      65.2,
+      69.6,
+      74.0,
+      78.1,
+      82.0,
+      85.5,
+      88.7,
+      91.4,
+      93.8,
+      95.8,
+      97.3,
+      98.5,
+      99.5
+    ],
+    "E": [
+      2.5,
+      6.0,
+      8.4,
+      11.3,
+      14.4,
+      17.7,
+      21.0,
+      24.7,
+      28.8,
+      33.4,
+      38.0,
+      42.7,
+      47.5,
+      52.5,
+      57.4,
+      62.4,
+      67.4,
+      72.0,
+      76.2,
+      80.2,
+      83.7,
+      86.7,
+      89.4,
+      91.8,
+      93.7,
+      95.3,
+      96.6,
+      97.6,
+      98.3,
+      98.9,
+      99.3,
+      99.6,
+      99.8
+    ],
+    "C": [
+      5.7,
+      13.4,
+      18.0,
+      22.6,
+      27.0,
+      31.2,
+      35.3,
+      39.6,
+      44.1,
+      48.8,
+      53.3,
+      57.6,
+      61.8,
+      65.9,
+      69.7,
+      73.5,
+      77.3,
+      80.7,
+      83.7,
+      86.3,
+      88.6,
+      90.7,
+      92.4,
+      93.9,
+      95.2,
+      96.3,
+      97.2,
+      97.9,
+      98.4,
+      98.9,
+      99.3,
+      99.5,
+      99.8
+    ]
+  },
+  "norm_n": 47290
+}
